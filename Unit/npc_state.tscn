@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rshq6fxsfmie"]
+
+[ext_resource type="Script" uid="uid://bc1s4qsit7usp" path="res://Unit/npc_state.gd" id="1_holyv"]
+
+[node name="npc_state" type="Node2D"]
+script = ExtResource("1_holyv")
