@@ -219,5 +219,5 @@ position = Vector2(1294.54, -357.117)
 position = Vector2(1113.27, -407.889)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2003.04, 669.229)
+position = Vector2(2950.21, 399.173)
 zoom = Vector2(0.5, 0.5)

@@ -12,8 +12,12 @@ class_name Map extends TileMapLayer
 @onready var english_trench : Sprite2D = $"English trench"
 @onready var german_trench: Sprite2D = $"German trench"
 @onready var no_mans_land : Sprite2D = $"No Mans Land"
+@onready var bunker : Sprite2D = $MachineGunPost
 
-var barbed_wire_vector : Vector2i = Vector2i(0, 1)
+var no_mans_land_vector : Vector2i = Vector2i(0, 0) #this is nmls vector cords
+var barbed_wire_vector : Vector2i = Vector2i(0, 1) #this is to check if the tile is a barbed wire
+var wall_vector : Vector2i = Vector2i(1, 1) #this is for the wall of the english trench, maybe clicking on it gets you to no mans land
+var gun_post_vector : Vector2i = Vector2i(2, 1) #maybe used to check to destroy something idk
 
 func enter_no_mans_land() -> void:
 	"""
@@ -33,15 +37,21 @@ func enter_german_trench() -> void:
 
 func _input(event: InputEvent) -> void:
 	"""
-	This function changes the tile type underneath barbed wire you're cutting 
+	This function changes the tile type underneath barbed wire you're cutting,
+	it also destroys the bunker at the moment.
+	This'll all need changing so that characters move to the target, then do the thing. 
+	I'm just testing certain things work
 	"""
 	
 	if event.is_action_pressed("right click"):
+		#checks if its barbed wire
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == barbed_wire_vector:
 			for b in barbed_wire_list: #this is to check that the player is actually hovering over the wire
 				if b.inside == true:
 					self.set_cell(self.local_to_map(get_local_mouse_position()), 0, Vector2i(0, 0))
 					#the barbed wire is then turned to no mans land
-
-
-	
+		
+		#checks if its the bunker
+		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == gun_post_vector:
+			if bunker.inside == true and bunker.destroyed == false: #checks if arrow is inside
+				bunker.blow_up()
