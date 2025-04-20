@@ -49,6 +49,7 @@ func _input(event: InputEvent) -> void:
 			for b in barbed_wire_list: #this is to check that the player is actually hovering over the wire
 				if b.inside == true:
 					self.set_cell(self.local_to_map(get_local_mouse_position()), 0, Vector2i(0, 0))
+					b.inside = false #probably dont want this bit here, i just had a bug when i had it inside the barbed wire itself
 					#the barbed wire is then turned to no mans land
 		
 		#checks if its the bunker
