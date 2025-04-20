@@ -13,6 +13,7 @@ class_name Map extends TileMapLayer
 @onready var german_trench: Sprite2D = $"German trench"
 @onready var no_mans_land : Sprite2D = $"No Mans Land"
 
+var barbed_wire_vector : Vector2i = Vector2i(0, 1)
 
 func enter_no_mans_land() -> void:
 	"""
@@ -29,3 +30,18 @@ func enter_german_trench() -> void:
 	"""
 	german_trench.modulate = Color(1.00, 1.00, 1.00, 1.00) 
 	no_mans_land.visibe = false
+
+func _input(event: InputEvent) -> void:
+	"""
+	This function changes the tile type underneath barbed wire you're cutting 
+	"""
+	
+	if event.is_action_pressed("right click"):
+		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == barbed_wire_vector:
+			for b in barbed_wire_list: #this is to check that the player is actually hovering over the wire
+				if b.inside == true:
+					self.set_cell(self.local_to_map(get_local_mouse_position()), 0, Vector2i(0, 0))
+					#the barbed wire is then turned to no mans land
+
+
+	

@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 	"""
 	This will cut the wire if it hasnt been
 	"""
-	if event.is_action_pressed("left click"):
+	if event.is_action_pressed("right click"):
 		if inside == true:
 			cut_wire()
 
