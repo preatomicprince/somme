@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://nhiw1pgti2yw"]
+
+[ext_resource type="Texture2D" uid="uid://ch6td5mpf7nts" path="res://Res/UI Elements/custom cursers1.png" id="1_2xfrx"]
+[ext_resource type="Script" uid="uid://b7qelxf52joht" path="res://Menus and UI/main_menu.gd" id="1_tyc6g"]
+[ext_resource type="Texture2D" uid="uid://dr2daau6tq8qk" path="res://Res/UI Elements/custom cursers2.png" id="2_tyc6g"]
+[ext_resource type="Texture2D" uid="uid://bde4uscdpk1jm" path="res://Res/UI Elements/custom cursers4.png" id="3_k8cqj"]
+[ext_resource type="PackedScene" uid="uid://dpll1x2jhrxo0" path="res://Menus and UI/backgound.tscn" id="5_k8cqj"]
+
+[node name="Main menu" type="Node2D"]
+script = ExtResource("1_tyc6g")
+
+[node name="main menu buttons" type="CanvasLayer" parent="."]
+
+[node name="button containers" type="GridContainer" parent="main menu buttons"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="training" type="TextureButton" parent="main menu buttons/button containers"]
+layout_mode = 2
+texture_normal = ExtResource("1_2xfrx")
+
+[node name="main game" type="TextureButton" parent="main menu buttons/button containers"]
+layout_mode = 2
+texture_normal = ExtResource("2_tyc6g")
+
+[node name="credits" type="TextureButton" parent="main menu buttons/button containers"]
+layout_mode = 2
+texture_normal = ExtResource("3_k8cqj")
+
+[node name="background" parent="." instance=ExtResource("5_k8cqj")]
+
+[connection signal="button_down" from="main menu buttons/button containers/training" to="." method="_on_training_button_down"]
+[connection signal="button_down" from="main menu buttons/button containers/main game" to="." method="_on_main_game_button_down"]
+[connection signal="button_down" from="main menu buttons/button containers/credits" to="." method="_on_credits_button_down"]

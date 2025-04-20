@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://biun56uqhqgrh"]
+
+[ext_resource type="Script" uid="uid://c7q2gksw2shou" path="res://Menus and UI/credits.gd" id="1_pn6ra"]
+[ext_resource type="Texture2D" uid="uid://dypej41tr3fy" path="res://Res/UI Elements/custom cursers3.png" id="2_xj20i"]
+[ext_resource type="PackedScene" uid="uid://dpll1x2jhrxo0" path="res://Menus and UI/backgound.tscn" id="4_xatpd"]
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_pn6ra")
+
+[node name="main menu buttons" type="CanvasLayer" parent="."]
+
+[node name="container of containers" type="GridContainer" parent="main menu buttons"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 500.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="team name" type="GridContainer" parent="main menu buttons/container of containers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="main menu buttons/container of containers/team name"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]LIME GANG 5 🍋‍🟩"
+
+[node name="name containers" type="GridContainer" parent="main menu buttons/container of containers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="jam bone" type="RichTextLabel" parent="main menu buttons/container of containers/name containers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Jam Bone 🦴
+
+- Programming
+- Art
+"
+fit_content = true
+
+[node name="pre atomic prince" type="RichTextLabel" parent="main menu buttons/container of containers/name containers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Preatomicprince ☢️
+
+- Programming"
+
+[node name="vaugbe" type="RichTextLabel" parent="main menu buttons/container of containers/name containers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Vaugbe 🧇
+
+- Music and sound"
+
+[node name="main menu button" type="TextureButton" parent="main menu buttons/container of containers"]
+layout_mode = 2
+texture_normal = ExtResource("2_xj20i")
+
+[node name="background" parent="." instance=ExtResource("4_xatpd")]
+
+[connection signal="button_up" from="main menu buttons/container of containers/main menu button" to="." method="_on_main_menu_button_button_up"]
