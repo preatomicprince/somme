@@ -21,7 +21,7 @@ var units: Array[Array] = [british_units, german_units]
 var characters: Array[Array] = []
 
 func _ready() -> void:
-	map = get_child(0)
+	map = $Map
 	
 	# Add units to units var
 	var map_child_count: int = map.get_child_count()

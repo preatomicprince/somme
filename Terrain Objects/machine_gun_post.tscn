@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn07wuv2ep3kf"]
+
+[ext_resource type="Texture2D" uid="uid://bx0gwamwkf5p" path="res://Res/Enviroment/machine gun post.png" id="1_xwayj"]
+[ext_resource type="Script" uid="uid://bnys1xcnwajc1" path="res://Terrain Objects/machine_gun_post.gd" id="2_x27gf"]
+
+[node name="MachineGunPost" type="Sprite2D"]
+position = Vector2(3, 30)
+rotation = 0.261799
+texture = ExtResource("1_xwayj")
+script = ExtResource("2_x27gf")
+
+[node name="MachineGunPost" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.443137)
+z_index = -1
+position = Vector2(5.3186, -4.88538)
+scale = Vector2(0.982571, 1.05116)
+skew = 0.18326
+texture = ExtResource("1_xwayj")

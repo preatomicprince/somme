@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var tree_ind : int = 0 # Index for tree frame 
+@export var tree_ind : int = 0 # Index for tree frame 
 
 func _ready() -> void:
 	"""
