@@ -12,6 +12,3 @@ script = ExtResource("1_bk3v5")
 [node name="Map" parent="." instance=ExtResource("2_1r4le")]
 z_index = 1
 position = Vector2(2835, 1251)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(6304, 925)

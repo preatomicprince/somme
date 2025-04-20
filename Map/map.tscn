@@ -129,31 +129,31 @@ vframes = 2
 position = Vector2(4174.59, 2150.75)
 
 [node name="BarbedWire2" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(4354.29, 2225.81)
+position = Vector2(4375.18, 2209.67)
 
 [node name="BarbedWire3" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(4175.64, 2030.94)
+position = Vector2(4179.4, 2009.17)
 
 [node name="BarbedWire4" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(3995.05, 1951.49)
 
 [node name="BarbedWire5" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(3978.75, 1838.42)
+position = Vector2(3985.6, 1820.59)
 
 [node name="BarbedWire6" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(3796.42, 1761.61)
 
 [node name="BarbedWire7" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(3787.41, 1648.42)
+position = Vector2(3800.71, 1621.96)
 
 [node name="BarbedWire8" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1494.59, -393.712)
+position = Vector2(1488.75, -409.641)
 
 [node name="BarbedWire9" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1493.5, -504.648)
+position = Vector2(1492.01, -545.425)
 
 [node name="BarbedWire10" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1307.36, -470.667)
+position = Vector2(1307.52, -494.436)
 
 [node name="BarbedWire11" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(3583.82, 1568.89)
@@ -174,28 +174,28 @@ position = Vector2(2826.6, 1316.43)
 position = Vector2(2637.69, 1243.94)
 
 [node name="BarbedWire17" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(2640.65, 1137.2)
+position = Vector2(2644.81, 1106.22)
 
 [node name="BarbedWire18" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(2442.01, 1066.24)
 
 [node name="BarbedWire19" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(2442.03, 947.322)
+position = Vector2(2452.36, 924.209)
 
 [node name="BarbedWire20" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(2262.59, 871.29)
 
 [node name="BarbedWire21" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(2250.49, 757.142)
+position = Vector2(2259.6, 731.762)
 
 [node name="BarbedWire22" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(2064.34, 690.699)
+position = Vector2(2063.02, 665.629)
 
 [node name="BarbedWire23" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(1881.75, 614.857)
 
 [node name="BarbedWire24" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1877.83, 499.022)
+position = Vector2(1869.36, 468.801)
 
 [node name="BarbedWire25" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(1685.77, 423.748)
@@ -207,13 +207,17 @@ position = Vector2(1484.04, 245.461)
 position = Vector2(1290.98, 30.0281)
 
 [node name="BarbedWire28" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1287.41, -103.446)
+position = Vector2(1300.67, -101.83)
 
 [node name="BarbedWire29" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1288.05, -214.047)
+position = Vector2(1300.12, -227.248)
 
 [node name="BarbedWire30" parent="." instance=ExtResource("9_lymsy")]
-position = Vector2(1294.07, -340.81)
+position = Vector2(1294.54, -357.117)
 
 [node name="BarbedWire31" parent="." instance=ExtResource("9_lymsy")]
 position = Vector2(1113.27, -407.889)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2003.04, 669.229)
+zoom = Vector2(0.5, 0.5)

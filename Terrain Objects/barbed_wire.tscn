@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://db63lxv26csl1"]
+[gd_scene load_steps=5 format=3 uid="uid://db63lxv26csl1"]
 
 [ext_resource type="Texture2D" uid="uid://dgvto7acmkahv" path="res://Res/Enviroment/barbed wire.png" id="1_ppwaq"]
 [ext_resource type="Script" uid="uid://bps8we5wiafeb" path="res://Terrain Objects/barbed_wire.gd" id="2_r1r8p"]
+[ext_resource type="Texture2D" uid="uid://blnv3nxknms4u" path="res://Res/Enviroment/barbed wire outline.png" id="3_hsequ"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hsequ"]
+radius = 65.1153
 
 [node name="BarbedWire" type="Sprite2D"]
 z_index = 1
@@ -19,3 +23,17 @@ scale = Vector2(0.975666, 0.776951)
 skew = 0.18326
 texture = ExtResource("1_ppwaq")
 hframes = 4
+
+[node name="BarbedWireOutline" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-15.8523, -5.06987)
+texture = ExtResource("3_hsequ")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-18.0566, 36.9318)
+shape = SubResource("CircleShape2D_hsequ")
+
+[connection signal="mouse_shape_entered" from="Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Area2D" to="." method="_on_area_2d_mouse_shape_exited"]
