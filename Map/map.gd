@@ -11,3 +11,21 @@ class_name Map extends TileMapLayer
 @onready var tree_list : Array = [$Trees, $Trees2, $Trees3, $Trees4, $Trees5, $Trees6, $Trees7, $Trees8] #list of trees to make visible/invisible
 @onready var english_trench : Sprite2D = $"English trench"
 @onready var german_trench: Sprite2D = $"German trench"
+@onready var no_mans_land : Sprite2D = $"No Mans Land"
+
+
+func enter_no_mans_land() -> void:
+	"""
+	The point of this function is to reduce the alpha of non vital items whilst
+	in no mans land
+	"""
+	english_trench.modulate = Color(0.45, 0.45, 0.45, 1.00)
+	no_mans_land.modulate = Color(1.00, 1.00, 1.00, 1.00)
+	
+func enter_german_trench() -> void:
+	"""
+	This function makes no mans land and all its related detritus disapear.
+	And increase the visibility of the german trench
+	"""
+	german_trench.modulate = Color(1.00, 1.00, 1.00, 1.00) 
+	no_mans_land.visibe = false

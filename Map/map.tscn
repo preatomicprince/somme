@@ -32,7 +32,7 @@ vframes = 2
 frame = 1
 
 [node name="German trench" type="Sprite2D" parent="."]
-modulate = Color(0.589096, 0.589096, 0.589096, 1)
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
 z_index = -1
 position = Vector2(3536.68, 806.853)
 rotation = 0.261799
