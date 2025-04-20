@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bniy5paeav6q6"]
+
+[ext_resource type="Texture2D" uid="uid://o4o0qj8fi3we" path="res://Res/Enviroment/trees.png" id="1_kcpet"]
+[ext_resource type="Script" uid="uid://bocpmv0o4yh6k" path="res://Terrain Objects/trees.gd" id="2_c4hds"]
+
+[node name="Trees" type="Sprite2D"]
+position = Vector2(-54, -394)
+scale = Vector2(3, 3)
+texture = ExtResource("1_kcpet")
+hframes = 2
+script = ExtResource("2_c4hds")
+
+[node name="Trees" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.486275)
+z_index = -1
+position = Vector2(27, 88)
+scale = Vector2(0.971505, 0.440948)
+skew = 0.443314
+texture = ExtResource("1_kcpet")
+hframes = 2

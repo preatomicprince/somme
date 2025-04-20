@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cma2vobq4vbk8"
-path="res://.godot/imported/to_tom.png-9266a8d88fcf37e4a31ac80c6b690364.ctex"
+uid="uid://dgvto7acmkahv"
+path="res://.godot/imported/barbed wire.png-027967a1b7bd728b6c5e9c31276500e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/to_tom.png"
-dest_files=["res://.godot/imported/to_tom.png-9266a8d88fcf37e4a31ac80c6b690364.ctex"]
+source_file="res://Res/Enviroment/barbed wire.png"
+dest_files=["res://.godot/imported/barbed wire.png-027967a1b7bd728b6c5e9c31276500e3.ctex"]
 
 [params]
 
