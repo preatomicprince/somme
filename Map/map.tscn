@@ -19,7 +19,7 @@ tile_set = ExtResource("1_6yc6o")
 script = ExtResource("2_6yc6o")
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(842.694, 908.046)
+position = Vector2(1340.34, 1419.27)
 army = 1
 
 [node name="English trench" type="Sprite2D" parent="."]
