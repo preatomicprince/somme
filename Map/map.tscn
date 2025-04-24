@@ -116,97 +116,129 @@ texture = ExtResource("8_5ej7w")
 vframes = 2
 
 [node name="BarbedWire" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(4174.59, 2150.75)
 
 [node name="BarbedWire2" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(4375.18, 2209.67)
 
 [node name="BarbedWire3" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(4179.4, 2009.17)
 
 [node name="BarbedWire4" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3995.05, 1951.49)
 
 [node name="BarbedWire5" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3985.6, 1820.59)
 
 [node name="BarbedWire6" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3796.42, 1761.61)
 
 [node name="BarbedWire7" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3800.71, 1621.96)
 
 [node name="BarbedWire8" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1488.75, -409.641)
 
 [node name="BarbedWire9" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1492.01, -545.425)
 
 [node name="BarbedWire10" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1307.52, -494.436)
 
 [node name="BarbedWire11" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3583.82, 1568.89)
 
 [node name="BarbedWire12" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3415.37, 1517.55)
 
 [node name="BarbedWire13" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3223.76, 1444.46)
 
 [node name="BarbedWire14" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(3034.52, 1374.09)
 
 [node name="BarbedWire15" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2826.6, 1316.43)
 
 [node name="BarbedWire16" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2637.69, 1243.94)
 
 [node name="BarbedWire17" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2644.81, 1106.22)
 
 [node name="BarbedWire18" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2442.01, 1066.24)
 
 [node name="BarbedWire19" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2452.36, 924.209)
 
 [node name="BarbedWire20" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2262.59, 871.29)
 
 [node name="BarbedWire21" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2259.6, 731.762)
 
 [node name="BarbedWire22" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(2063.02, 665.629)
 
 [node name="BarbedWire23" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1881.75, 614.857)
 
 [node name="BarbedWire24" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1869.36, 468.801)
 
 [node name="BarbedWire25" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1685.77, 423.748)
 
 [node name="BarbedWire26" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1484.04, 245.461)
 
 [node name="BarbedWire27" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1290.98, 30.0281)
 
 [node name="BarbedWire28" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1300.67, -101.83)
 
 [node name="BarbedWire29" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1300.12, -227.248)
 
 [node name="BarbedWire30" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1294.54, -357.117)
 
 [node name="BarbedWire31" parent="." instance=ExtResource("9_lymsy")]
+visible = true
 position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(3495, 1468)
+position = Vector2(3587, 1497)
+rotation = 0.261799

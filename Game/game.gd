@@ -5,6 +5,13 @@ var character: int = 0#-1 # Index for characters var, starts at -1 as will be in
 var time: float = 0.0 # If we want time of day to change with turns
 var day: int = 0 # Incremented if current player character survives to next day
 
+###to make moving around the map easier with camera whislt testing
+var left : bool = false
+var right : bool = false
+var up : bool = false
+var down : bool = false
+var cam_speed = 50
+
 enum ARMIES{
 	British = 0,
 	German = 1
@@ -32,7 +39,17 @@ func _ready() -> void:
 		var new_child: Node2D = map.get_child(i)
 		if new_child is Unit:
 			pass
-			
+
+func _process(delta: float) -> void:
+	if left == true:
+		$Camera2D.position.x -= cam_speed
+	if right == true:
+		$Camera2D.position.x += cam_speed
+	if up == true:
+		$Camera2D.position.y -= cam_speed
+	if down == true:
+		$Camera2D.position.y += cam_speed
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right click"):
 		var pc_ind: int = characters[character]
@@ -51,15 +68,33 @@ func _input(event: InputEvent) -> void:
 
 		
 	
-	var cam_speed = 50
-	if event.is_action("ui_left"):
-		$Camera2D.position.x -= cam_speed
+	
+	if event.is_action_pressed("left"):
+		left = true
 		
-	if event.is_action("ui_right"):
-		$Camera2D.position.x += cam_speed
+	if event.is_action_pressed("right"):
+		right = true
 		
-	if event.is_action("ui_up"):
-		$Camera2D.position.y -= cam_speed
+	if event.is_action_pressed("up"):
+		up = true
 		
-	if event.is_action("ui_down"):
-		$Camera2D.position.y += cam_speed
+	if event.is_action_pressed("down"):
+		down = true
+	
+	if event.is_action_released("left"):
+		left = false
+		
+	if event.is_action_released("right"):
+		right = false
+		
+	if event.is_action_released("up"):
+		up = false
+		
+	if event.is_action_released("down"):
+		down = false
+	
+	if event.is_action("zoom in"):
+		$Camera2D.zoom += Vector2(0.1, 0.1)
+		
+	if event.is_action("zoom out"):
+		$Camera2D.zoom -= Vector2(0.1, 0.1)

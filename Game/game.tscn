@@ -8,13 +8,12 @@
 script = ExtResource("1_bk3v5")
 
 [node name="background" parent="." instance=ExtResource("3_7raqb")]
-visible = false
 
 [node name="Map" parent="." instance=ExtResource("2_1r4le")]
 z_index = 1
 position = Vector2(3256, 571)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3500, 529)
+position = Vector2(6171.44, 1428.98)
+skew = 0.647517
 anchor_mode = 0
-zoom = Vector2(0.2, 0.2)

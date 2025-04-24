@@ -152,6 +152,7 @@ func _input(event: InputEvent) -> void:
 	"""
 	
 	if event.is_action_pressed("right click"):
+	
 		#checks if its barbed wire
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == barbed_wire_vector:
 			for b in barbed_wire_list: #this is to check that the player is actually hovering over the wire

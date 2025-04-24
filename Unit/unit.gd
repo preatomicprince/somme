@@ -14,7 +14,8 @@ enum ACTION {
 	Attack = 2
 }
 
-const SPEED = 81
+const SPEED = 200
+
 
 var map: Map
 
@@ -26,7 +27,7 @@ var start_pos: Vector2
 @export var unit_type: UNIT_TYPE = 0
 
 
-var max_moves: int = 5 # Max moves per turn
+var max_moves: int = 50 # Max moves per turn
 var moves: int = max_moves # moves remaining this turn
 
 var max_health: int = 100
@@ -63,6 +64,7 @@ func _handle_movement(delta) -> void:
 	"""
 	Moves unit when next action is movement.
 	Called in _process.
+	also chooses what animation to play
 	"""
 	# Skip in no movement
 	if len(move_queue) == 0:
@@ -75,6 +77,25 @@ func _handle_movement(delta) -> void:
 		
 	var next_move_pos = map.map_to_local(move_queue[0])
 	
+	###this is for down
+	if next_move_pos[1] > self.global_position[1] and next_move_pos[0] == self.global_position[0]:
+		self.play_animation("down")
+	###this is for left down
+	if next_move_pos[1] > self.global_position[1] and next_move_pos[0] < self.global_position[0]:
+		self.play_animation("left down")
+	###this is for right down
+	if next_move_pos[1] > self.global_position[1] and next_move_pos[0] > self.global_position[0]:
+		self.play_animation("right down")
+	###this is for walking up
+	if next_move_pos[1] < self.global_position[1] and next_move_pos[0] == self.global_position[0]:
+		self.play_animation("up")
+	###this is for walking up left
+	if next_move_pos[1] < self.global_position[1] and next_move_pos[0] < self.global_position[0]:
+		self.play_animation("left up")
+		
+	if next_move_pos[1] < self.global_position[1] and next_move_pos[0] > self.global_position[0]:
+		self.play_animation("right up")
+		
 	self.global_position = global_position.move_toward(next_move_pos, SPEED*delta)
 	
 	if global_position == next_move_pos:
@@ -94,4 +115,21 @@ func look_for_units() -> Array:
 	
 func _process(delta: float) -> void:
 	_handle_movement(delta)
+	
+func play_animation(direction: String):
+	"""
+	This plays the animation based on the direction its going
+	"""
+	if direction == "down":
+		$AnimationPlayer.play("walk forward")
+	if direction == "left down":
+		$AnimationPlayer.play("walk down left")
+	if direction == "right down":
+		$AnimationPlayer.play("walk down right")
+	if direction == "up":
+		$AnimationPlayer.play("walk up")
+	if direction == "left up":
+		$AnimationPlayer.play("walk up left")
+	if direction == "right up":
+		$AnimationPlayer.play("walk up right")
 	
