@@ -4,11 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://tlxfhb4kylfk" path="res://icon.svg" id="2_c0ino"]
 
 [node name="Unit" type="Node2D"]
-rotation = 0.261799
 script = ExtResource("1_tuymw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
-position = Vector2(-1, -32)
+position = Vector2(0, -36)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_c0ino")

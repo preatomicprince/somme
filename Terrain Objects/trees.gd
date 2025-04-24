@@ -1,4 +1,4 @@
-extends Sprite2D
+class_name Trees extends Sprite2D
 
 @export var tree_ind : int = 0 # Index for tree frame 
 

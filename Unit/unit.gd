@@ -8,6 +8,16 @@ enum UNIT_TYPE {
 	Machinegun = 4
 }
 
+enum ACTION {
+	None = 0,
+	Move = 1,
+	Attack = 2
+}
+
+const SPEED = 81
+
+var map: Map
+
 var npc_state: NPC_State
 
 var start_pos: Vector2 
@@ -29,8 +39,14 @@ var courage: int = max_courage
 # List of units than this unit can see. Updated each move
 var visible_units: Array = []
 
+var move_queue: Array = []
+
+func set_start_pos(new_start_pos) -> void:
+	start_pos = new_start_pos
+	global_position = new_start_pos
+	
 func _ready() -> void:
-	var start_pos: Vector2 = global_position
+	map = get_parent()
 	
 	# Create state machine
 	npc_state = preload("res://Unit/npc_state.tscn").instantiate()
@@ -39,9 +55,31 @@ func _ready() -> void:
 
 func next_turn() -> void:
 	moves = max_moves
+
+func set_move_queue(path: Array) -> void:
+	move_queue = path
 	
-func next_move() -> void:
-	look_for_units()
+func _handle_movement(delta) -> void:
+	"""
+	Moves unit when next action is movement.
+	Called in _process.
+	"""
+	# Skip in no movement
+	if len(move_queue) == 0:
+		print("1")
+		return
+		
+	if moves <= 0:
+		print("2")
+		return
+		
+	var next_move_pos = map.map_to_local(move_queue[0])
+	
+	self.global_position = global_position.move_toward(next_move_pos, SPEED*delta)
+	
+	if global_position == next_move_pos:
+		move_queue.pop_front()
+		moves -= 1
 	
 func reset() -> void:
 	moves = max_moves
@@ -53,4 +91,7 @@ func look_for_units() -> Array:
 	Returns an array of all units in line of sight in form [army(0 or 1), unit_ind]
 	"""
 	return []
+	
+func _process(delta: float) -> void:
+	_handle_movement(delta)
 	

@@ -1,7 +1,7 @@
 class_name Game extends Node2D
 
 var turn: int = 0
-var character: int = 0 # Index for characters var
+var character: int = 0#-1 # Index for characters var, starts at -1 as will be incremented upon start
 var time: float = 0.0 # If we want time of day to change with turns
 var day: int = 0 # Incremented if current player character survives to next day
 
@@ -17,8 +17,11 @@ var british_units: Array = []
 var german_units: Array = []
 var units: Array[Array] = [british_units, german_units]
 
-# List of playable characters filled with array containing [x, y] representing coordinates in units array
-var characters: Array[Array] = []
+# List of playable characters filled with array containing index in british unit list
+var characters: Array[int] = [0, 1]
+
+# Vars for player character (pc), may move to seperate class if it gets clunky
+var pc_path: Array = []
 
 func _ready() -> void:
 	map = $Map
@@ -29,4 +32,34 @@ func _ready() -> void:
 		var new_child: Node2D = map.get_child(i)
 		if new_child is Unit:
 			pass
+			
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("right click"):
+		var pc_ind: int = characters[character]
+		var pc_unit: Unit = british_units[pc_ind]
+		var pc_tile: Vector2 = map.local_to_map(pc_unit.global_position)
+		var mouse_tile: Vector2 = map.local_to_map(get_local_mouse_position())
+		
+		var new_path: Array = self.map.generate_path(pc_tile, mouse_tile)
+		var points = map.nav_grid.get_point_connections(map.get_tile_id(new_path[0]))
+		for i in points:
+			print(map.get_tile_pos(i))
+				
+		new_path.pop_front() # Removes first tile that pc is already stood on
+		pc_path = new_path
+		pc_unit.set_move_queue(new_path)
+
+		
 	
+	var cam_speed = 50
+	if event.is_action("ui_left"):
+		$Camera2D.position.x -= cam_speed
+		
+	if event.is_action("ui_right"):
+		$Camera2D.position.x += cam_speed
+		
+	if event.is_action("ui_up"):
+		$Camera2D.position.y -= cam_speed
+		
+	if event.is_action("ui_down"):
+		$Camera2D.position.y += cam_speed

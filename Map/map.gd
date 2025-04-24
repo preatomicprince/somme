@@ -1,14 +1,11 @@
 class_name Map extends TileMapLayer
 
-@onready var barbed_wire_list : Array = [$BarbedWire, $BarbedWire2, $BarbedWire3, #list of barbed wire to toggle visiblitiy with
-	$BarbedWire4, $BarbedWire5, $BarbedWire6, $BarbedWire7, $BarbedWire8, $BarbedWire9, 
-	$BarbedWire10, $BarbedWire11, $BarbedWire12, $BarbedWire13, $BarbedWire14, 
-	$BarbedWire15, $BarbedWire16, $BarbedWire17, $BarbedWire18, $BarbedWire19, 
-	$BarbedWire20, $BarbedWire21, $BarbedWire22, $BarbedWire23, $BarbedWire24, 
-	$BarbedWire25, $BarbedWire26, $BarbedWire27, $BarbedWire28, $BarbedWire29, 
-	$BarbedWire30, $BarbedWire31] 
+const MAP_SIZE = Vector2i(50, 50)
+
+var barbed_wire_list : Array = [] #list of barbed wire to toggle visiblitiy with 
 @onready var sandbag_list : Array = [$SandbagWall, $SandbagWall2, $SandbagWall3, $SandbagWall4] #list of sandbags to make visible ect
-@onready var tree_list : Array = [$Trees, $Trees2, $Trees3, $Trees4, $Trees5, $Trees6, $Trees7, $Trees8] #list of trees to make visible/invisible
+var tree_list : Array = [] #list of trees to make visible/invisible
+
 @onready var english_trench : Sprite2D = $"English trench"
 @onready var german_trench: Sprite2D = $"German trench"
 @onready var no_mans_land : Sprite2D = $"No Mans Land"
@@ -19,6 +16,107 @@ var barbed_wire_vector : Vector2i = Vector2i(0, 1) #this is to check if the tile
 var wall_vector : Vector2i = Vector2i(1, 1) #this is for the wall of the english trench, maybe clicking on it gets you to no mans land
 var gun_post_vector : Vector2i = Vector2i(2, 1) #maybe used to check to destroy something idk
 
+var game: Game
+
+var nav_grid: AStar2D
+
+var units = []
+
+func _ready() -> void:
+	self.game = get_parent()
+	
+	# Set up nav_grid
+	self.nav_grid = AStar2D.new()
+	
+	for y in range(MAP_SIZE.y):
+		for x in range(MAP_SIZE.x):
+			var new_tile_pos = Vector2i(x, y)
+			var tile_id = get_tile_id(new_tile_pos)
+			nav_grid.add_point(tile_id, new_tile_pos)
+			
+			units.append(null)
+	
+	# Connect tiles to the six surrounding tiles
+	# Done here because all points must be set up first
+	for y in range(MAP_SIZE.y):
+		for x in range(MAP_SIZE.x):
+			var tile_pos = Vector2i(x, y)
+			var tile_id = get_tile_id(tile_pos)
+
+			var surrounding_tiles = []
+			
+			##
+			## Adds surrounding tiles while ensurings opposite ends of maps don't connect
+			## Built-in function (get_surrounding_cells?) would connect non-touching tiles on other side sometimes
+			##
+			
+			if tile_pos.x < MAP_SIZE.x - 1:
+				surrounding_tiles.append(Vector2i(1,0))
+		
+			if tile_pos.y < MAP_SIZE.y - 1:
+				surrounding_tiles.append(Vector2i(0, 1))
+		
+			if tile_pos.x < MAP_SIZE.x - 1 and tile_pos.y < MAP_SIZE.y - 1:
+				surrounding_tiles.append(Vector2i(1, 1))
+			#surrounding_tiles = get_surrounding_cells(tile_pos)
+			
+			for surrounding_tile in surrounding_tiles:
+				var connected_id = get_tile_id(surrounding_tile + tile_pos)
+					
+				nav_grid.connect_points(tile_id, connected_id)
+				
+	# Snap units to tiles, add environment to lists
+	for i in range(get_child_count()):
+		var next_child = get_child(i)
+		if next_child is Unit:
+			var initial_pos: Vector2 = next_child.global_position
+			var start_tile: Vector2 = local_to_map(initial_pos)
+			var start_tile_ID: int = get_tile_id(start_tile)
+			var start_pos: Vector2 = map_to_local(start_tile)
+			
+			next_child.set_start_pos(start_pos)
+			units[start_tile_ID] = next_child
+			
+			# Add to correct troop list
+			if next_child.army == Game.ARMIES.British:
+				self.game.british_units.append(next_child)
+			elif next_child.army == Game.ARMIES.German:
+				self.game.german_units.append(next_child)
+			
+		if next_child is Trees:
+			tree_list.append(next_child)
+		if next_child is Barbed_Wire:
+			barbed_wire_list.append(next_child)
+			
+func get_tile_id(tile_pos: Vector2i) -> int:
+	"""
+	Where needed, tiles have an unique integer id based on their position in the grid.
+	Used for AStar2d navigation.
+	"""
+	return tile_pos.x + MAP_SIZE.x*tile_pos.y
+	
+func get_tile_pos(tile_id: int) -> Vector2i:
+	"""
+	Returns Vec2 of tile map points from a given tile id
+	"""
+	var tile_pos: Vector2i = Vector2i(0, 0)
+	tile_pos.x = tile_id % MAP_SIZE.x
+	tile_pos.y = (tile_id - tile_pos.x)/MAP_SIZE.x
+	
+	return tile_pos
+	
+func generate_path(start_tile: Vector2i, end_tile: Vector2i) -> Array:
+	var start_id: int = get_tile_id(start_tile)
+	var end_id: int = get_tile_id(end_tile)
+	var path: Array = []
+	
+	var id_path: Array = nav_grid.get_id_path(start_id, end_id, true)
+	
+	for point in id_path:
+		path.append(get_tile_pos(point))
+	
+	return path
+			
 func enter_no_mans_land() -> void:
 	"""
 	The point of this function is to reduce the alpha of non vital items whilst
@@ -34,6 +132,16 @@ func enter_german_trench() -> void:
 	"""
 	german_trench.modulate = Color(1.00, 1.00, 1.00, 1.00) 
 	no_mans_land.visibe = false
+	
+func reset() -> void:
+	for barbed_wire in barbed_wire_list:
+		barbed_wire.reset()
+		
+	for unit in self.game.british_units:
+		unit.reset()
+		
+	for unit in self.game.german_units:
+		unit.reset()
 
 func _input(event: InputEvent) -> void:
 	"""
@@ -56,3 +164,4 @@ func _input(event: InputEvent) -> void:
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == gun_post_vector:
 			if bunker.inside == true and bunker.destroyed == false: #checks if arrow is inside
 				bunker.blow_up()
+				

@@ -1,4 +1,4 @@
-extends Sprite2D
+class_name Barbed_Wire extends Sprite2D
 
 @onready var outline : Sprite2D = $BarbedWireOutline
 @onready var shadow : Sprite2D = $BarbedWire
@@ -18,7 +18,17 @@ func cut_wire() -> void:
 	#inside = false
 	outline.visible = false
 	Input.set_custom_mouse_cursor(null)
-
+	
+func reset() -> void:
+	"""
+	Resets wire to uncut state
+	"""
+	self.frame = 0
+	shadow.frame = 0
+	cut = false
+	#inside = false
+	outline.visible = true
+	
 func _input(event: InputEvent) -> void:
 	"""
 	This will cut the wire if it hasnt been
