@@ -53,6 +53,20 @@ func _ready() -> void:
 	npc_state = preload("res://Unit/npc_state.tscn").instantiate()
 	add_child(npc_state)
 	
+	decide_animation()
+	
+
+func decide_animation():
+	"""
+	this chooses the model based on wheather its german or english
+	called on ready
+	"""
+	if army == 0:
+		$CrouchForward.visible = true
+		$GermanSheet.visible = false
+	if army == 1:
+		$CrouchForward.visible = false
+		$GermanSheet.visible = true
 
 func next_turn() -> void:
 	moves = max_moves
@@ -79,22 +93,22 @@ func _handle_movement(delta) -> void:
 	
 	###this is for down
 	if next_move_pos[1] > self.global_position[1] and next_move_pos[0] == self.global_position[0]:
-		self.play_animation("down")
+		self.play_animation_walk("down")
 	###this is for left down
 	if next_move_pos[1] > self.global_position[1] and next_move_pos[0] < self.global_position[0]:
-		self.play_animation("left down")
+		self.play_animation_walk("left down")
 	###this is for right down
 	if next_move_pos[1] > self.global_position[1] and next_move_pos[0] > self.global_position[0]:
-		self.play_animation("right down")
+		self.play_animation_walk("right down")
 	###this is for walking up
 	if next_move_pos[1] < self.global_position[1] and next_move_pos[0] == self.global_position[0]:
-		self.play_animation("up")
+		self.play_animation_walk("up")
 	###this is for walking up left
 	if next_move_pos[1] < self.global_position[1] and next_move_pos[0] < self.global_position[0]:
-		self.play_animation("left up")
+		self.play_animation_walk("left up")
 		
 	if next_move_pos[1] < self.global_position[1] and next_move_pos[0] > self.global_position[0]:
-		self.play_animation("right up")
+		self.play_animation_walk("right up")
 		
 	self.global_position = global_position.move_toward(next_move_pos, SPEED*delta)
 	
@@ -116,20 +130,51 @@ func look_for_units() -> Array:
 func _process(delta: float) -> void:
 	_handle_movement(delta)
 	
-func play_animation(direction: String):
+func play_animation_walk(direction: String):
 	"""
 	This plays the animation based on the direction its going
 	"""
 	if direction == "down":
-		$AnimationPlayer.play("walk forward")
+		$AnimationPlayerEnglish.play("walk forward")
 	if direction == "left down":
-		$AnimationPlayer.play("walk down left")
+		$AnimationPlayerEnglish.play("walk down left")
 	if direction == "right down":
-		$AnimationPlayer.play("walk down right")
+		$AnimationPlayerEnglish.play("walk down right")
 	if direction == "up":
-		$AnimationPlayer.play("walk up")
+		$AnimationPlayerEnglish.play("walk up")
 	if direction == "left up":
-		$AnimationPlayer.play("walk up left")
+		$AnimationPlayerEnglish.play("walk up left")
 	if direction == "right up":
-		$AnimationPlayer.play("walk up right")
+		$AnimationPlayerEnglish.play("walk up right")
 	
+func play_animation_shoot(direction: String):
+	"""
+	This plays the animation based on the direction its going
+	"""
+	if army == 0: #for the english
+		if direction == "down":
+			$AnimationPlayerEnglish.play("shoot down")
+		if direction == "left down":
+			$AnimationPlayerEnglish.play("shoot down left")
+		if direction == "right down":
+			$AnimationPlayerEnglish.play("shoot down right")
+		if direction == "up":
+			$AnimationPlayerEnglish.play("shoot up")
+		if direction == "left up":
+			$AnimationPlayerEnglish.play("shoot up left")
+		if direction == "right up":
+			$AnimationPlayerEnglish.play("shoot up right")
+			
+	if army == 1: #for the germans
+		if direction == "down":
+			$AnimationPlayerGerman.play("shoot down")
+		if direction == "left down":
+			$AnimationPlayerGerman.play("shoot down left")
+		if direction == "right down":
+			$AnimationPlayerGerman.play("shoot down right")
+		if direction == "up":
+			$AnimationPlayerGerman.play("shoot up")
+		if direction == "left up":
+			$AnimationPlayerGerman.play("shoot up left")
+		if direction == "right up":
+			$AnimationPlayerGerman.play("shoot up right")

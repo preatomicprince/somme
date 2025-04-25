@@ -6,7 +6,6 @@
 [node name="Trees" type="Sprite2D"]
 z_index = 1
 position = Vector2(-54, -394)
-rotation = 0.261799
 scale = Vector2(3, 3)
 texture = ExtResource("1_kcpet")
 hframes = 2
