@@ -26,6 +26,15 @@ texture = ExtResource("4_8svjd")
 vframes = 2
 frame = 1
 
+[node name="english trench area" type="Area2D" parent="English trench"]
+position = Vector2(74.2502, -643.75)
+rotation = -0.261799
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="English trench/english trench area"]
+position = Vector2(-2514, 814)
+polygon = PackedVector2Array(25, 27, 1589, 1151, 2057, 1277, 3729, 2487, 3523, 2798, 1897, 1609, 1507, 1531, -199, 320)
+
 [node name="German trench" type="Sprite2D" parent="."]
 modulate = Color(0.454524, 0.454524, 0.454524, 1)
 z_index = -1
@@ -36,6 +45,7 @@ texture = ExtResource("4_8svjd")
 vframes = 2
 
 [node name="No Mans Land" type="Sprite2D" parent="."]
+modulate = Color(0.489622, 0.489622, 0.489622, 1)
 z_index = -1
 position = Vector2(1172, 1602)
 rotation = 0.261799
@@ -250,3 +260,6 @@ rotation = 0.261799
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(829, 1361)
 army = 1
+
+[connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
+[connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]

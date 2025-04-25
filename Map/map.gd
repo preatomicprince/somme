@@ -2,6 +2,8 @@ class_name Map extends TileMapLayer
 
 const MAP_SIZE = Vector2i(50, 50)
 
+var custom_cursor_up = load("res://Res/UI Elements/custom cursers1.png")
+
 var barbed_wire_list : Array = [] #list of barbed wire to toggle visiblitiy with 
 @onready var sandbag_list : Array = [$SandbagWall, $SandbagWall2, $SandbagWall3, $SandbagWall4] #list of sandbags to make visible ect
 var tree_list : Array = [] #list of trees to make visible/invisible
@@ -17,6 +19,16 @@ var wall_vector : Vector2i = Vector2i(1, 1) #this is for the wall of the english
 var gun_post_vector : Vector2i = Vector2i(2, 1) #maybe used to check to destroy something idk
 
 var game: Game
+
+enum GAME_AREAS { ###an enum of the playing areas thall be used to change between areas.
+	British_trench = 0,
+	No_mans_land = 1,
+	German_trench = 2
+}
+
+var curent_area : GAME_AREAS = 0 
+
+var eng_inside : bool = false ###used to create a custom cursor, and switch between no mans land and the trench
 
 var nav_grid: AStar2D
 
@@ -122,18 +134,25 @@ func enter_no_mans_land() -> void:
 	The point of this function is to reduce the alpha of non vital items whilst
 	in no mans land
 	"""
+	curent_area = 1
 	english_trench.modulate = Color(0.45, 0.45, 0.45, 1.00)
 	no_mans_land.modulate = Color(1.00, 1.00, 1.00, 1.00)
+	eng_inside = false
+	Input.set_custom_mouse_cursor(null)
 	
 func enter_german_trench() -> void:
 	"""
 	This function makes no mans land and all its related detritus disapear.
 	And increase the visibility of the german trench
 	"""
+	curent_area = 2
 	german_trench.modulate = Color(1.00, 1.00, 1.00, 1.00) 
 	no_mans_land.visibe = false
 	
 func reset() -> void:
+	
+	curent_area = 0
+	
 	for barbed_wire in barbed_wire_list:
 		barbed_wire.reset()
 		
@@ -152,7 +171,10 @@ func _input(event: InputEvent) -> void:
 	"""
 	
 	if event.is_action_pressed("right click"):
-	
+		###changes to the no mans land if your in the english trench
+		if curent_area == 0 and eng_inside == true:
+			enter_no_mans_land()
+			
 		#checks if its barbed wire
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == barbed_wire_vector:
 			for b in barbed_wire_list: #this is to check that the player is actually hovering over the wire
@@ -166,3 +188,14 @@ func _input(event: InputEvent) -> void:
 			if bunker.inside == true and bunker.destroyed == false: #checks if arrow is inside
 				bunker.blow_up()
 				
+
+
+func _on_english_trench_area_mouse_entered() -> void:
+	if curent_area == 0:
+		eng_inside = true
+		Input.set_custom_mouse_cursor(custom_cursor_up)
+
+
+func _on_english_trench_area_mouse_exited() -> void:
+	eng_inside = false
+	Input.set_custom_mouse_cursor(null)
