@@ -8,6 +8,9 @@ var cut_cursor = load("res://Res/UI Elements/custom cursers2.png")
 var cut : bool = false #this shows whether the barbed wire has been cut, believe it or not.
 var inside : bool = false #to work out if the thing
 
+func _ready() -> void:
+	self.modulate = Color(0.45, 0.45, 0.45, 1.00)
+
 func cut_wire() -> void:
 	"""
 	Can be called to make barbed wire accessible 
@@ -23,6 +26,7 @@ func reset() -> void:
 	"""
 	Resets wire to uncut state
 	"""
+	self.modulate = Color(0.45, 0.45, 0.45, 1.00)
 	self.frame = 0
 	shadow.frame = 0
 	cut = false

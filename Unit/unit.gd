@@ -1,5 +1,14 @@
 class_name Unit extends Node2D
 
+@onready var dead_brit : Sprite2D = $DeadBrit
+@onready var dead_german : Sprite2D = $DeadGerman
+@onready var shadow : Sprite2D = $CharacterShadow
+@onready var british_spritesheet : Sprite2D = $CrouchForward
+@onready var german_spritesheet : Sprite2D = $GermanSheet
+@onready var anim_play_eng : AnimationPlayer = $AnimationPlayerEnglish
+@onready var anim_play_ger : AnimationPlayer = $AnimationPlayerGerman
+
+
 enum UNIT_TYPE {
 	Soldier = 0,
 	Officer = 1,
@@ -62,11 +71,11 @@ func decide_animation():
 	called on ready
 	"""
 	if army == 0:
-		$CrouchForward.visible = true
-		$GermanSheet.visible = false
+		british_spritesheet.visible = true
+		german_spritesheet.visible = false
 	if army == 1:
-		$CrouchForward.visible = false
-		$GermanSheet.visible = true
+		british_spritesheet.visible = false
+		german_spritesheet.visible = true
 
 func next_turn() -> void:
 	moves = max_moves
@@ -135,17 +144,17 @@ func play_animation_walk(direction: String):
 	This plays the animation based on the direction its going
 	"""
 	if direction == "down":
-		$AnimationPlayerEnglish.play("walk forward")
+		anim_play_eng.play("walk forward")
 	if direction == "left down":
-		$AnimationPlayerEnglish.play("walk down left")
+		anim_play_eng.play("walk down left")
 	if direction == "right down":
-		$AnimationPlayerEnglish.play("walk down right")
+		anim_play_eng.play("walk down right")
 	if direction == "up":
-		$AnimationPlayerEnglish.play("walk up")
+		anim_play_eng.play("walk up")
 	if direction == "left up":
-		$AnimationPlayerEnglish.play("walk up left")
+		anim_play_eng.play("walk up left")
 	if direction == "right up":
-		$AnimationPlayerEnglish.play("walk up right")
+		anim_play_eng.play("walk up right")
 	
 func play_animation_shoot(direction: String):
 	"""
@@ -153,28 +162,44 @@ func play_animation_shoot(direction: String):
 	"""
 	if army == 0: #for the english
 		if direction == "down":
-			$AnimationPlayerEnglish.play("shoot down")
+			anim_play_eng.play("shoot down")
 		if direction == "left down":
-			$AnimationPlayerEnglish.play("shoot down left")
+			anim_play_eng.play("shoot down left")
 		if direction == "right down":
-			$AnimationPlayerEnglish.play("shoot down right")
+			anim_play_eng.play("shoot down right")
 		if direction == "up":
-			$AnimationPlayerEnglish.play("shoot up")
+			anim_play_eng.play("shoot up")
 		if direction == "left up":
-			$AnimationPlayerEnglish.play("shoot up left")
+			anim_play_eng.play("shoot up left")
 		if direction == "right up":
-			$AnimationPlayerEnglish.play("shoot up right")
+			anim_play_eng.play("shoot up right")
 			
 	if army == 1: #for the germans
 		if direction == "down":
-			$AnimationPlayerGerman.play("shoot down")
+			anim_play_ger.play("shoot down")
 		if direction == "left down":
-			$AnimationPlayerGerman.play("shoot down left")
+			anim_play_ger.play("shoot down left")
 		if direction == "right down":
-			$AnimationPlayerGerman.play("shoot down right")
+			anim_play_ger.play("shoot down right")
 		if direction == "up":
-			$AnimationPlayerGerman.play("shoot up")
+			anim_play_ger.play("shoot up")
 		if direction == "left up":
-			$AnimationPlayerGerman.play("shoot up left")
+			anim_play_ger.play("shoot up left")
 		if direction == "right up":
-			$AnimationPlayerGerman.play("shoot up right")
+			anim_play_ger.play("shoot up right")
+
+func on_death():
+	"""
+	This shows the dead body upon death
+	"""
+	
+	shadow.visible = false
+	
+	if army == 0:
+		dead_brit.visible = true
+		british_spritesheet.visible = false
+		
+	if army == 1:
+		dead_german.visible = true
+		german_spritesheet.visible = false
+		
