@@ -42,8 +42,8 @@ func _ready() -> void:
 	# Set up nav_grid
 	self.nav_grid = AStar2D.new()
 	
-	for y in range(MAP_SIZE.y):
-		for x in range(MAP_SIZE.x):
+	for y in range(0-MAP_SIZE.y, MAP_SIZE.y):
+		for x in range(0-MAP_SIZE.x, MAP_SIZE.x):
 			var new_tile_pos = Vector2i(x, y)
 			var tile_id = get_tile_id(new_tile_pos)
 			nav_grid.add_point(tile_id, new_tile_pos)
@@ -52,8 +52,8 @@ func _ready() -> void:
 	
 	# Connect tiles to the six surrounding tiles
 	# Done here because all points must be set up first
-	for y in range(MAP_SIZE.y):
-		for x in range(MAP_SIZE.x):
+	for y in range(-MAP_SIZE.y, MAP_SIZE.y):
+		for x in range(-MAP_SIZE.x, MAP_SIZE.x):
 			var tile_pos = Vector2i(x, y)
 			var tile_id = get_tile_id(tile_pos)
 

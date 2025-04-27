@@ -56,15 +56,17 @@ func _input(event: InputEvent) -> void:
 		var pc_unit: Unit = british_units[pc_ind]
 		var pc_tile: Vector2 = map.local_to_map(pc_unit.global_position)
 		var mouse_tile: Vector2 = map.local_to_map(get_local_mouse_position())
-		
+		print("\nM: ", mouse_tile)
 		var new_path: Array = self.map.generate_path(pc_tile, mouse_tile)
-		var points = map.nav_grid.get_point_connections(map.get_tile_id(new_path[0]))
+		"""var points = map.nav_grid.get_point_connections(map.get_tile_id(new_path[0]))
+		
 		for i in points:
-			print(map.get_tile_pos(i))
+			print(map.get_tile_pos(i))"""
 				
 		new_path.pop_front() # Removes first tile that pc is already stood on
 		pc_path = new_path
 		pc_unit.set_move_queue(new_path)
+		#print(map.)
 
 		
 	

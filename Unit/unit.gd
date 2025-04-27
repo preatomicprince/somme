@@ -23,7 +23,7 @@ enum ACTION {
 	Attack = 2
 }
 
-const SPEED = 200
+const SPEED = 240
 
 
 var map: Map
@@ -91,11 +91,9 @@ func _handle_movement(delta) -> void:
 	"""
 	# Skip in no movement
 	if len(move_queue) == 0:
-		print("1")
 		return
 		
 	if moves <= 0:
-		print("2")
 		return
 		
 	var next_move_pos = map.map_to_local(move_queue[0])
