@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://doml2dulgcwg2"]
+[gd_scene load_steps=13 format=3 uid="uid://doml2dulgcwg2"]
 
 [ext_resource type="Script" uid="uid://cu6eg1ioxv7y2" path="res://Menus and UI/game_ui.gd" id="1_0gl8d"]
 [ext_resource type="PackedScene" uid="uid://bxdrku2625x01" path="res://Menus and UI/control_bar.tscn" id="1_j078j"]
 [ext_resource type="Texture2D" uid="uid://bbkcjaalhff24" path="res://Res/UI Elements/crosshair idle.png" id="2_v7vrk"]
 [ext_resource type="Texture2D" uid="uid://c1e4pntoikc62" path="res://Res/UI Elements/crosshair idle pressed.png" id="3_kl1qu"]
+[ext_resource type="PackedScene" uid="uid://cbw4buewmycaw" path="res://Menus and UI/character_select_button.tscn" id="4_0f3ng"]
 [ext_resource type="Texture2D" uid="uid://be0e3vnhw2iwp" path="res://Res/UI Elements/prone idle.png" id="4_yvgqe"]
 [ext_resource type="Texture2D" uid="uid://ohpe6xcm085h" path="res://Res/UI Elements/prone idle pressed.png" id="5_kl1qu"]
 [ext_resource type="Texture2D" uid="uid://bwcc7djg6ukmy" path="res://Res/UI Elements/crosshair active.png" id="6_0qor1"]
@@ -69,6 +70,45 @@ bbcode_enabled = true
 text = "[center]Day Number 3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="mid" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="character select button" parent="mid" instance=ExtResource("4_0f3ng")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+ang = 100
+
+[node name="death text" type="RichTextLabel" parent="mid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]Jambo died April 8th, 
+1917
+
+Whoes next?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="character select button2" parent="mid" instance=ExtResource("4_0f3ng")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
 
 [node name="bottom" type="GridContainer" parent="."]
 anchors_preset = 12
