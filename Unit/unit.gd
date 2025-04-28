@@ -319,6 +319,10 @@ func on_death():
 	This shows the dead body upon death
 	"""
 	
+	###need to work out if unit is the player char
+	#if this is the player char:
+		#british_spritesheet.use_parent_material = false #this turns on the shader
+	
 	shadow.visible = false
 	var new_corpe = corpse.instantiate()
 	
