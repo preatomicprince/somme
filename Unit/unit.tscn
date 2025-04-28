@@ -459,10 +459,13 @@ _data = {
 [node name="Unit" type="Node2D"]
 z_index = 10
 script = ExtResource("1_tuymw")
+<<<<<<< HEAD
 
 [node name="Arrow" type="Sprite2D" parent="."]
 position = Vector2(0, 66)
 texture = ExtResource("7_hvv66")
+=======
+>>>>>>> a6a25c8ab94a3759d4716fbdf185ec01b607a8c4
 
 [node name="CharacterShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.313726)
