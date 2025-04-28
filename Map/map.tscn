@@ -279,6 +279,8 @@ position = Vector2(1113.27, -407.889)
 z_index = 0
 position = Vector2(1613, 1474)
 rotation = 0.261799
+army = 0
+unit_type = 0
 
 [node name="corpse" parent="." instance=ExtResource("10_5cbny")]
 position = Vector2(1037, 1489)
@@ -305,6 +307,7 @@ position = Vector2(3119, 1110)
 position = Vector2(1838, 1545)
 rotation = 0.261799
 army = 1
+unit_type = 0
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
 [connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]

@@ -15,9 +15,11 @@ var show_colour : bool = false #use this to steadily cover up the background upo
 
 func _process(delta: float) -> void:
 	if show_colour == true:
-		background.modulate.a += 0.1
+		if background.modulate.a < 1:
+			background.modulate.a += 0.1
 	else:
-		background.modulate.a -= 0.1
+		if background.modulate.a > 0:
+			background.modulate.a -= 0.1
 	
 func on_death_ui() -> void:
 	"""

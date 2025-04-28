@@ -1,5 +1,7 @@
 class_name Game extends Node2D
 
+@onready var game_ui : CanvasLayer = $"game ui"
+
 var turn: int = 0
 var character: int = 0#-1 # Index for characters var, starts at -1 as will be incremented upon start
 var time: float = 0.0 # If we want time of day to change with turns
@@ -44,6 +46,7 @@ func _process(delta: float) -> void:
 	var pc_ind: int = characters[character]
 	var pc_unit: Unit = british_units[pc_ind]
 	pc_unit.rotate_arrow()
+	pc_unit.is_main_char = true ###makes sure that the pc_unit is the main char, which impacts other stuf 
 	
 	if left == true:
 		$Camera2D.position.x -= cam_speed
