@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://doml2dulgcwg2"]
+[gd_scene load_steps=5 format=3 uid="uid://doml2dulgcwg2"]
 
 [ext_resource type="PackedScene" uid="uid://bxdrku2625x01" path="res://Menus and UI/control_bar.tscn" id="1_j078j"]
 [ext_resource type="Texture2D" uid="uid://blnv3nxknms4u" path="res://Res/Enviroment/barbed wire outline.png" id="2_7n14c"]
+[ext_resource type="Texture2D" uid="uid://bde4uscdpk1jm" path="res://Res/UI Elements/custom cursers4.png" id="2_v7vrk"]
+[ext_resource type="Texture2D" uid="uid://dtf1nwqddh5n1" path="res://Res/Character/guy model.png" id="3_yvgqe"]
 
 [node name="game ui" type="CanvasLayer"]
 
@@ -47,11 +49,11 @@ columns = 3
 
 [node name="context button" type="TextureButton" parent="bottom"]
 layout_mode = 2
-texture_normal = ExtResource("2_7n14c")
+texture_normal = ExtResource("2_v7vrk")
 
 [node name="stance button" type="TextureButton" parent="bottom"]
 layout_mode = 2
-texture_normal = ExtResource("2_7n14c")
+texture_normal = ExtResource("3_yvgqe")
 
 [node name="end turn button" type="TextureButton" parent="bottom"]
 layout_mode = 2
