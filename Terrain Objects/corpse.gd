@@ -19,4 +19,4 @@ func choose_spritesheet() -> void:
 	if army == Game.ARMIES.German:
 		$DeadBrit.visible = false
 		$DeadGerman.visible = true
-		german_sheet.frame = random_ind.randi_range(0, 3)
+		#german_sheet.frame = random_ind.randi_range(0, 3)
