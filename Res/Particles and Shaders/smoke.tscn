@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck5yfaiutlhr4"]
+
+[ext_resource type="Texture2D" uid="uid://v1vnlvpechh1" path="res://Res/Particles and Shaders/smoke.png" id="1_q51tl"]
+
+[sub_resource type="Gradient" id="Gradient_q51tl"]
+offsets = PackedFloat32Array(0, 0.0660377, 0.443396, 1)
+colors = PackedColorArray(0.364219, 0.073889, 0, 1, 0, 0, 0, 0.896226, 1, 1, 1, 0.814751, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_js2sh"]
+gradient = SubResource("Gradient_q51tl")
+
+[sub_resource type="Curve" id="Curve_yic18"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.492424, 0.47191), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_571tx"]
+curve = SubResource("Curve_yic18")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_js2sh"]
+particle_flag_disable_z = true
+direction = Vector3(0, 100, 0)
+spread = 180.0
+initial_velocity_max = 50.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, -800, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_571tx")
+color_ramp = SubResource("GradientTexture1D_js2sh")
+turbulence_enabled = true
+
+[node name="smoke" type="GPUParticles2D"]
+texture_filter = 1
+amount = 49
+lifetime = 3.11
+preprocess = 0.08
+explosiveness = 0.06
+texture = ExtResource("1_q51tl")
+process_material = SubResource("ParticleProcessMaterial_js2sh")
