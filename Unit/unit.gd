@@ -33,7 +33,6 @@ enum STANCES {
 
 const SPEED = 240
 
-
 var map: Map
 
 var npc_state: NPC_State
@@ -329,12 +328,14 @@ func on_death():
 		new_corpe.army = 0
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position
+		map.game.british_units.erase(self)
 		self.queue_free()
 		
 	if army == 1:
 		new_corpe.army = 1
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position
+		map.game.german_units.erase(self)
 		self.queue_free()
 		
 		

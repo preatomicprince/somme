@@ -53,30 +53,17 @@ func _process(delta: float) -> void:
 		$Camera2D.position.y -= cam_speed
 	if down == true:
 		$Camera2D.position.y += cam_speed
-
-
-func _input(event: InputEvent) -> void:
-	
-	
-	if event.is_action_pressed("right click"):
-		var pc_ind: int = characters[character]
-		var pc_unit: Unit = british_units[pc_ind]
-		var pc_tile: Vector2 = map.local_to_map(pc_unit.global_position)
-		var mouse_tile: Vector2 = map.local_to_map(get_local_mouse_position())
-		print("\nM: ", mouse_tile)
-		var new_path: Array = self.map.generate_path(pc_tile, mouse_tile)
-		"""var points = map.nav_grid.get_point_connections(map.get_tile_id(new_path[0]))
 		
-		for i in points:
-			print(map.get_tile_pos(i))"""
-				
-		new_path.pop_front() # Removes first tile that pc is already stood on
-		pc_path = new_path
-		pc_unit.set_move_queue(new_path)
-		#print(map.)
+	if pc_unit.end_turn == true:
+		for i in british_units:
+			if i.end_turn == false:
+				i.npc_state.update()
+		for i in german_units:
+			if i.end_turn == false:
+				i.npc_state.update()
 
-		
-	
+
+func _input(event: InputEvent) -> void:	
 	
 	if event.is_action_pressed("left"):
 		left = true
