@@ -23,6 +23,11 @@ enum ACTION {
 	Attack = 2
 }
 
+enum STANCES {
+	Standing = 0,
+	Prone = 1
+}
+
 const SPEED = 240
 
 
@@ -35,6 +40,7 @@ var start_pos: Vector2
 @export var army: Game.ARMIES = 0
 @export var unit_type: UNIT_TYPE = 0
 
+var stance : STANCES = 0 #used later in animation to decide which animation to choose
 
 var max_moves: int = 50 # Max moves per turn
 var moves: int = max_moves # moves remaining this turn
@@ -141,18 +147,33 @@ func play_animation_walk(direction: String):
 	"""
 	This plays the animation based on the direction its going
 	"""
-	if direction == "down":
-		anim_play_eng.play("walk forward")
-	if direction == "left down":
-		anim_play_eng.play("walk down left")
-	if direction == "right down":
-		anim_play_eng.play("walk down right")
-	if direction == "up":
-		anim_play_eng.play("walk up")
-	if direction == "left up":
-		anim_play_eng.play("walk up left")
-	if direction == "right up":
-		anim_play_eng.play("walk up right")
+	if stance == STANCES.Standing:
+		if direction == "down":
+			anim_play_eng.play("walk forward")
+		if direction == "left down":
+			anim_play_eng.play("walk down left")
+		if direction == "right down":
+			anim_play_eng.play("walk down right")
+		if direction == "up":
+			anim_play_eng.play("walk up")
+		if direction == "left up":
+			anim_play_eng.play("walk up left")
+		if direction == "right up":
+			anim_play_eng.play("walk up right")
+	
+	if stance == STANCES.Prone:
+		if direction == "down":
+			anim_play_eng.play("prone down")
+		if direction == "left down":
+			anim_play_eng.play("prone down left")
+		if direction == "right down":
+			anim_play_eng.play("prone down right")
+		if direction == "up":
+			anim_play_eng.play("prone up")
+		if direction == "left up":
+			anim_play_eng.play("prone up left")
+		if direction == "right up":
+			anim_play_eng.play("prone up right")
 	
 func play_animation_shoot(direction: String):
 	"""
@@ -201,3 +222,16 @@ func on_death():
 		dead_german.visible = true
 		german_spritesheet.visible = false
 		
+
+func change_stance():
+	"""
+	This function changes the stance of the unit
+	"""
+	
+	if stance == STANCES.Standing:
+		stance = STANCES.Prone
+		return
+		
+	if stance == STANCES.Prone:
+		stance = STANCES.Standing
+		return
