@@ -3,8 +3,6 @@ class_name Unit extends Node2D
 @onready var corpse = preload("res://Terrain Objects/corpse.tscn")
 
 @onready var par_map : TileMapLayer = self.get_parent()
-@onready var dead_brit : Sprite2D = $DeadBrit
-@onready var dead_german : Sprite2D = $DeadGerman
 @onready var shadow : Sprite2D = $CharacterShadow
 @onready var british_spritesheet : Sprite2D = $CrouchForward
 @onready var german_spritesheet : Sprite2D = $GermanSheet

@@ -1,11 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://nsc5pq2amx6o"]
+[gd_scene load_steps=33 format=3 uid="uid://nsc5pq2amx6o"]
 
 [ext_resource type="Script" uid="uid://bvkj074734sl" path="res://Unit/unit.gd" id="1_tuymw"]
 [ext_resource type="Texture2D" uid="uid://duvqxxiisvimd" path="res://Res/Character/crouch forward.png" id="2_c0ino"]
 [ext_resource type="Texture2D" uid="uid://c8kqixnx3lq2g" path="res://Res/Character/character shadow.png" id="2_ytiie"]
 [ext_resource type="Texture2D" uid="uid://c4ifk5hcwmm30" path="res://Res/Character/german sheet.png" id="3_6w0sq"]
-[ext_resource type="Texture2D" uid="uid://dhwrsbiwh5rwm" path="res://Res/Character/dead brit.png" id="5_e0uwq"]
-[ext_resource type="Texture2D" uid="uid://baiub3bdbfqej" path="res://Res/Character/dead german.png" id="6_hvv66"]
 
 [sub_resource type="Animation" id="Animation_ytiie"]
 length = 0.001
@@ -490,15 +488,3 @@ vframes = 3
 libraries = {
 &"": SubResource("AnimationLibrary_yclxy")
 }
-
-[node name="DeadBrit" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(4, -62)
-scale = Vector2(2, 2)
-texture = ExtResource("5_e0uwq")
-
-[node name="DeadGerman" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(8, -64)
-scale = Vector2(2, 2)
-texture = ExtResource("6_hvv66")
