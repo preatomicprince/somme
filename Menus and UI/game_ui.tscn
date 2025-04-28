@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://doml2dulgcwg2"]
+[gd_scene load_steps=12 format=3 uid="uid://doml2dulgcwg2"]
 
 [ext_resource type="Script" uid="uid://cu6eg1ioxv7y2" path="res://Menus and UI/game_ui.gd" id="1_0gl8d"]
 [ext_resource type="PackedScene" uid="uid://bxdrku2625x01" path="res://Menus and UI/control_bar.tscn" id="1_j078j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ohpe6xcm085h" path="res://Res/UI Elements/prone idle pressed.png" id="5_kl1qu"]
 [ext_resource type="Texture2D" uid="uid://bwcc7djg6ukmy" path="res://Res/UI Elements/crosshair active.png" id="6_0qor1"]
 [ext_resource type="Texture2D" uid="uid://y17njup8tchu" path="res://Res/UI Elements/crosshair active pressed.png" id="7_0gl8d"]
+[ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="7_o1mkx"]
 [ext_resource type="Texture2D" uid="uid://q181l7g1kv6r" path="res://Res/UI Elements/prone active.png" id="8_o1mkx"]
 [ext_resource type="Texture2D" uid="uid://cpm3eqbckwh2x" path="res://Res/UI Elements/prone active pressed.png" id="9_0f3ng"]
 
@@ -17,7 +18,7 @@ script = ExtResource("1_0gl8d")
 [node name="topback" type="GridContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 100.0
+offset_bottom = 87.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
@@ -25,28 +26,52 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.31802, 0.31802, 0.31802, 1)
+color = Color(0.921569, 0.85098, 0.701961, 1)
+
+[node name="control bar" parent="topback" instance=ExtResource("1_j078j")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="top" type="GridContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 96.0
+offset_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 3
+columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="top"]
+[node name="names" type="RichTextLabel" parent="top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center] x turns left                             x lives left"
+text = "[center]James Steele, 28 , HULL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="control bar" parent="top" instance=ExtResource("1_j078j")]
+[node name="days left" type="RichTextLabel" parent="top"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Day Number 3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="bottom" type="GridContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
