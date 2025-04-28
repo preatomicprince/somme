@@ -128,6 +128,18 @@ func _handle_movement(delta) -> void:
 	if global_position == next_move_pos:
 		move_queue.pop_front()
 		moves -= 1
+
+func get_angle(pos: Vector2) -> Vector2:
+	"""
+	Returns a normalised vector of a global position and the unit.
+	Used to calculate trajectory of bullet. 
+	"""
+	var x_dist: float = pos.x - self.global_position.x 
+	var y_dist: float = pos.y - self.global_position.y
+	
+	var vec_norm: float  = sqrt((x_dist*x_dist) + (y_dist*y_dist))
+	
+	return Vector2(x_dist/vec_norm, y_dist/vec_norm)
 	
 func reset() -> void:
 	moves = max_moves
