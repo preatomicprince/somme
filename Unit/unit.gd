@@ -1,5 +1,8 @@
 class_name Unit extends Node2D
 
+@onready var corpse = preload("res://Terrain Objects/corpse.tscn")
+
+@onready var par_map : TileMapLayer = self.get_parent()
 @onready var dead_brit : Sprite2D = $DeadBrit
 @onready var dead_german : Sprite2D = $DeadGerman
 @onready var shadow : Sprite2D = $CharacterShadow
@@ -194,6 +197,8 @@ func _handle_attack(delta: float) -> void:
 		
 		var bullet_tile_id = map.get_tile_id(bullet_tile)
 		
+		###somewhere around here put impact
+		
 		# Calculate if bullet hits obstacle
 		if obst_atlas_coords.has(atlas_coord): # If bullet's path overlaps with an obstacle
 			var hit_roll: float = randf()
@@ -305,14 +310,21 @@ func on_death():
 	"""
 	
 	shadow.visible = false
+	var new_corpe = corpse.instantiate()
 	
 	if army == 0:
-		dead_brit.visible = true
-		british_spritesheet.visible = false
+		#corpse
+		new_corpe.army = 0
+		par_map.add_child(new_corpe)
+		new_corpe.position = self.position
+		self.queue_free()
 		
 	if army == 1:
-		dead_german.visible = true
-		german_spritesheet.visible = false
+		new_corpe.army = 1
+		par_map.add_child(new_corpe)
+		new_corpe.position = self.position
+		self.queue_free()
+		
 		
 
 func change_stance():

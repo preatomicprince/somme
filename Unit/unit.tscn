@@ -458,8 +458,6 @@ _data = {
 [node name="Unit" type="Node2D"]
 z_index = 10
 script = ExtResource("1_tuymw")
-army = null
-unit_type = null
 
 [node name="CharacterShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.313726)
