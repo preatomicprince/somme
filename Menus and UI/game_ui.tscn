@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://doml2dulgcwg2"]
+[gd_scene load_steps=13 format=3 uid="uid://doml2dulgcwg2"]
 
+[ext_resource type="Script" uid="uid://cu6eg1ioxv7y2" path="res://Menus and UI/game_ui.gd" id="1_0gl8d"]
 [ext_resource type="PackedScene" uid="uid://bxdrku2625x01" path="res://Menus and UI/control_bar.tscn" id="1_j078j"]
-[ext_resource type="Texture2D" uid="uid://bde4uscdpk1jm" path="res://Res/UI Elements/custom cursers4.png" id="2_v7vrk"]
-[ext_resource type="Texture2D" uid="uid://dtf1nwqddh5n1" path="res://Res/Character/guy model.png" id="3_yvgqe"]
+[ext_resource type="Texture2D" uid="uid://bbkcjaalhff24" path="res://Res/UI Elements/crosshair idle.png" id="2_v7vrk"]
+[ext_resource type="Texture2D" uid="uid://c1e4pntoikc62" path="res://Res/UI Elements/crosshair idle pressed.png" id="3_kl1qu"]
+[ext_resource type="PackedScene" uid="uid://cbw4buewmycaw" path="res://Menus and UI/character_select_button.tscn" id="4_0f3ng"]
+[ext_resource type="Texture2D" uid="uid://be0e3vnhw2iwp" path="res://Res/UI Elements/prone idle.png" id="4_yvgqe"]
+[ext_resource type="Texture2D" uid="uid://ohpe6xcm085h" path="res://Res/UI Elements/prone idle pressed.png" id="5_kl1qu"]
+[ext_resource type="Texture2D" uid="uid://bwcc7djg6ukmy" path="res://Res/UI Elements/crosshair active.png" id="6_0qor1"]
+[ext_resource type="Texture2D" uid="uid://y17njup8tchu" path="res://Res/UI Elements/crosshair active pressed.png" id="7_0gl8d"]
+[ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="7_o1mkx"]
+[ext_resource type="Texture2D" uid="uid://q181l7g1kv6r" path="res://Res/UI Elements/prone active.png" id="8_o1mkx"]
+[ext_resource type="Texture2D" uid="uid://cpm3eqbckwh2x" path="res://Res/UI Elements/prone active pressed.png" id="9_0f3ng"]
 
 [node name="game ui" type="CanvasLayer"]
+script = ExtResource("1_0gl8d")
 
 [node name="topback" type="GridContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 100.0
+offset_bottom = 87.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
@@ -17,43 +27,151 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.31802, 0.31802, 0.31802, 1)
+color = Color(0.921569, 0.85098, 0.701961, 1)
+
+[node name="control bar" parent="topback" instance=ExtResource("1_j078j")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="top" type="GridContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 96.0
+offset_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 3
+columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="top"]
+[node name="names" type="RichTextLabel" parent="top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center] x turns left                             x lives left"
+text = "[center]James Steele, 28 , HULL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="control bar" parent="top" instance=ExtResource("1_j078j")]
+[node name="days left" type="RichTextLabel" parent="top"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Day Number 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mid" type="GridContainer" parent="."]
+visible = false
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="character select button" parent="mid" instance=ExtResource("4_0f3ng")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+ang = 100
+
+[node name="death text" type="RichTextLabel" parent="mid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]Jambo died April 8th, 
+1917
+
+Whoes next?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="character select button2" parent="mid" instance=ExtResource("4_0f3ng")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
 
 [node name="bottom" type="GridContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -320.0
+offset_top = -128.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
 columns = 3
 
-[node name="context button" type="TextureButton" parent="bottom"]
+[node name="for spaceing" type="GridContainer" parent="bottom"]
 layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="button container" type="GridContainer" parent="bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="context button" type="TextureButton" parent="bottom/button container"]
+layout_mode = 2
+size_flags_horizontal = 6
 texture_normal = ExtResource("2_v7vrk")
+texture_pressed = ExtResource("3_kl1qu")
 
-[node name="stance button" type="TextureButton" parent="bottom"]
+[node name="context button2" type="TextureButton" parent="bottom/button container"]
+visible = false
 layout_mode = 2
-texture_normal = ExtResource("3_yvgqe")
+size_flags_horizontal = 6
+texture_normal = ExtResource("6_0qor1")
+texture_pressed = ExtResource("7_0gl8d")
 
-[node name="end turn button" type="TextureButton" parent="bottom"]
+[node name="stance button" type="TextureButton" parent="bottom/button container"]
 layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("4_yvgqe")
+texture_pressed = ExtResource("5_kl1qu")
+
+[node name="stance button2" type="TextureButton" parent="bottom/button container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_o1mkx")
+texture_pressed = ExtResource("9_0f3ng")
+
+[node name="background colour" type="ColorRect" parent="."]
+z_index = 99
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[connection signal="pressed" from="bottom/button container/context button" to="." method="_on_context_button_pressed"]
+[connection signal="pressed" from="bottom/button container/context button2" to="." method="_on_context_button_2_pressed"]
+[connection signal="pressed" from="bottom/button container/stance button" to="." method="_on_stance_button_pressed"]
+[connection signal="pressed" from="bottom/button container/stance button2" to="." method="_on_stance_button_2_pressed"]

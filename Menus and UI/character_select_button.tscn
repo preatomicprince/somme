@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbw4buewmycaw"]
+
+[ext_resource type="Texture2D" uid="uid://cl6eyd3kio7s8" path="res://Res/UI Elements/letter base.png" id="1_m4bgk"]
+[ext_resource type="Script" uid="uid://gx1gsa65ft7y" path="res://Menus and UI/character_select_button.gd" id="2_0gkx8"]
+[ext_resource type="Texture2D" uid="uid://d2p4n5fdcjalb" path="res://Res/UI Elements/letter base pressed.png" id="2_7v540"]
+[ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="2_tmumw"]
+
+[node name="character select button" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = -0.0872665
+texture_normal = ExtResource("1_m4bgk")
+texture_pressed = ExtResource("2_7v540")
+script = ExtResource("2_0gkx8")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 25.0
+offset_right = 179.0
+offset_bottom = 239.0
+mouse_filter = 2
+
+[node name="name" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/selection_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("2_tmumw")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]NAME: Tanquil
+
+AGE: 24
+
+FROM: farharbour"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

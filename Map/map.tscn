@@ -52,7 +52,7 @@ scale = Vector2(0.25, 0.25)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="German trench/german trench area"]
 position = Vector2(-2914.02, 961.537)
-polygon = PackedVector2Array(222, 184, 1589, 1151, 2057, 1277, 3903, 2647, 3408, 2802, 1784, 1604, 1026, 1305, -182, 318)
+polygon = PackedVector2Array(222, 184, 1540, 1127, 1521, 1204, 1824, 1317, 2057, 1277, 3903, 2647, 3408, 2802, 1784, 1604, 1026, 1305, -182, 318)
 
 [node name="No Mans Land" type="Sprite2D" parent="."]
 modulate = Color(0.489622, 0.489622, 0.489622, 1)
@@ -71,33 +71,42 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_3g1qk")
 
 [node name="Trees" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(-70, 639)
 
 [node name="Trees2" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(1653, 950)
 
 [node name="Trees3" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(1470, 1911)
 
 [node name="Trees4" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(-1231, 505)
 tree_ind = 1
 
 [node name="Trees5" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(311, 1395)
 tree_ind = 1
 
 [node name="Trees6" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(2821, 1603)
 tree_ind = 1
 
 [node name="Trees7" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(695, 261)
 
 [node name="Trees8" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(308, -1)
 
 [node name="Trees9" parent="." instance=ExtResource("6_3g1qk")]
+z_index = 1
 position = Vector2(2040, 2990)
 
 [node name="MachineGunPost" parent="." instance=ExtResource("7_d1580")]
@@ -143,102 +152,145 @@ texture = ExtResource("8_5ej7w")
 vframes = 2
 
 [node name="BarbedWire" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(4174.59, 2150.75)
 
 [node name="BarbedWire2" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(4375.18, 2209.67)
 
 [node name="BarbedWire3" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(4179.4, 2009.17)
 
 [node name="BarbedWire4" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3995.05, 1951.49)
 
 [node name="BarbedWire5" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3985.6, 1820.59)
 
 [node name="BarbedWire6" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3796.42, 1761.61)
 
 [node name="BarbedWire7" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3800.71, 1621.96)
 
 [node name="BarbedWire8" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1488.75, -409.641)
 
 [node name="BarbedWire9" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1492.01, -545.425)
 
 [node name="BarbedWire10" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1307.52, -494.436)
 
 [node name="BarbedWire11" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3583.82, 1568.89)
 
 [node name="BarbedWire12" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3415.37, 1517.55)
 
 [node name="BarbedWire13" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3223.76, 1444.46)
 
 [node name="BarbedWire14" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(3034.52, 1374.09)
 
 [node name="BarbedWire15" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2826.6, 1316.43)
 
 [node name="BarbedWire16" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2637.69, 1243.94)
 
 [node name="BarbedWire17" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2644.81, 1106.22)
 
 [node name="BarbedWire18" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2442.01, 1066.24)
 
 [node name="BarbedWire19" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2452.36, 924.209)
 
 [node name="BarbedWire20" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2262.59, 871.29)
 
 [node name="BarbedWire21" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2259.6, 731.762)
 
 [node name="BarbedWire22" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(2063.02, 665.629)
 
 [node name="BarbedWire23" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1881.75, 614.857)
 
 [node name="BarbedWire24" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1869.36, 468.801)
 
 [node name="BarbedWire25" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1685.77, 423.748)
 
 [node name="BarbedWire26" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1484.04, 245.461)
 
 [node name="BarbedWire27" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1290.98, 30.0281)
 
 [node name="BarbedWire28" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1300.67, -101.83)
 
 [node name="BarbedWire29" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1300.12, -227.248)
 
 [node name="BarbedWire30" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1294.54, -357.117)
 
 [node name="BarbedWire31" parent="." instance=ExtResource("9_lymsy")]
+z_index = 1
 position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
+<<<<<<< HEAD
 position = Vector2(2443, 1445)
 rotation = 0.261799
 
+=======
+z_index = 0
+position = Vector2(1148, 1332)
+rotation = 0.261799
+
+[node name="Unit" parent="." instance=ExtResource("2_njngi")]
+z_index = 0
+position = Vector2(829, 1361)
+army = 1
+
+>>>>>>> 88b0cf09eefcb38429747dbb1d947d5d6bd007d4
 [node name="corpse" parent="." instance=ExtResource("10_5cbny")]
 position = Vector2(1037, 1489)
 
