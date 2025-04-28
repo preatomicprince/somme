@@ -51,6 +51,8 @@ func _process(delta: float) -> void:
 		$Camera2D.position.y += cam_speed
 
 func _input(event: InputEvent) -> void:
+	
+	
 	if event.is_action_pressed("right click"):
 		var pc_ind: int = characters[character]
 		var pc_unit: Unit = british_units[pc_ind]
