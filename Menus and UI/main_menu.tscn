@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://nhiw1pgti2yw"]
+[gd_scene load_steps=11 format=3 uid="uid://nhiw1pgti2yw"]
 
-[ext_resource type="Texture2D" uid="uid://ch6td5mpf7nts" path="res://Res/UI Elements/custom cursers1.png" id="1_2xfrx"]
 [ext_resource type="Script" uid="uid://b7qelxf52joht" path="res://Menus and UI/main_menu.gd" id="1_tyc6g"]
-[ext_resource type="Texture2D" uid="uid://dr2daau6tq8qk" path="res://Res/UI Elements/custom cursers2.png" id="2_tyc6g"]
-[ext_resource type="Texture2D" uid="uid://bde4uscdpk1jm" path="res://Res/UI Elements/custom cursers4.png" id="3_k8cqj"]
+[ext_resource type="Texture2D" uid="uid://cfya71phagh21" path="res://Res/UI Elements/main menu ui.png" id="2_k8cqj"]
+[ext_resource type="Texture2D" uid="uid://2xprespjo4q5" path="res://Res/UI Elements/main menu ui pressed.png" id="3_3xvo0"]
+[ext_resource type="Texture2D" uid="uid://dnpyll2ff7vdi" path="res://Res/UI Elements/main menu ui hover.png" id="4_3xvo0"]
+[ext_resource type="Texture2D" uid="uid://2mwv1tqgvrf4" path="res://Res/UI Elements/credits.png" id="4_k8cqj"]
 [ext_resource type="PackedScene" uid="uid://dpll1x2jhrxo0" path="res://Menus and UI/backgound.tscn" id="5_k8cqj"]
+[ext_resource type="Texture2D" uid="uid://b12tje8tlr80v" path="res://Res/UI Elements/credits clicked.png" id="6_k385k"]
+[ext_resource type="Texture2D" uid="uid://c6ws1n07jmncq" path="res://Res/UI Elements/credits clicked hover.png" id="7_s06xp"]
+[ext_resource type="Texture2D" uid="uid://3s1clpcq7f8m" path="res://Res/Character/death im.png" id="8_s06xp"]
+[ext_resource type="Texture2D" uid="uid://cn1efmwawgjmc" path="res://Res/Character/death im 2.png" id="9_f6s2e"]
 
 [node name="Main menu" type="Node2D"]
 script = ExtResource("1_tyc6g")
@@ -12,25 +17,41 @@ script = ExtResource("1_tyc6g")
 [node name="main menu buttons" type="CanvasLayer" parent="."]
 
 [node name="button containers" type="GridContainer" parent="main menu buttons"]
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="training" type="TextureButton" parent="main menu buttons/button containers"]
 layout_mode = 2
-texture_normal = ExtResource("1_2xfrx")
-
-[node name="main game" type="TextureButton" parent="main menu buttons/button containers"]
-layout_mode = 2
-texture_normal = ExtResource("2_tyc6g")
+size_flags_horizontal = 6
+size_flags_vertical = 10
+texture_normal = ExtResource("2_k8cqj")
+texture_pressed = ExtResource("3_3xvo0")
+texture_hover = ExtResource("4_3xvo0")
 
 [node name="credits" type="TextureButton" parent="main menu buttons/button containers"]
 layout_mode = 2
-texture_normal = ExtResource("3_k8cqj")
+size_flags_horizontal = 6
+size_flags_vertical = 10
+texture_normal = ExtResource("4_k8cqj")
+texture_pressed = ExtResource("6_k385k")
+texture_hover = ExtResource("7_s06xp")
+
+[node name="DeathIm" type="Sprite2D" parent="main menu buttons/button containers/credits"]
+z_index = -1
+position = Vector2(171, 1)
+texture = ExtResource("8_s06xp")
+
+[node name="DeathIm2" type="Sprite2D" parent="main menu buttons/button containers/credits"]
+position = Vector2(387, 14)
+texture = ExtResource("9_f6s2e")
 
 [node name="background" parent="." instance=ExtResource("5_k8cqj")]
 
-[connection signal="button_down" from="main menu buttons/button containers/training" to="." method="_on_training_button_down"]
-[connection signal="button_down" from="main menu buttons/button containers/main game" to="." method="_on_main_game_button_down"]
+[connection signal="button_up" from="main menu buttons/button containers/training" to="." method="_on_training_button_up"]
 [connection signal="button_down" from="main menu buttons/button containers/credits" to="." method="_on_credits_button_down"]
+[connection signal="button_up" from="main menu buttons/button containers/credits" to="." method="_on_credits_button_up"]
