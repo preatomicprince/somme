@@ -8,6 +8,32 @@ extends CanvasLayer
 @onready var stance_but_disabled : TextureButton = $"bottom/button container/stance button"
 @onready var stance_but_abled : TextureButton = $"bottom/button container/stance button2"
 
+@onready var mid_layer : GridContainer = $mid
+@onready var background : ColorRect = $"background colour"
+
+var show_colour : bool = false #use this to steadily cover up the background upon a death
+
+func _process(delta: float) -> void:
+	if show_colour == true:
+		background.modulate.a += 0.1
+	else:
+		background.modulate.a -= 0.1
+	
+func on_death_ui() -> void:
+	"""
+	toggle this to pull up the choose character selection
+	"""
+	mid_layer.visible = true
+	show_colour = true
+
+func on_char_selected() -> void:
+	"""
+	called within the character select buttons, in the mid grid section
+	we'll want to feed the info from that button like the characters name into the 
+	new unit maybe?
+	"""
+	mid_layer.visible = false
+	show_colour = false
 
 func _on_context_button_pressed() -> void:
 	"""
