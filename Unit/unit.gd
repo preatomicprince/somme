@@ -17,7 +17,7 @@ enum UNIT_TYPE {
 	Machinegun = 4
 }
 
-enum ACTION {
+enum ACTION_MODE {
 	None = 0,
 	Move = 1,
 	Attack = 2
@@ -42,8 +42,7 @@ var start_pos: Vector2
 
 var stance : STANCES = 0 #used later in animation to decide which animation to choose
 
-var max_moves: int = 50 # Max moves per turn
-var moves: int = max_moves # moves remaining this turn
+var max_moves: int = 50 # Max moves per turn. Attempting to move further than this is invalid
 
 var max_health: int = 100
 var health: int = max_health
@@ -52,14 +51,33 @@ var health: int = max_health
 var max_courage: int = 10
 var courage: int = max_courage
 
+var current_tile: Vector2i
+
 # List of units than this unit can see. Updated each move
 var visible_units: Array = []
 
 var move_queue: Array = []
 
+var action_mode: ACTION_MODE = ACTION_MODE.Attack # Are they walking or setting up to walk? or to shoot?
+
+var get_input: bool = true # Set to false while already moving or shooting, reset at end of turn
+
+var bullet_pos: Vector2 = Vector2(-1, -1) # Starts at player, moves angle*speed each step
+var bullet_angle: Vector2 = Vector2(-1, -1) # Set by get_angle
+const BULLET_SPEED: int = 50 # Defines how far the bullet travels each step before doing a collision check
+var bullet_step: float = 0
+const MAX_BULLET_STEP: float = 40 # Max number of steps before bullet times out, turn ends
+
+var end_turn = false # Has finished moving or shooting
+
 func set_start_pos(new_start_pos) -> void:
 	start_pos = new_start_pos
 	global_position = new_start_pos
+	
+	current_tile = map.local_to_map(position)
+	print("Tile id: ", map.get_tile_id(current_tile))
+
+	map.units[map.get_tile_id(current_tile)] = self
 	
 func _ready() -> void:
 	map = get_parent()
@@ -69,6 +87,8 @@ func _ready() -> void:
 	add_child(npc_state)
 	
 	decide_animation()
+	
+	
 	
 
 func decide_animation():
@@ -84,7 +104,7 @@ func decide_animation():
 		german_spritesheet.visible = true
 
 func next_turn() -> void:
-	moves = max_moves
+	pass
 
 func set_move_queue(path: Array) -> void:
 	move_queue = path
@@ -97,9 +117,7 @@ func _handle_movement(delta) -> void:
 	"""
 	# Skip in no movement
 	if len(move_queue) == 0:
-		return
-		
-	if moves <= 0:
+		end_turn = true
 		return
 		
 	var next_move_pos = map.map_to_local(move_queue[0])
@@ -124,15 +142,20 @@ func _handle_movement(delta) -> void:
 		self.play_animation_walk("right up")
 		
 	self.global_position = global_position.move_toward(next_move_pos, SPEED*delta)
-	
+		
 	if global_position == next_move_pos:
+		map.units[map.get_tile_id(current_tile)] = null
+		current_tile = map.local_to_map(global_position)
+		map.units[map.get_tile_id(current_tile)] = self
 		move_queue.pop_front()
-		moves -= 1
+		
+			
 
 func get_angle(pos: Vector2) -> Vector2:
 	"""
 	Returns a normalised vector of a global position and the unit.
 	Used to calculate trajectory of bullet. 
+	Also oops. .normalize and .get_angle_to methods already exist. 
 	"""
 	var x_dist: float = pos.x - self.global_position.x 
 	var y_dist: float = pos.y - self.global_position.y
@@ -141,8 +164,59 @@ func get_angle(pos: Vector2) -> Vector2:
 	
 	return Vector2(x_dist/vec_norm, y_dist/vec_norm)
 	
+func set_bullet(mouse_pos: Vector2) -> void:
+	"""
+	Sets up bullet angle and pos.
+	Takes mouse pos from input.
+	"""
+	bullet_pos = self.position
+	bullet_angle = self.get_angle(mouse_pos)
+	bullet_step = 0
+	get_input = false
+	
+func _handle_attack(delta: float) -> void:
+	if bullet_step > MAX_BULLET_STEP:
+		end_turn = true
+		return
+		
+	if end_turn == true:
+		return
+	
+	const obst_atlas_coords: Array = [Vector2i(2,0), Vector2i(3,0), Vector2i(3,1)]
+	
+	while(bullet_step < MAX_BULLET_STEP):
+		bullet_step += 1
+		bullet_pos.x = bullet_pos.x + bullet_angle.x*BULLET_SPEED
+		bullet_pos.y = bullet_pos.y + bullet_angle.y*BULLET_SPEED
+		
+		var bullet_tile: Vector2i = map.local_to_map(bullet_pos)
+		var atlas_coord: Vector2i = map.get_cell_atlas_coords(bullet_tile)
+		
+		var bullet_tile_id = map.get_tile_id(bullet_tile)
+		
+		# Calculate if bullet hits obstacle
+		if obst_atlas_coords.has(atlas_coord): # If bullet's path overlaps with an obstacle
+			var hit_roll: float = randf()
+			var odds: float = bullet_step/MAX_BULLET_STEP - 0.2 # -0.2 means decrease chance of hit by 10%
+			
+			if hit_roll < odds: # If obstacle hit
+				end_turn = true
+				return
+		
+		# Calculate if bullet hits enemy
+		var map_unit: Unit = map.units[bullet_tile_id]
+		if  map_unit != null and map_unit != self:
+			if map_unit.army != self.army: # No friendly fire :( 
+				var hit_roll: float = randf()
+				var odds: float = bullet_step/MAX_BULLET_STEP + 0.1 # +0.1 means increase chance of hit by 10%
+				
+				if hit_roll > odds:
+					map_unit.on_death()
+					end_turn = true
+					return
+	
+	
 func reset() -> void:
-	moves = max_moves
 	health = max_health
 	global_position = start_pos
 	
@@ -153,7 +227,13 @@ func look_for_units() -> Array:
 	return []
 	
 func _process(delta: float) -> void:
-	_handle_movement(delta)
+	if get_input == true: # Skip if there hasn't been an input yet
+		return
+		
+	if action_mode == ACTION_MODE.Move:
+		_handle_movement(delta)
+	elif action_mode == ACTION_MODE.Attack:
+		_handle_attack(delta)
 	
 func play_animation_walk(direction: String):
 	"""
