@@ -3,14 +3,13 @@ class_name Unit extends Node2D
 @onready var corpse = preload("res://Terrain Objects/corpse.tscn")
 
 @onready var par_map : TileMapLayer = self.get_parent()
-@onready var dead_brit : Sprite2D = $DeadBrit
-@onready var dead_german : Sprite2D = $DeadGerman
 @onready var shadow : Sprite2D = $CharacterShadow
 @onready var british_spritesheet : Sprite2D = $CrouchForward
 @onready var german_spritesheet : Sprite2D = $GermanSheet
 @onready var anim_play_eng : AnimationPlayer = $AnimationPlayerEnglish
 @onready var anim_play_ger : AnimationPlayer = $AnimationPlayerGerman
 
+var is_main_char : bool = false #determins if this is the character that is being controlled
 
 enum UNIT_TYPE {
 	Soldier = 0,
@@ -216,6 +215,7 @@ func _handle_attack(delta: float) -> void:
 			var odds: float = bullet_step/MAX_BULLET_STEP - 0.2 # -0.2 means decrease chance of hit by 10%
 			
 			if hit_roll < odds: # If obstacle hit
+				
 				end_turn = true
 				return
 		
@@ -233,8 +233,11 @@ func _handle_attack(delta: float) -> void:
 	
 	
 func reset() -> void:
+	is_main_char = false
 	health = max_health
 	global_position = start_pos
+	self.z_index = 10
+	british_spritesheet.use_parent_material = true
 	
 func look_for_units() -> Array:
 	"""
@@ -320,8 +323,15 @@ func on_death():
 	This shows the dead body upon death
 	"""
 	
+	
 	shadow.visible = false
 	var new_corpe = corpse.instantiate()
+	
+	if is_main_char == true:
+		british_spritesheet.use_parent_material = false
+		par_map.game.game_ui.on_death_ui()
+		self.z_index = 10000
+		return
 	
 	if army == 0:
 		#corpse
@@ -339,6 +349,11 @@ func on_death():
 		self.queue_free()
 		
 		
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("emiting test"):
+		if is_main_char == true:
+			on_death()
 
 func change_stance():
 	"""
