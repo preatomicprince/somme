@@ -50,9 +50,7 @@ func _process(delta: float) -> void:
 	if down == true:
 		$Camera2D.position.y += cam_speed
 
-<<<<<<< HEAD
-func _input(event: InputEvent) -> void:	
-=======
+
 func _input(event: InputEvent) -> void:
 	
 	
@@ -76,7 +74,6 @@ func _input(event: InputEvent) -> void:
 		
 	
 	
->>>>>>> 88b0cf09eefcb38429747dbb1d947d5d6bd007d4
 	if event.is_action_pressed("left"):
 		left = true
 		

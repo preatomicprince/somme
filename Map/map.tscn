@@ -276,21 +276,10 @@ z_index = 1
 position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
-<<<<<<< HEAD
-position = Vector2(2443, 1445)
+z_index = 0
+position = Vector2(2596, 613)
 rotation = 0.261799
 
-=======
-z_index = 0
-position = Vector2(1148, 1332)
-rotation = 0.261799
-
-[node name="Unit" parent="." instance=ExtResource("2_njngi")]
-z_index = 0
-position = Vector2(829, 1361)
-army = 1
-
->>>>>>> 88b0cf09eefcb38429747dbb1d947d5d6bd007d4
 [node name="corpse" parent="." instance=ExtResource("10_5cbny")]
 position = Vector2(1037, 1489)
 
@@ -311,10 +300,6 @@ position = Vector2(3601, 1942)
 
 [node name="corpse7" parent="." instance=ExtResource("10_5cbny")]
 position = Vector2(3119, 1110)
-
-[node name="Unit" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(2869, 456)
-army = 1
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
 [connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]
