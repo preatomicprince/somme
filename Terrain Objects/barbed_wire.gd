@@ -1,4 +1,4 @@
-class_name Barbed_Wire extends Sprite2D
+class_name Barbed_Wire extends Node2D
 
 @onready var outline : Sprite2D = $BarbedWireOutline
 @onready var shadow : Sprite2D = $BarbedWire

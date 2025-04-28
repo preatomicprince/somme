@@ -8,7 +8,7 @@
 radius = 65.1153
 
 [node name="BarbedWire" type="Sprite2D"]
-z_index = 1
+z_index = 10
 position = Vector2(0, -55)
 texture = ExtResource("1_ppwaq")
 hframes = 4
