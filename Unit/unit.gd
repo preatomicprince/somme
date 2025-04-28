@@ -150,6 +150,17 @@ func _handle_movement(delta) -> void:
 		map.units[map.get_tile_id(current_tile)] = self
 		move_queue.pop_front()
 		
+func rotate_arrow() -> void:
+	if action_mode == ACTION_MODE.Move:
+		$Arrow.visible = false
+		return
+	var offset = 80
+	$Arrow.visible = true
+	var angle_to_mouse = get_angle(get_global_mouse_position())
+	$Arrow.rotation = angle_to_mouse.angle() + PI/2
+	$Arrow.position.x = angle_to_mouse.x * offset
+	$Arrow.position.y = angle_to_mouse.y * offset
+
 			
 
 func get_angle(pos: Vector2) -> Vector2:
@@ -176,6 +187,7 @@ func set_bullet(mouse_pos: Vector2) -> void:
 	get_input = false
 	
 func _handle_attack(delta: float) -> void:
+	
 	if bullet_step > MAX_BULLET_STEP:
 		end_turn = true
 		return

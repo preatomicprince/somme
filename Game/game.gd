@@ -41,6 +41,10 @@ func _ready() -> void:
 			pass
 
 func _process(delta: float) -> void:
+	var pc_ind: int = characters[character]
+	var pc_unit: Unit = british_units[pc_ind]
+	pc_unit.rotate_arrow()
+	
 	if left == true:
 		$Camera2D.position.x -= cam_speed
 	if right == true:
