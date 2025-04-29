@@ -26,7 +26,8 @@ func update() -> void:
 		return
 	
 	enemy_target = _get_target()
-	print("et", enemy_target)
+	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
+		print("et", enemy_target)
 		
 	if unit.army == Game.ARMIES.British:
 		if enemy_target == null:
@@ -65,6 +66,8 @@ func _update_move() -> void:
 	
 	
 func _update_attack() -> void:
+	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
+		print("aaaaaaa")
 	if enemy_target == null:
 		unit.get_input == false
 		unit.end_turn == true
@@ -84,6 +87,7 @@ func _get_target() -> Unit:
 	var unit_tile: Vector2i = unit.current_tile
 	var range: int = 7
 	var targets: Array = []
+
 	for x in range(unit_tile.x - range, unit_tile.x + range):
 		for y in range(unit_tile.y - range, unit_tile.y + range):
 			if x < 0 or y < 0:

@@ -317,8 +317,14 @@ position = Vector2(1332, 1531)
 position = Vector2(2178, 1336)
 
 [node name="Unit7" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(1915, 1474)
+position = Vector2(3148, 238)
 army = 1
+unit_type = 4
+
+[node name="Unit8" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(3444, 425)
+army = 1
+unit_type = 4
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
 [connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]

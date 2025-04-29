@@ -82,6 +82,9 @@ func set_start_pos(new_start_pos) -> void:
 	map.units[map.get_tile_id(current_tile)] = self
 	
 func _ready() -> void:
+	if unit_type == UNIT_TYPE.Machinegun:
+		visible = false
+		
 	map = get_parent()
 	
 	# Create state machine
@@ -226,6 +229,9 @@ func _handle_attack(delta: float) -> void:
 	
 	const obst_atlas_coords: Array = [Vector2i(2,0), Vector2i(3,0), Vector2i(3,1)]
 	
+	if unit_type == UNIT_TYPE.Machinegun:
+		map.bunker.fire_machine_guns()
+		
 	while(bullet_step < MAX_BULLET_STEP):
 		bullet_step += 1
 		bullet_pos.x = bullet_pos.x + bullet_angle.x*BULLET_SPEED
@@ -264,8 +270,10 @@ func _handle_attack(delta: float) -> void:
 					var hit_pos = bullet_pos - position
 					$impact.position = hit_pos
 					$impact.emitting = true
-					map_unit.on_death()
 					end_turn = true
+					if map_unit.unit_type == Unit.UNIT_TYPE.Machinegun:
+						return
+					map_unit.on_death()
 					return
 					
 	end_turn = true
@@ -390,6 +398,8 @@ func on_death():
 	if army == 1:
 		par_map.game.game_ui.cont_bar.german_killed() ###used to add towards the victory
 		new_corpe.army = 1
+		if unit_type == Unit.UNIT_TYPE.Machinegun:
+			new_corpe.visible = false
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position
 		map.game.german_units.erase(self)

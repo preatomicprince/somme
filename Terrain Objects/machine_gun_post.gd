@@ -12,6 +12,8 @@ var bomb_cursor = load("res://Res/UI Elements/custom cursers3.png")
 var destroyed : bool = false #used to tell if the machine gun post can be destroyed or is still firing  
 var inside : bool = false #used to work out if the mouse is inside the doorway of the trench
 
+@onready var map = get_parent()
+
 
 func blow_up() -> void:
 	"""
@@ -22,6 +24,10 @@ func blow_up() -> void:
 	for s in smoke_collection:
 		s.emitting = true
 	self.modulate = Color(0.45, 0.45, 0.45, 1.00)
+	
+	for i in map.game.german_units:
+		if i.unit_type == Unit.UNIT_TYPE.Machinegun:
+			i.on_death()
 	destroyed = true
 	rubble.visible = true
 	par_map.game.game_ui.cont_bar.bunker_dest() ###used to add towards the victory
