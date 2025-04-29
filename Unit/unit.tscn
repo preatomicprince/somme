@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://7s31yhuv6uht" path="res://Res/UI Elements/arrow.png" id="7_hvv66"]
 [ext_resource type="Texture2D" uid="uid://ck35nw5ljax5o" path="res://Res/Particles and Shaders/muzzle flash.png" id="8_08ss2"]
 [ext_resource type="AudioStream" uid="uid://gsnokcifhfgo" path="res://Res/Music and Sound/response/rifle.mp3" id="9_sju1b"]
-[ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="10_gnj3n"]
+[ext_resource type="FontFile" uid="uid://de7vhhovyv87y" path="res://Res/Fonts/Futura Bold font.ttf" id="10_gnj3n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvv66"]
 shader = ExtResource("4_e0uwq")

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ws1n07jmncq" path="res://Res/UI Elements/credits clicked hover.png" id="7_s06xp"]
 [ext_resource type="Texture2D" uid="uid://3s1clpcq7f8m" path="res://Res/Character/death im.png" id="8_s06xp"]
 [ext_resource type="Texture2D" uid="uid://cn1efmwawgjmc" path="res://Res/Character/death im 2.png" id="9_f6s2e"]
-[ext_resource type="AudioStream" uid="uid://ca5xrgpla8ky5" path="res://Res/Music and Sound/menus/mouse-click-290204.mp3" id="11_kf5lb"]
+[ext_resource type="AudioStream" uid="uid://ca5xrgpla8ky5" path="res://Res/Music and Sound/mouse-click-290204.mp3" id="11_d3a20"]
 [ext_resource type="AudioStream" uid="uid://cy4cwjxcg3hfo" path="res://Res/Music and Sound/response/07.WereAllGoingCallingOnTheKaiser.mp3" id="12_d3a20"]
 
 [node name="Main menu" type="Node2D"]
@@ -55,8 +55,8 @@ texture = ExtResource("9_f6s2e")
 [node name="background" parent="." instance=ExtResource("5_k8cqj")]
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_kf5lb")
-volume_db = 10.0
+stream = ExtResource("11_d3a20")
+volume_db = 1.0
 max_distance = 1e+06
 
 [node name="song" type="AudioStreamPlayer2D" parent="."]

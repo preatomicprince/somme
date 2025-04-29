@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cl6eyd3kio7s8" path="res://Res/UI Elements/letter base.png" id="1_m4bgk"]
 [ext_resource type="Script" uid="uid://gx1gsa65ft7y" path="res://Menus and UI/character_select_button.gd" id="2_0gkx8"]
 [ext_resource type="Texture2D" uid="uid://d2p4n5fdcjalb" path="res://Res/UI Elements/letter base pressed.png" id="2_7v540"]
-[ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="2_tmumw"]
+[ext_resource type="FontFile" uid="uid://de7vhhovyv87y" path="res://Res/Fonts/Futura Bold font.ttf" id="2_tmumw"]
 
 [node name="character select button" type="TextureButton"]
 offset_right = 40.0

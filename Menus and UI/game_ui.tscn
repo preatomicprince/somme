@@ -5,18 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://bbkcjaalhff24" path="res://Res/UI Elements/crosshair idle.png" id="2_v7vrk"]
 [ext_resource type="Texture2D" uid="uid://c1e4pntoikc62" path="res://Res/UI Elements/crosshair idle pressed.png" id="3_kl1qu"]
 [ext_resource type="PackedScene" uid="uid://cbw4buewmycaw" path="res://Menus and UI/character_select_button.tscn" id="4_0f3ng"]
-[ext_resource type="Texture2D" uid="uid://be0e3vnhw2iwp" path="res://Res/UI Elements/prone idle.png" id="4_yvgqe"]
-[ext_resource type="Texture2D" uid="uid://ohpe6xcm085h" path="res://Res/UI Elements/prone idle pressed.png" id="5_kl1qu"]
+[ext_resource type="Texture2D" uid="uid://cfccelokidcgb" path="res://Res/UI Elements/prone idle.png" id="4_yvgqe"]
+[ext_resource type="Texture2D" uid="uid://bbnhomx4ydky5" path="res://Res/UI Elements/prone idle pressed.png" id="5_kl1qu"]
 [ext_resource type="Texture2D" uid="uid://bwcc7djg6ukmy" path="res://Res/UI Elements/crosshair active.png" id="6_0qor1"]
 [ext_resource type="Texture2D" uid="uid://y17njup8tchu" path="res://Res/UI Elements/crosshair active pressed.png" id="7_0gl8d"]
-[ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="7_o1mkx"]
-[ext_resource type="Texture2D" uid="uid://q181l7g1kv6r" path="res://Res/UI Elements/prone active.png" id="8_o1mkx"]
-[ext_resource type="Texture2D" uid="uid://cpm3eqbckwh2x" path="res://Res/UI Elements/prone active pressed.png" id="9_0f3ng"]
-[ext_resource type="AudioStream" uid="uid://ca5xrgpla8ky5" path="res://Res/Music and Sound/menus/mouse-click-290204.mp3" id="13_15ek6"]
+[ext_resource type="FontFile" uid="uid://de7vhhovyv87y" path="res://Res/Fonts/Futura Bold font.ttf" id="7_o1mkx"]
+[ext_resource type="Texture2D" uid="uid://bcp5q5p6m0l0e" path="res://Res/UI Elements/prone active.png" id="8_o1mkx"]
+[ext_resource type="Texture2D" uid="uid://babeyn1dspt2d" path="res://Res/UI Elements/prone active pressed.png" id="9_0f3ng"]
 [ext_resource type="Texture2D" uid="uid://boxjut48eoflp" path="res://Res/UI Elements/AGAIN.PNG" id="13_eiiuy"]
 [ext_resource type="Texture2D" uid="uid://diwle4n4vuag5" path="res://Res/UI Elements/victory.png" id="13_v34v8"]
 [ext_resource type="Texture2D" uid="uid://dt8oxsopf2gce" path="res://Res/UI Elements/AGAIN clicked.PNG" id="14_v34v8"]
 [ext_resource type="Texture2D" uid="uid://f6uya6w5pep7" path="res://Res/UI Elements/AGAIN hover.PNG" id="15_qccw3"]
+[ext_resource type="AudioStream" uid="uid://ca5xrgpla8ky5" path="res://Res/Music and Sound/mouse-click-290204.mp3" id="17_v34v8"]
 
 [node name="game ui" type="CanvasLayer"]
 script = ExtResource("1_0gl8d")
@@ -307,7 +307,7 @@ texture_pressed = ExtResource("14_v34v8")
 texture_hover = ExtResource("15_qccw3")
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_15ek6")
+stream = ExtResource("17_v34v8")
 volume_db = 1.0
 max_distance = 1e+06
 
