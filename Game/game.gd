@@ -62,10 +62,12 @@ func _process(delta: float) -> void:
 			if i.end_turn == false:
 				game_ui.turn_text.text = "ALLIES TURN"
 				i.npc_state.update()
-		for i in german_units:
-			if i.end_turn == false:
-				game_ui.turn_text.text = "ENEMIES TURN"
-				i.npc_state.update()
+		for b in british_units:
+			if b.end_turn == false:
+				for i in german_units:
+					if i.end_turn == false:
+						game_ui.turn_text.text = "ENEMIES TURN"
+						i.npc_state.update()
 	else:
 		game_ui.turn_text.text = "YOUR TURN"
 				

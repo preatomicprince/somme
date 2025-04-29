@@ -9,6 +9,8 @@ class_name Unit extends Node2D
 @onready var anim_play_eng : AnimationPlayer = $AnimationPlayerEnglish
 @onready var anim_play_ger : AnimationPlayer = $AnimationPlayerGerman
 
+var dead: bool = false
+
 var is_main_char : bool = false #determins if this is the character that is being controlled
 
 enum UNIT_TYPE {
@@ -360,6 +362,11 @@ func on_death():
 	"""
 	This shows the dead body upon death
 	"""
+	
+	if dead:
+		return
+		
+	dead = true
 	
 	print(self)
 	shadow.visible = false

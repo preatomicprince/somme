@@ -42,7 +42,11 @@ func update() -> void:
 				_update_move()
 				
 	else:
-		_update_attack()
+		if enemy_target != null:
+			_update_attack()
+		else:
+			unit.end_turn = true
+			unit.get_input = false
 
 func _update_move() -> void:
 	var x_offset = randi_range(0, 3)

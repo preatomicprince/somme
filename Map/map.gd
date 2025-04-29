@@ -96,6 +96,8 @@ func _ready() -> void:
 				self.game.british_units.append(next_child)
 			elif next_child.army == Game.ARMIES.German:
 				self.game.german_units.append(next_child)
+				$".."/"game ui"/topback/"control bar".over_all_num_germans += 1
+				print($".."/"game ui"/topback/"control bar".over_all_num_germans)
 			
 		if next_child is Trees:
 			tree_list.append(next_child)

@@ -301,7 +301,7 @@ position = Vector2(3601, 1942)
 position = Vector2(3119, 1110)
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(1838, 1546)
+position = Vector2(1638, 1512)
 army = 1
 
 [node name="Unit2" parent="." instance=ExtResource("2_njngi")]
@@ -317,7 +317,7 @@ position = Vector2(1332, 1531)
 position = Vector2(2178, 1336)
 
 [node name="Unit7" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(2460, 1596)
+position = Vector2(1915, 1474)
 army = 1
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]

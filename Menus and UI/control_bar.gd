@@ -6,7 +6,7 @@ var cur_amount : int
 var target_amount : int
 var amount_for_german : int
 var amount_for_bunker : int
-var over_all_num_germans : int = 1 ###need to know this so we can divide the screen size up
+var over_all_num_germans : int = 0 ###need to know this so we can divide the screen size up
 var bar_speed : int = 10
 var victory : bool = false ###used, checked inside the ui to see if theres a victory
 
