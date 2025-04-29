@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwkq3h28n5ih2"
+path="res://.godot/imported/005355_201111-ww1-bi-plane-flying-around-close-distant-helicopter-roof-11amflac-51213.mp3-980ce06df362242ce57f4304c02cc31a.mp3str"
+
+[deps]
+
+source_file="res://Res/Music and Sound/ambience/005355_201111-ww1-bi-plane-flying-around-close-distant-helicopter-roof-11amflac-51213.mp3"
+dest_files=["res://.godot/imported/005355_201111-ww1-bi-plane-flying-around-close-distant-helicopter-roof-11amflac-51213.mp3-980ce06df362242ce57f4304c02cc31a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

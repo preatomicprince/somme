@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpm8dqeatvev0"]
+[gd_scene load_steps=6 format=3 uid="uid://cpm8dqeatvev0"]
 
 [ext_resource type="Script" uid="uid://mswat8hebkur" path="res://Game/game.gd" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://b45gd53xht61k" path="res://Map/map.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://dpll1x2jhrxo0" path="res://Menus and UI/backgound.tscn" id="3_7raqb"]
 [ext_resource type="PackedScene" uid="uid://doml2dulgcwg2" path="res://Menus and UI/game_ui.tscn" id="4_jcm6v"]
+[ext_resource type="PackedScene" uid="uid://jbl6eyu1fv4y" path="res://Res/Music and Sound/sound_scape.tscn" id="5_fwxkx"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_bk3v5")
 
 [node name="background" parent="." instance=ExtResource("3_7raqb")]
@@ -21,3 +23,6 @@ anchor_mode = 0
 zoom = Vector2(0.5, 0.5)
 
 [node name="game ui" parent="." instance=ExtResource("4_jcm6v")]
+
+[node name="sound scape" parent="." instance=ExtResource("5_fwxkx")]
+position = Vector2(5330, 1949)

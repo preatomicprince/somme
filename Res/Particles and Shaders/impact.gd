@@ -10,4 +10,5 @@ func _ready() -> void:
 	"""
 	give it one of the colours up above when creating it to change what it hits
 	"""
-	self.color = colour_show
+	#self.color = colour_show
+	pass

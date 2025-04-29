@@ -242,8 +242,10 @@ func _handle_attack(delta: float) -> void:
 			var odds: float = bullet_step/MAX_BULLET_STEP - 0.2 # -0.2 means decrease chance of hit by 10%
 			
 			if hit_roll < odds: # If obstacle hit
-				
+				$impact.position = bullet_pos
+				$impact.emitting = true
 				end_turn = true
+				
 				return
 		
 		# Calculate if bullet hits enemy
@@ -256,6 +258,8 @@ func _handle_attack(delta: float) -> void:
 				var odds: float = bullet_step/MAX_BULLET_STEP + 0.1 # +0.1 means increase chance of hit by 10%
 				
 				if hit_roll > odds:
+					$impact.position = bullet_pos
+					$impact.emitting = true
 					map_unit.on_death()
 					end_turn = true
 					return
@@ -385,7 +389,7 @@ func on_death():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("emiting test"):
 		if is_main_char == true:
-			on_death()
+			self.on_death()
 
 func change_stance():
 	"""

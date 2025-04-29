@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://jbl6eyu1fv4y"]
+
+[ext_resource type="Script" uid="uid://bhcjjhbqw0rmq" path="res://Res/Music and Sound/sound_scape.gd" id="1_7cds5"]
+[ext_resource type="AudioStream" uid="uid://n8dd5qauuaxq" path="res://Res/Music and Sound/ambience/ww1-fx-simulated-53044.mp3" id="1_gp2qb"]
+[ext_resource type="AudioStream" uid="uid://g38g1cl6kphm" path="res://Res/Music and Sound/ambience/firefight-70199.mp3" id="2_5ooh6"]
+[ext_resource type="AudioStream" uid="uid://cwkq3h28n5ih2" path="res://Res/Music and Sound/ambience/005355_201111-ww1-bi-plane-flying-around-close-distant-helicopter-roof-11amflac-51213.mp3" id="3_5ooh6"]
+
+[node name="sound scape" type="Node2D"]
+script = ExtResource("1_7cds5")
+
+[node name="general ambiant sounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_gp2qb")
+volume_db = 0.8
+pitch_scale = 1.02
+autoplay = true
+stream_paused = true
+max_distance = 20000.0
+parameters/looping = true
+
+[node name="firefight" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5ooh6")
+volume_db = -10.965
+max_distance = 20000.0
+
+[node name="biplane" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5ooh6")
+stream_paused = true
+max_distance = 20000.0
+parameters/looping = true
+
+[node name="firefight start" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="biplane start" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="firefight start" to="." method="_on_firefight_start_timeout"]
+[connection signal="timeout" from="biplane start" to="." method="_on_biplane_start_timeout"]

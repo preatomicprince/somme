@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxyxn1ko247lp"
+path="res://.godot/imported/wind-chime-g-003-89307.mp3-1f126f881fdf35a1a94623667db91b48.mp3str"
+
+[deps]
+
+source_file="res://Res/Music and Sound/ambience/wind-chime-g-003-89307.mp3"
+dest_files=["res://.godot/imported/wind-chime-g-003-89307.mp3-1f126f881fdf35a1a94623667db91b48.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

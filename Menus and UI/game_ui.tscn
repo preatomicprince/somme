@@ -52,7 +52,7 @@ theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 
 theme_override_fonts/normal_font = ExtResource("7_o1mkx")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]James Steele, 28 , HULL"
+text = "[center]John Doe"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -67,7 +67,7 @@ theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 
 theme_override_fonts/normal_font = ExtResource("7_o1mkx")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]Day Number 3"
+text = "[center]Day Number 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -103,7 +103,7 @@ bbcode_enabled = true
 text = "[center]Jambo died April 8th, 
 1917
 
-Whoes next?"
+Whoes next to go over the top?"
 horizontal_alignment = 1
 vertical_alignment = 1
 

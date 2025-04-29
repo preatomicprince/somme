@@ -1,6 +1,8 @@
 extends Sprite2D
 
 @onready var smoke_collection : Array = [$smoke, $smoke2, $smoke3]
+@onready var machine_gun_fire: Array = [$"machine gun fire",$"machine gun fire2"]
+@onready var timer : Timer = $"fire timer"
 
 var bomb_cursor = load("res://Res/UI Elements/custom cursers3.png")
 
@@ -18,6 +20,19 @@ func blow_up() -> void:
 	destroyed = true
 	Input.set_custom_mouse_cursor(null)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("emiting test"):
+		fire_machine_guns()
+		
+func fire_machine_guns() -> void:
+	"""
+	right now this just sets the firing animation with its respective timer
+	"""
+	
+	for m in machine_gun_fire:
+		m.emitting = true
+		m.get_child(0).emitting = true
+	timer.start()
 
 func _on_area_2d_mouse_shape_entered(shape_idx: int) -> void:
 	if destroyed == false:
@@ -27,3 +42,8 @@ func _on_area_2d_mouse_shape_entered(shape_idx: int) -> void:
 func _on_area_2d_mouse_shape_exited(shape_idx: int) -> void:
 	inside = false
 	Input.set_custom_mouse_cursor(null)
+
+func _on_fire_timer_timeout() -> void:
+	for m in machine_gun_fire:
+		m.emitting = false
+		m.get_child(0).emitting = false

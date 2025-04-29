@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://lli48dluw05s"]
+
+[ext_resource type="Texture2D" uid="uid://ck35nw5ljax5o" path="res://Res/Particles and Shaders/muzzle flash.png" id="1_x4i38"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8oj2f"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="machine gun fire" type="CPUParticles2D"]
+emitting = false
+amount = 50
+lifetime = 2.0
+speed_scale = 20.0
+explosiveness = 0.22
+spread = 0.0
+gravity = Vector2(-200, 50)
+damping_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+color = Color(0.703764, 0.681554, 0.634044, 1)
+
+[node name="sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.1
+speed_scale = 64.0
+explosiveness = 1.0
+trail_lifetime = 0.1
+texture = ExtResource("1_x4i38")
+process_material = SubResource("ParticleProcessMaterial_8oj2f")

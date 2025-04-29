@@ -1,5 +1,48 @@
 extends CanvasLayer
 
+var first_names : Array = [
+	"William", "John", "George", "Thomas", "James", "Arthur", "Frederick", "Charles", "Albert", "Robert",
+	"Joseph", "Alfred", "Henry", "Ernest", "Harry", "Harold", "Edward", "Walter", "Frank", "Herbert",
+	"Richard", "Reginald", "Percy", "Leonard", "Samuel", "David", "Sidney", "Francis", "Stanley", "Fred",
+	"Cecil", "Horace", "Cyril", "Wilfred", "Sydney", "Leslie", "Norman", "Edwin", "Victor", "Benjamin",
+	"Tom", "Hector", "Jack", "Alexander", "Edgar", "Bertie", "Eric", "Philip", "Clifford", "Redvers",
+	"Baden", "Bernard", "Daniel", "Donald", "Ralph", "Archibald", "Stephen", "Willie", "Peter",
+	"Christopher", "Hugh", "Lewis", "Douglas", "Gilbert", "Ronald", "Isaac", "Hubert", "Maurice",
+	"Clarence", "Lawrence", "Michael", "Edmund", "Patrick", "Percival", "Andrew", "Matthew", "Evan",
+	"Wilfrid", "Bertram", "Louis", "Arnold", "Kenneth", "Gordon", "Ivor", "Gerald", "Abraham", "Geoffrey",
+	"Owen", "Raymond", "Oliver", "Claude"
+]
+
+var secondary_names : Array = [
+	"Allen", "Davis", "Jackson", "Morris", "Thompson", "Baker", "Edwards", "James", "Parker", "Turner",
+	"Bennett", "Evans", "Johnson", "Phillips", "Walker", "Brown", "Green", "Jones", "Price", "Ward",
+	"Carter", "Griffiths", "King", "Roberts", "Watson", "Clark", "Hall", "Lee", "Robinson", "White",
+	"Clarke", "Harris", "Lewis", "Shaw", "Steele" ,"Williams", "Cook", "Harrison", "Martin", "Smith", "Wilson",
+	"Cooper", "Hill", "Moore", "Taylor", "Wood", "Davies", "Hughes", "Morgan", "Thomas", "Wright"
+]
+
+var locations : Array = [
+	"Bath", "Birmingham", "Blackburn", "Blackpool", "Bolton", "Bournemouth", "Bradford", "Brighton & Hove", 
+	"Bristol", "Cambridge", "Canterbury", "Carlisle", "Chester", "Coventry", "Crewe", "Darlington", "Derby", 
+	"Dewsbury", "Doncaster", "Dorset", "Eastbourne", "Exeter", "Frome", "Gloucester", "Grimsby", "Halifax", 
+	"Hartlepool", "Hastings", "Hereford", "Hull", "Ilkley", "Ipswich", "Kingston", "Lancaster", "Leeds", 
+	"Leicester", "Lincoln", "Liverpool", "Louth", "Lowestoft", "Ludlow", "Maidstone", "Manchester", "Margate", 
+	"Medway", "Middlesbrough", "Milton Keynes", "Morecambe", "Newbury", "Newcastle", "Newport", "Nottingham", 
+	"Oxford", "Peterborough", "Plymouth", "Poole", "Preston", "Reading", "Richmond", "Ripon", "Romford", 
+	"Scarborough", "Sheffield", "Shrewsbury", "Southampton", "Southport", "Stafford", "Stoke-on-Trent", 
+	"Stratford-on-Avon", "Sunderland", "Taunton", "Torquay", "Truro", "Tunbridge Wells", "Warrington", 
+	"Waverley", "Wellington", "Westminster", "Wolverhampton", "Worcester", "York", "Beaconsfield", "Bury", 
+	"Chesham", "Chichester", "Chorley", "Droitwich", "Dundee", "East Grinstead", "Ely", "Epping", "Farnham", 
+	"Grantham", "Harrow", "Horsham", "King's Lynn", "Leicester", "Loughton", "Neston", "Otley"
+]
+
+var cur_name : String = ""
+@onready var name_text_display = $top/names
+
+@onready var days_gone = $"top/days left"
+var num_days : int = 1
+#@onready var game_top = $".."
+
 ###these are to change the behaviour of the aim buttons
 @onready var aim_but_disabled : TextureButton = $"bottom/button container/context button"
 @onready var aim_but_abled : TextureButton = $"bottom/button container/context button2"
@@ -7,6 +50,8 @@ extends CanvasLayer
 ###these are to change the behaviour of the stance buttons
 @onready var stance_but_disabled : TextureButton = $"bottom/button container/stance button"
 @onready var stance_but_abled : TextureButton = $"bottom/button container/stance button2"
+
+@onready var char_select_list : Array = [$"mid/character select button", $"mid/character select button2"]
 
 @onready var mid_layer : GridContainer = $mid
 @onready var background : ColorRect = $"background colour"
@@ -27,15 +72,24 @@ func on_death_ui() -> void:
 	"""
 	mid_layer.visible = true
 	show_colour = true
+	$"mid/death text".text = "[center]{name} died April {date}th, 
+	1917
 
-func on_char_selected() -> void:
+	Whoes next to go over the top?".format({"name": name_text_display.text, "date": num_days+8})
+
+func on_char_selected(to_display) -> void:
 	"""
 	called within the character select buttons, in the mid grid section
 	we'll want to feed the info from that button like the characters name into the 
 	new unit maybe?
 	"""
+	name_text_display.text = to_display
+	num_days += 1
+	days_gone.text = "[center]Day Number {day}".format({"day": num_days})
 	mid_layer.visible = false
 	show_colour = false
+	for c in char_select_list:
+		c.new_info()
 
 func _on_context_button_pressed() -> void:
 	"""
