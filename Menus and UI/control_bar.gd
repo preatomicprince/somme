@@ -32,6 +32,6 @@ func _process(delta: float) -> void:
 
 func bunker_dest():
 	target_amount += amount_for_bunker
-	
+
 func german_killed():
 	target_amount += amount_for_german

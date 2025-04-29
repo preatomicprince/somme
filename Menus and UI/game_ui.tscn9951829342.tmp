@@ -192,7 +192,6 @@ mouse_filter = 2
 color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
 [node name="victory stats" type="GridContainer" parent="."]
-visible = false
 z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,4 +266,3 @@ max_distance = 1e+06
 [connection signal="pressed" from="bottom/button container/context button2" to="." method="_on_context_button_2_pressed"]
 [connection signal="pressed" from="bottom/button container/stance button" to="." method="_on_stance_button_pressed"]
 [connection signal="pressed" from="bottom/button container/stance button2" to="." method="_on_stance_button_2_pressed"]
-[connection signal="pressed" from="victory stats/restart" to="." method="_on_restart_pressed"]
