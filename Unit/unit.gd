@@ -378,6 +378,7 @@ func on_death():
 		self.queue_free()
 		
 	if army == 1:
+		par_map.game.game_ui.cont_bar.german_killed() ###used to add towards the victory
 		new_corpe.army = 1
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position

@@ -1,5 +1,6 @@
 extends Sprite2D
-
+#
+@onready var par_map : TileMapLayer = self.get_parent()
 @onready var smoke_collection : Array = [$smoke, $smoke2, $smoke3]
 @onready var machine_gun_fire: Array = [$"machine gun fire",$"machine gun fire2"]
 @onready var timer : Timer = $"fire timer"
@@ -23,6 +24,7 @@ func blow_up() -> void:
 	self.modulate = Color(0.45, 0.45, 0.45, 1.00)
 	destroyed = true
 	rubble.visible = true
+	par_map.game.game_ui.cont_bar.bunker_dest() ###used to add towards the victory
 	Input.set_custom_mouse_cursor(null)
 
 func _input(event: InputEvent) -> void:

@@ -36,6 +36,10 @@ var locations : Array = [
 	"Grantham", "Harrow", "Horsham", "King's Lynn", "Leicester", "Loughton", "Neston", "Otley"
 ]
 
+###for the control bar to check for victory
+@onready var cont_bar : Control = $"topback/control bar"
+
+###for the names
 var cur_name : String = ""
 @onready var name_text_display = $top/names
 
@@ -69,6 +73,9 @@ func _process(delta: float) -> void:
 	else:
 		if background.modulate.a > 0:
 			background.modulate.a -= 0.1
+			
+	if cont_bar.victory == true:
+		on_victory()
 	
 func on_death_ui() -> void:
 	"""
@@ -95,6 +102,12 @@ func on_char_selected(to_display) -> void:
 	show_colour = false
 	for c in char_select_list:
 		c.new_info()
+
+func on_victory() -> void:
+	"""
+	this function is called when we have a victory
+	"""
+	show_colour = true
 
 func _on_context_button_pressed() -> void:
 	"""

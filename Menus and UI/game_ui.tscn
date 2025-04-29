@@ -187,6 +187,76 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
+[node name="victory stats" type="GridContainer" parent="."]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="well done" type="RichTextLabel" parent="victory stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="days taken" type="RichTextLabel" parent="victory stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]lives lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lives lost" type="RichTextLabel" parent="victory stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]lives lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="land taken" type="RichTextLabel" parent="victory stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]land taken"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_15ek6")
 volume_db = 10.0
