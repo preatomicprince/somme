@@ -13,7 +13,6 @@ stream = ExtResource("1_gp2qb")
 volume_db = 0.8
 pitch_scale = 1.02
 autoplay = true
-stream_paused = true
 max_distance = 20000.0
 parameters/looping = true
 
@@ -24,7 +23,6 @@ max_distance = 20000.0
 
 [node name="biplane" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_5ooh6")
-stream_paused = true
 max_distance = 20000.0
 parameters/looping = true
 

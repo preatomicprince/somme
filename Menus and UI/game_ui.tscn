@@ -39,7 +39,7 @@ anchor_right = 1.0
 offset_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-columns = 2
+columns = 3
 
 [node name="names" type="RichTextLabel" parent="top"]
 layout_mode = 2
@@ -53,6 +53,21 @@ theme_override_fonts/normal_font = ExtResource("7_o1mkx")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]John Doe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="turn" type="RichTextLabel" parent="top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]YOUR TURN"
 horizontal_alignment = 1
 vertical_alignment = 1
 

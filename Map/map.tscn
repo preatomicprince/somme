@@ -302,7 +302,6 @@ position = Vector2(3119, 1110)
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(1838, 1546)
-rotation = 0.261799
 army = 1
 
 [node name="Unit2" parent="." instance=ExtResource("2_njngi")]

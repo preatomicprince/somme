@@ -43,6 +43,8 @@ var cur_name : String = ""
 var num_days : int = 1
 #@onready var game_top = $".."
 
+@onready var turn_text = $top/turn
+
 ###these are to change the behaviour of the aim buttons
 @onready var aim_but_disabled : TextureButton = $"bottom/button container/context button"
 @onready var aim_but_abled : TextureButton = $"bottom/button container/context button2"
