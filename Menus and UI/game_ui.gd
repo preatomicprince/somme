@@ -107,6 +107,7 @@ func on_victory() -> void:
 	"""
 	this function is called when we have a victory
 	"""
+	$"victory stats/days taken".text = "[center]Days taken: {num_days}".format({"num_days": num_days})
 	show_colour = true
 
 func _on_context_button_pressed() -> void:
