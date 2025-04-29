@@ -278,7 +278,6 @@ position = Vector2(1113.27, -407.889)
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
 z_index = 0
 position = Vector2(1852, 1261)
-rotation = 0.261799
 
 [node name="corpse" parent="." instance=ExtResource("10_5cbny")]
 position = Vector2(1037, 1489)

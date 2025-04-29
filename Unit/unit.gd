@@ -161,7 +161,7 @@ func rotate_arrow() -> void:
 	$Arrow.rotation = angle_to_mouse.angle() + PI/2
 	$Arrow.position.x = angle_to_mouse.x * offset
 	$Arrow.position.y = angle_to_mouse.y * offset
-
+	#print(angle_to_mouse)
 			
 
 func get_angle(pos: Vector2) -> Vector2:
@@ -181,11 +181,37 @@ func set_bullet(mouse_pos: Vector2) -> void:
 	"""
 	Sets up bullet angle and pos.
 	Takes mouse pos from input.
+	Also now plays the animation for shooting
 	"""
 	bullet_pos = self.position
 	bullet_angle = self.get_angle(mouse_pos)
 	bullet_step = 0
 	get_input = false
+	
+	if bullet_angle[0] < 0.3 and bullet_angle[0] > -0.3: ###this is north or south
+		if bullet_angle[1] > 0.0: ##this is south
+			play_animation_shoot("down")
+			return
+		if bullet_angle[1] < 0.0: ###this is north
+			play_animation_shoot("up")
+			return
+			
+	if bullet_angle[0] >= 0.3: ###this is for right shots
+		if bullet_angle[1] <= 0.0: ###right north
+			play_animation_shoot("right up")
+			return
+		if bullet_angle[1] > 0.0:
+			play_animation_shoot("right down")
+			return ###right south
+			
+	if bullet_angle[0] <= -0.3: ###this is for left shots
+		if bullet_angle[1] <= 0.0: ###left north
+			play_animation_shoot("left up")
+			return
+		if bullet_angle[1] > 0.0:
+			play_animation_shoot("left down") ###left south
+			return
+	
 	
 func _handle_attack(delta: float) -> void:
 	
