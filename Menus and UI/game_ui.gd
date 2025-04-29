@@ -41,6 +41,11 @@ var custom_cursor_target = load("res://Res/UI Elements/custom cursers4.png")
 ###for the control bar to check for victory
 @onready var cont_bar : Control = $"topback/control bar"
 
+###first time around
+var first_time : bool = true ###if false it wont show any text
+
+###for the tutorial text
+var tutorial_text = "[right]YOU MUST GO OVER THE TOP   ".format({})
 ###for the names
 var cur_name : String = ""
 @onready var name_text_display = $top/names
@@ -70,6 +75,9 @@ var lives_lost : int = 0
 var show_colour : bool = false #use this to steadily cover up the background upon a death
 
 func _process(delta: float) -> void:
+	if first_time == true:
+		$"tutorial holder/tut text".text = tutorial_text
+	
 	if show_colour == true:
 		if background.modulate.a < 1:
 			background.modulate.a += 0.1

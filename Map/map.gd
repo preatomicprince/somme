@@ -36,8 +36,11 @@ var nav_grid: AStar2D
 
 var units = []
 
+var debug_mode : bool = false ###this is to get the game set up how we like, whilst still testing
+
 func _ready() -> void:
 	self.game = get_parent()
+	
 	
 	# Set up nav_grid
 	self.nav_grid = AStar2D.new()
@@ -106,8 +109,20 @@ func _ready() -> void:
 			
 	for s in sandbag_list:
 		s.modulate = Color(0.45, 0.45, 0.45, 1.00)
-		s.visible = true
-	
+		s.visible = false
+	"""
+	remove the debug in actual build
+	"""
+	if debug_mode == false:
+		no_mans_land.visible = false
+		german_trench.visible = false
+		$"No Mans Land2".visible = false
+		bunker.visible = false
+		for t in tree_list:
+			t.visible = false
+		for b in barbed_wire_list:
+			b.visible = false
+		
 func get_tile_id(tile_pos: Vector2i) -> int:
 	"""
 	Where needed, tiles have an unique integer id based on their position in the grid.
@@ -144,8 +159,16 @@ func enter_no_mans_land() -> void:
 	"""
 	curent_area = 1
 	english_trench.modulate = Color(0.45, 0.45, 0.45, 1.00)
+	no_mans_land.visible = true
 	no_mans_land.modulate = Color(1.00, 1.00, 1.00, 1.00)
+	german_trench.visible = true
 	eng_inside = false
+	$"No Mans Land2".visible = true
+	bunker.visible = true
+	for t in tree_list:
+		t.visible = true
+	for b in barbed_wire_list:
+		b.visible = true
 	Input.set_custom_mouse_cursor(null)
 	
 	for b in barbed_wire_list:
@@ -156,6 +179,8 @@ func enter_no_mans_land() -> void:
 		
 	for s in sandbag_list:
 		s.modulate = Color(1.00, 1.00, 1.00, 1.00)
+	###to change the tutorial text
+	self.get_parent().game_ui
 	
 func enter_german_trench() -> void:
 	"""

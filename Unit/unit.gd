@@ -9,6 +9,8 @@ class_name Unit extends Node2D
 @onready var anim_play_eng : AnimationPlayer = $AnimationPlayerEnglish
 @onready var anim_play_ger : AnimationPlayer = $AnimationPlayerGerman
 
+var text_feedback_list : Array = ["[center]MISS".format({}), "[center]HIT".format({})]#a list of all the text to show the player when they hit or miss something
+
 var dead: bool = false
 
 var is_main_char : bool = false #determins if this is the character that is being controlled
@@ -222,6 +224,7 @@ func _handle_attack(delta: float) -> void:
 	
 	if bullet_step > MAX_BULLET_STEP:
 		end_turn = true
+		feed_back_show("miss")
 		return
 		
 	if end_turn == true:
@@ -254,7 +257,7 @@ func _handle_attack(delta: float) -> void:
 				$impact.position = hit_pos
 				$impact.emitting = true
 				end_turn = true
-				
+				feed_back_show("miss")
 				return
 		
 		# Calculate if bullet hits enemy
@@ -274,6 +277,7 @@ func _handle_attack(delta: float) -> void:
 					if map_unit.unit_type == Unit.UNIT_TYPE.Machinegun:
 						return
 					map_unit.on_death()
+					feed_back_show("hit")
 					return
 					
 	end_turn = true
@@ -426,3 +430,20 @@ func change_stance():
 	if stance == STANCES.Prone:
 		stance = STANCES.Standing
 		return
+
+func feed_back_show(happened)->void:
+	$"feedback timer".start()###when this finishes it turns off the text
+	
+	$"tut text".visible = true
+	
+	if happened == "miss":
+		$"tut text".text = text_feedback_list[0]
+		return
+	
+	if happened == "hit":
+		$"tut text".text = text_feedback_list[1]
+		return
+
+
+func _on_feedback_timer_timeout() -> void:
+	$"tut text".visible = false

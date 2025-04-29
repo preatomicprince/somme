@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b45gd53xht61k"]
+[gd_scene load_steps=10 format=4 uid="uid://b45gd53xht61k"]
 
 [ext_resource type="TileSet" uid="uid://doag0i6nwosrp" path="res://Map/western front.tres" id="1_6yc6o"]
 [ext_resource type="Script" uid="uid://bvmghxduvvg4c" path="res://Map/map.gd" id="2_6yc6o"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cn07wuv2ep3kf" path="res://Terrain Objects/machine_gun_post.tscn" id="7_d1580"]
 [ext_resource type="Texture2D" uid="uid://do65ovgegckjf" path="res://Res/Enviroment/sandbag wall.png" id="8_5ej7w"]
 [ext_resource type="PackedScene" uid="uid://db63lxv26csl1" path="res://Terrain Objects/barbed_wire.tscn" id="9_lymsy"]
-[ext_resource type="PackedScene" uid="uid://dsykknbupdhxa" path="res://Terrain Objects/corpse.tscn" id="10_5cbny"]
 
 [node name="Map" type="TileMapLayer"]
 z_index = 1000
@@ -278,27 +277,6 @@ position = Vector2(1113.27, -407.889)
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
 z_index = 0
 position = Vector2(1852, 1261)
-
-[node name="corpse" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(1037, 1489)
-
-[node name="corpse2" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(126, 958)
-
-[node name="corpse3" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(1409, 963)
-
-[node name="corpse4" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(2117, 1675)
-
-[node name="corpse5" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(2209, 1243)
-
-[node name="corpse6" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(3601, 1942)
-
-[node name="corpse7" parent="." instance=ExtResource("10_5cbny")]
-position = Vector2(3119, 1110)
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(1638, 1512)
