@@ -86,6 +86,12 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:	
 	
+	if event.is_action_pressed("toggle shoot"):
+		game_ui.toggle_aim_buts() ###toggles the aim buts in the UI, if you put the switching in here itll work
+	
+	if event.is_action_pressed("toggle stance"):
+		game_ui.toggle_stance_buts()###again but for toggling stances
+	
 	if event.is_action_pressed("left"):
 		left = true
 		

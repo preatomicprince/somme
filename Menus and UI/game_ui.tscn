@@ -148,7 +148,26 @@ columns = 3
 [node name="for spaceing" type="GridContainer" parent="bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 2
+
+[node name="button info text shoot" type="RichTextLabel" parent="bottom/for spaceing"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]  TARGET BUTTON, HOTKEY Q
+
+Whilst active youre able to shoot; whilst inactive youre able to walk"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="button container" type="GridContainer" parent="bottom"]
 layout_mode = 2
@@ -180,6 +199,30 @@ layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = ExtResource("8_o1mkx")
 texture_pressed = ExtResource("9_0f3ng")
+
+[node name="for spaceing2" type="GridContainer" parent="bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="button info text prone" type="RichTextLabel" parent="bottom/for spaceing2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]  STANCE BUTTON, HOTKEY E
+
+Whilst active you crawl; which is slower, but you have a smaller chance of being hit"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="background colour" type="ColorRect" parent="."]
 z_index = 99
@@ -292,8 +335,14 @@ text = "[right]YOU MUST GO OVER THE TOP!                "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="mouse_entered" from="bottom/button container/context button" to="." method="_on_context_button_mouse_entered"]
+[connection signal="mouse_exited" from="bottom/button container/context button" to="." method="_on_context_button_mouse_exited"]
 [connection signal="pressed" from="bottom/button container/context button" to="." method="_on_context_button_pressed"]
+[connection signal="mouse_entered" from="bottom/button container/context button2" to="." method="_on_context_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="bottom/button container/context button2" to="." method="_on_context_button_2_mouse_exited"]
 [connection signal="pressed" from="bottom/button container/context button2" to="." method="_on_context_button_2_pressed"]
+[connection signal="mouse_entered" from="bottom/button container/stance button" to="." method="_on_stance_button_mouse_entered"]
+[connection signal="mouse_exited" from="bottom/button container/stance button" to="." method="_on_stance_button_mouse_exited"]
 [connection signal="pressed" from="bottom/button container/stance button" to="." method="_on_stance_button_pressed"]
 [connection signal="pressed" from="bottom/button container/stance button2" to="." method="_on_stance_button_2_pressed"]
 [connection signal="pressed" from="victory stats/restart" to="." method="_on_restart_pressed"]

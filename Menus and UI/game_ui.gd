@@ -75,6 +75,7 @@ var lives_lost : int = 0
 var show_colour : bool = false #use this to steadily cover up the background upon a death
 
 func _process(delta: float) -> void:
+	
 	if first_time == true:
 		$"tutorial holder/tut text".text = tutorial_text
 	
@@ -127,28 +128,24 @@ func _on_context_button_pressed() -> void:
 	"""
 	this is where youll want to call the function for aiming your weapon
 	"""
-	mouse_click.play()
 	toggle_aim_buts()
 
 func _on_context_button_2_pressed() -> void:
 	"""
 	this is where youll want to stop the aiming 
 	"""
-	mouse_click.play()
 	toggle_aim_buts()
 
 func _on_stance_button_pressed() -> void:
 	"""
 	this is where we want the function for changing the stance of the character to prone
 	"""
-	mouse_click.play()
 	toggle_stance_buts()
 
 func _on_stance_button_2_pressed() -> void:
 	"""
 	this is where we want the function for changing the stance of the character to standing up
 	"""
-	mouse_click.play()
 	toggle_stance_buts()
 
 func toggle_aim_buts() -> void:
@@ -157,6 +154,7 @@ func toggle_aim_buts() -> void:
 	so after you fire you can call this function and it will switch em
 	as well as in the button presses
 	"""
+	mouse_click.play()
 	if aim_but_disabled.visible == true:
 		Input.set_custom_mouse_cursor(custom_cursor_target)
 		aim_but_disabled.visible = false
@@ -173,6 +171,7 @@ func toggle_stance_buts() -> void:
 	doesnt really need to be a function, its just for the symetry really
 	maybe itll be useful
 	"""
+	mouse_click.play()
 	if stance_but_disabled.visible == true:
 		stance_but_disabled.visible = false
 		stance_but_abled.visible = true
@@ -185,4 +184,24 @@ func toggle_stance_buts() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
-	
+
+
+func _on_context_button_mouse_entered() -> void:
+	$"bottom/for spaceing/button info text shoot".visible = true
+
+func _on_context_button_mouse_exited() -> void:
+	$"bottom/for spaceing/button info text shoot".visible = false
+
+
+func _on_context_button_2_mouse_entered() -> void:
+	$"bottom/for spaceing/button info text shoot".visible = true
+
+
+func _on_context_button_2_mouse_exited() -> void:
+	$"bottom/for spaceing/button info text shoot".visible = false
+
+func _on_stance_button_mouse_entered() -> void:
+	$"bottom/for spaceing2/button info text prone".visible = true
+
+func _on_stance_button_mouse_exited() -> void:
+	$"bottom/for spaceing2/button info text prone".visible = false
