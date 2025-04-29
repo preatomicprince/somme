@@ -387,9 +387,10 @@ func on_death():
 		
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("emiting test"):
-		if is_main_char == true:
-			self.on_death()
+	pass
+	#if event.is_action_pressed("emiting test"):
+	#	if is_main_char == true:
+	#		self.on_death()
 
 func change_stance():
 	"""

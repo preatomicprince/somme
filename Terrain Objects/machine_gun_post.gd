@@ -3,21 +3,26 @@ extends Sprite2D
 @onready var smoke_collection : Array = [$smoke, $smoke2, $smoke3]
 @onready var machine_gun_fire: Array = [$"machine gun fire",$"machine gun fire2"]
 @onready var timer : Timer = $"fire timer"
-
+@onready var machine_gun_sound = $"machine gun sound"
+@onready var blow_up_sound = $"blow up"
+@onready var rubble = $Rubble
 var bomb_cursor = load("res://Res/UI Elements/custom cursers3.png")
 
 var destroyed : bool = false #used to tell if the machine gun post can be destroyed or is still firing  
 var inside : bool = false #used to work out if the mouse is inside the doorway of the trench
+
 
 func blow_up() -> void:
 	"""
 	Right now this will just change the colour of the machine gun post,
 	but we'll add special affects and stuff later, really tart it up
 	"""
+	blow_up_sound.play()
 	for s in smoke_collection:
 		s.emitting = true
 	self.modulate = Color(0.45, 0.45, 0.45, 1.00)
 	destroyed = true
+	rubble.visible = true
 	Input.set_custom_mouse_cursor(null)
 
 func _input(event: InputEvent) -> void:
@@ -32,6 +37,7 @@ func fire_machine_guns() -> void:
 	for m in machine_gun_fire:
 		m.emitting = true
 		m.get_child(0).emitting = true
+	machine_gun_sound.play()
 	timer.start()
 
 func _on_area_2d_mouse_shape_entered(shape_idx: int) -> void:

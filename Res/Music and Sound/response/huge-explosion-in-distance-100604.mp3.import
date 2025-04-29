@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://g2egsbsguqih"
+path="res://.godot/imported/huge-explosion-in-distance-100604.mp3-945d64db559f2fbecb34a445ada32da9.mp3str"
+
+[deps]
+
+source_file="res://Res/Music and Sound/response/huge-explosion-in-distance-100604.mp3"
+dest_files=["res://.godot/imported/huge-explosion-in-distance-100604.mp3-945d64db559f2fbecb34a445ada32da9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

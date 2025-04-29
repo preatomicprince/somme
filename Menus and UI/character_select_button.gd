@@ -27,10 +27,9 @@ func new_info() -> void:
 	$GridContainer/name.text = text_to_save
 	
 	text_to_save = "[center]{fir} {sec}, {age}, from {loc}[center]".format({"fir": new_f_name, "sec": new_s_name, "age": age, "loc": new_loc})
-	print(text_to_save, "here")
+
 func _on_pressed() -> void:
 	"""
 	Put the code here for the choosing the new character
 	"""
-	print(text_to_save, "here 2")
 	main_ui_file.on_char_selected(text_to_save)
