@@ -1,6 +1,7 @@
 class_name Game extends Node2D
 
 @onready var game_ui : CanvasLayer = $"game ui"
+@onready var timer = $text_timer###so the tutorial texts dont keep coming up
 
 var turn: int = 0
 var character: int = 0#-1 # Index for characters var, starts at -1 as will be incremented upon start
@@ -145,3 +146,7 @@ func _input(event: InputEvent) -> void:
 				
 		elif pc_unit.action_mode == Unit.ACTION_MODE.Attack:
 			pc_unit.set_bullet(mouse_pos)
+
+
+func _on_text_timer_timeout() -> void:
+	game_ui.tutorial_text = "[right]    ".format({})

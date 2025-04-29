@@ -157,6 +157,11 @@ func enter_no_mans_land() -> void:
 	The point of this function is to reduce the alpha of non vital items whilst
 	in no mans land
 	"""
+	self.get_parent().game_ui.tutorial_text = "[right]CUT THE BARBED   
+	WIRE AND   
+	GET INTO THE   
+	GERMAN TRENCHES   ".format({})
+	get_parent().timer.start()
 	curent_area = 1
 	english_trench.modulate = Color(0.45, 0.45, 0.45, 1.00)
 	no_mans_land.visible = true
@@ -165,19 +170,19 @@ func enter_no_mans_land() -> void:
 	eng_inside = false
 	$"No Mans Land2".visible = true
 	bunker.visible = true
-	for t in tree_list:
-		t.visible = true
-	for b in barbed_wire_list:
-		b.visible = true
+	
 	Input.set_custom_mouse_cursor(null)
 	
 	for b in barbed_wire_list:
+		b.visible = true
 		b.modulate = Color(1.00, 1.00, 1.00, 1.00)
 		
 	for t in tree_list:
+		t.visible = true
 		t.modulate = Color(1.00, 1.00, 1.00, 1.00)
 		
 	for s in sandbag_list:
+		s.visible = true
 		s.modulate = Color(1.00, 1.00, 1.00, 1.00)
 	###to change the tutorial text
 	self.get_parent().game_ui
@@ -187,6 +192,10 @@ func enter_german_trench() -> void:
 	This function makes no mans land and all its related detritus disapear.
 	And increase the visibility of the german trench
 	"""
+	self.get_parent().game_ui.tutorial_text = "[left]    DEFEAT THE GERMAN   
+	INFANTRY AND DESTROY   
+	THE MACHINE GUN POST   ".format({})
+	get_parent().timer.start()
 	curent_area = 2
 	german_trench.modulate = Color(1.00, 1.00, 1.00, 1.00) 
 	no_mans_land.visible = false

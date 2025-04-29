@@ -42,7 +42,7 @@ var custom_cursor_target = load("res://Res/UI Elements/custom cursers4.png")
 @onready var cont_bar : Control = $"topback/control bar"
 
 ###first time around
-var first_time : bool = true ###if false it wont show any text
+var first_time : bool = true ###if false it wont show any text, i just realised this wont work wioth the restart the way it is
 
 ###for the tutorial text
 var tutorial_text = "[right]YOU MUST GO OVER THE TOP   ".format({})
@@ -183,6 +183,7 @@ func toggle_stance_buts() -> void:
 
 
 func _on_restart_pressed() -> void:
+	
 	get_tree().reload_current_scene()
 
 
