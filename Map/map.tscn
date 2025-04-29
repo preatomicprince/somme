@@ -277,7 +277,7 @@ position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
 z_index = 0
-position = Vector2(1613, 1474)
+position = Vector2(1852, 1261)
 rotation = 0.261799
 
 [node name="corpse" parent="." instance=ExtResource("10_5cbny")]
@@ -304,6 +304,19 @@ position = Vector2(3119, 1110)
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(1838, 1546)
 rotation = 0.261799
+army = 1
+
+[node name="Unit2" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(1863, 1943)
+
+[node name="Unit4" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(1029, 1163)
+
+[node name="Unit5" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(1332, 1531)
+
+[node name="Unit6" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(2178, 1336)
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
 [connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]

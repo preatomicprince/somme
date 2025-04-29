@@ -76,7 +76,6 @@ func set_start_pos(new_start_pos) -> void:
 	global_position = new_start_pos
 	
 	current_tile = map.local_to_map(position)
-	print("Tile id: ", map.get_tile_id(current_tile))
 
 	map.units[map.get_tile_id(current_tile)] = self
 	
@@ -222,8 +221,10 @@ func _handle_attack(delta: float) -> void:
 		# Calculate if bullet hits enemy
 		var map_unit: Unit = map.units[bullet_tile_id]
 		if  map_unit != null and map_unit != self:
+			
 			if map_unit.army != self.army: # No friendly fire :( 
 				var hit_roll: float = randf()
+				
 				var odds: float = bullet_step/MAX_BULLET_STEP + 0.1 # +0.1 means increase chance of hit by 10%
 				
 				if hit_roll > odds:
@@ -231,8 +232,8 @@ func _handle_attack(delta: float) -> void:
 					end_turn = true
 					return
 					
-		end_turn = true
-		return
+	end_turn = true
+	return
 	
 	
 func reset() -> void:
@@ -326,7 +327,7 @@ func on_death():
 	This shows the dead body upon death
 	"""
 	
-	
+	print(self)
 	shadow.visible = false
 	var new_corpe = corpse.instantiate()
 	

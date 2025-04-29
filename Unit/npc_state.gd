@@ -4,20 +4,29 @@ class_name NPC_State extends Node2D
 
 var enemy_target = null
 
+var rng: RandomNumberGenerator
+
 
 func _ready() -> void:
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
 	if unit.army == Game.ARMIES.British:
 		pass
+	
 			
 
 
 func update() -> void:
+	randomize()
+	enemy_target = null
 	if unit.end_turn == true:
 		return
 	if unit.get_input == false:
 		return
 	
 	enemy_target = _get_target()
+	print("et", enemy_target)
 		
 	if unit.army == Game.ARMIES.British:
 		if enemy_target == null:
@@ -32,16 +41,15 @@ func update() -> void:
 				unit.action_mode = Unit.ACTION_MODE.Move
 				_update_move()
 				
-	if unit.army == Game.ARMIES.German:
+	else:
 		_update_attack()
 
 func _update_move() -> void:
-	print("h")
 	var x_offset = randi_range(1, 3)
 	var y_offset = randi_range(-2, 2)
 	
 	var next_tile = unit.map.local_to_map(unit.global_position)
-	print(next_tile)
+
 	next_tile.x += x_offset
 	next_tile.y += y_offset
 	
@@ -58,12 +66,13 @@ func _update_attack() -> void:
 		unit.end_turn == true
 		return
 	
-	var target_pos = enemy_target.position
+	var target_pos = enemy_target.global_position
 	unit.set_bullet(target_pos)
+	unit.get_input == false
+	unit.end_turn == true
+	return
 	
-func _choose_mode() -> void:
-	pass
-	
+
 func _get_target() -> Unit:
 	"""
 	Checks if any targets are in range and returns one at random.
@@ -83,4 +92,6 @@ func _get_target() -> Unit:
 	if len(targets) == 0:
 		return null
 	
-	return targets[randi_range(0, len(targets)-1)]
+	var target = targets[rng.randi_range(0, len(targets)-1)]
+
+	return target

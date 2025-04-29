@@ -64,6 +64,7 @@ func _process(delta: float) -> void:
 		for i in german_units:
 			if i.end_turn == false:
 				i.npc_state.update()
+			
 
 
 func _input(event: InputEvent) -> void:	
