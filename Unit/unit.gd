@@ -43,7 +43,7 @@ var start_pos: Vector2
 
 var stance : STANCES = 0 #used later in animation to decide which animation to choose
 
-var max_moves: int = 50 # Max moves per turn. Attempting to move further than this is invalid
+var max_moves: int = 4 # Max moves per turn. Attempting to move further than this is invalid
 
 var max_health: int = 100
 var health: int = max_health
@@ -104,7 +104,9 @@ func decide_animation():
 		german_spritesheet.visible = true
 
 func next_turn() -> void:
-	pass
+	get_input = true
+	end_turn = false
+	
 
 func set_move_queue(path: Array) -> void:
 	move_queue = path

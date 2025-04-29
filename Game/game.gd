@@ -64,7 +64,18 @@ func _process(delta: float) -> void:
 		for i in german_units:
 			if i.end_turn == false:
 				i.npc_state.update()
-			
+				
+	for b in british_units:
+		if b.end_turn == false:
+			return
+	for g in german_units:
+		if g.end_turn == false:
+			return
+	pc_unit.next_turn()
+	for b in british_units:
+		b.next_turn()
+	for g in german_units:
+		g.next_turn()
 
 
 func _input(event: InputEvent) -> void:	

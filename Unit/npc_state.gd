@@ -45,8 +45,8 @@ func update() -> void:
 		_update_attack()
 
 func _update_move() -> void:
-	var x_offset = randi_range(1, 3)
-	var y_offset = randi_range(-2, 2)
+	var x_offset = randi_range(0, 3)
+	var y_offset = randi_range(-3, 1)
 	
 	var next_tile = unit.map.local_to_map(unit.global_position)
 
