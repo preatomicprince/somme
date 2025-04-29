@@ -17,10 +17,10 @@ z_index = 1
 position = Vector2(4446, 858)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2033, 2352)
+position = Vector2(1576, 1854)
 skew = 0.647517
 anchor_mode = 0
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.3, 0.3)
 
 [node name="game ui" parent="." instance=ExtResource("4_jcm6v")]
 

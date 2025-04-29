@@ -255,6 +255,7 @@ func _handle_attack(delta: float) -> void:
 			if hit_roll < odds: # If obstacle hit
 				var hit_pos = bullet_pos - position
 				$impact.position = hit_pos
+				$impact.color = $impact.hit_ground_colour
 				$impact.emitting = true
 				end_turn = true
 				feed_back_show("miss")
@@ -273,6 +274,7 @@ func _handle_attack(delta: float) -> void:
 					var hit_pos = bullet_pos - position
 					$impact.position = hit_pos
 					$impact.emitting = true
+					$impact.color = $impact.blood_red
 					end_turn = true
 					if map_unit.unit_type == Unit.UNIT_TYPE.Machinegun:
 						return
