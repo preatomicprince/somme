@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func update() -> void:
-	randomize()
+	rng.randomize()
 	enemy_target = null
 	if unit.end_turn == true:
 		return
@@ -33,8 +33,8 @@ func update() -> void:
 			unit.action_mode = Unit.ACTION_MODE.Move
 			_update_move()
 		else:
-			var chance = randi()
-			if chance > .3: # If has target, fire on them 70% of the time
+			var chance = rng.randf()
+			if chance > 0.5: # If has target, fire on them 50% of the time
 				unit.action_mode = Unit.ACTION_MODE.Attack
 				_update_attack()
 			else:
