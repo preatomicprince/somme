@@ -7,8 +7,17 @@ extends Node2D
 	
 
 func _on_training_button_up() -> void:
+	
 	get_tree().change_scene_to_file(main_game)
 
 
 func _on_credits_button_up() -> void:
 	get_tree().change_scene_to_file(credits)
+
+
+func _on_training_button_down() -> void:
+	$click.play()
+
+
+func _on_credits_button_down() -> void:
+	$click.play()

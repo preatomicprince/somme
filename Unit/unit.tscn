@@ -1189,4 +1189,3 @@ texture = ExtResource("8_08ss2")
 [node name="gun fire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_sju1b")
 volume_db = -3.0
-max_distance = 1000.0

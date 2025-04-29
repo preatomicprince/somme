@@ -108,6 +108,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("down"):
 		down = false
 	
+	if event.is_action_pressed("esc"):
+		get_tree().quit() ###to exit the game
+	
 	if event.is_action("zoom in"):
 		$Camera2D.zoom += Vector2(0.1, 0.1)
 		

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cy4cwjxcg3hfo"
+path="res://.godot/imported/07.WereAllGoingCallingOnTheKaiser.mp3-a54652f8c7489005ffe65349ad7637c3.mp3str"
+
+[deps]
+
+source_file="res://Res/Music and Sound/response/07.WereAllGoingCallingOnTheKaiser.mp3"
+dest_files=["res://.godot/imported/07.WereAllGoingCallingOnTheKaiser.mp3-a54652f8c7489005ffe65349ad7637c3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

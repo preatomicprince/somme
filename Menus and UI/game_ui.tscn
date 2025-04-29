@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://doml2dulgcwg2"]
+[gd_scene load_steps=14 format=3 uid="uid://doml2dulgcwg2"]
 
 [ext_resource type="Script" uid="uid://cu6eg1ioxv7y2" path="res://Menus and UI/game_ui.gd" id="1_0gl8d"]
 [ext_resource type="PackedScene" uid="uid://bxdrku2625x01" path="res://Menus and UI/control_bar.tscn" id="1_j078j"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://cktltxis66tr3" path="res://Res/Fonts/Futura Bold font.ttf" id="7_o1mkx"]
 [ext_resource type="Texture2D" uid="uid://q181l7g1kv6r" path="res://Res/UI Elements/prone active.png" id="8_o1mkx"]
 [ext_resource type="Texture2D" uid="uid://cpm3eqbckwh2x" path="res://Res/UI Elements/prone active pressed.png" id="9_0f3ng"]
+[ext_resource type="AudioStream" uid="uid://ca5xrgpla8ky5" path="res://Res/Music and Sound/menus/mouse-click-290204.mp3" id="13_15ek6"]
 
 [node name="game ui" type="CanvasLayer"]
 script = ExtResource("1_0gl8d")
@@ -185,6 +186,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_15ek6")
+volume_db = 10.0
+max_distance = 1e+06
 
 [connection signal="pressed" from="bottom/button container/context button" to="." method="_on_context_button_pressed"]
 [connection signal="pressed" from="bottom/button container/context button2" to="." method="_on_context_button_2_pressed"]

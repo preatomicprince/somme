@@ -58,6 +58,8 @@ var num_days : int = 1
 @onready var mid_layer : GridContainer = $mid
 @onready var background : ColorRect = $"background colour"
 
+@onready var mouse_click = $click
+
 var show_colour : bool = false #use this to steadily cover up the background upon a death
 
 func _process(delta: float) -> void:
@@ -85,6 +87,7 @@ func on_char_selected(to_display) -> void:
 	we'll want to feed the info from that button like the characters name into the 
 	new unit maybe?
 	"""
+	mouse_click.play()
 	name_text_display.text = to_display
 	num_days += 1
 	days_gone.text = "[center]Day Number {day}".format({"day": num_days})
@@ -97,24 +100,28 @@ func _on_context_button_pressed() -> void:
 	"""
 	this is where youll want to call the function for aiming your weapon
 	"""
+	mouse_click.play()
 	toggle_aim_buts()
 
 func _on_context_button_2_pressed() -> void:
 	"""
 	this is where youll want to stop the aiming 
 	"""
+	mouse_click.play()
 	toggle_aim_buts()
 
 func _on_stance_button_pressed() -> void:
 	"""
 	this is where we want the function for changing the stance of the character to prone
 	"""
+	mouse_click.play()
 	toggle_stance_buts()
 
 func _on_stance_button_2_pressed() -> void:
 	"""
 	this is where we want the function for changing the stance of the character to standing up
 	"""
+	mouse_click.play()
 	toggle_stance_buts()
 
 func toggle_aim_buts() -> void:
