@@ -45,6 +45,7 @@ var cur_name : String = ""
 
 @onready var days_gone = $"top/days left"
 var num_days : int = 1
+var lives_lost : int = 0
 #@onready var game_top = $".."
 
 @onready var turn_text = $top/turn
@@ -107,6 +108,9 @@ func on_victory() -> void:
 	"""
 	this function is called when we have a victory
 	"""
+	$"victory stats/days taken".text = "[center]Days taken: {num_days}".format({"num_days": num_days})
+	$"victory stats/lives lost".text = "[center]Lives lost: {num_lives}".format({"num_lives": lives_lost})
+	$"victory stats".visible = true
 	show_colour = true
 
 func _on_context_button_pressed() -> void:
@@ -165,3 +169,8 @@ func toggle_stance_buts() -> void:
 		stance_but_disabled.visible = true
 		stance_but_abled.visible = false
 		return
+
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()
+	
