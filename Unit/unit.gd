@@ -375,6 +375,7 @@ func on_death():
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position
 		map.game.british_units.erase(self)
+		map.units[map.get_tile_id(current_tile)] = null
 		self.queue_free()
 		
 	if army == 1:
@@ -383,6 +384,7 @@ func on_death():
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position
 		map.game.german_units.erase(self)
+		map.units[map.get_tile_id(current_tile)] = null
 		self.queue_free()
 		
 		
