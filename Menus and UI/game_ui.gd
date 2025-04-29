@@ -36,6 +36,8 @@ var locations : Array = [
 	"Grantham", "Harrow", "Horsham", "King's Lynn", "Leicester", "Loughton", "Neston", "Otley"
 ]
 
+var custom_cursor_target = load("res://Res/UI Elements/custom cursers4.png")
+
 ###for the control bar to check for victory
 @onready var cont_bar : Control = $"topback/control bar"
 
@@ -148,10 +150,12 @@ func toggle_aim_buts() -> void:
 	as well as in the button presses
 	"""
 	if aim_but_disabled.visible == true:
+		Input.set_custom_mouse_cursor(custom_cursor_target)
 		aim_but_disabled.visible = false
 		aim_but_abled.visible = true
 		return
 	else:
+		Input.set_custom_mouse_cursor(null)
 		aim_but_disabled.visible = true
 		aim_but_abled.visible = false
 		return

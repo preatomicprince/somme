@@ -113,6 +113,7 @@ ang = 100
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
 theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -205,12 +206,14 @@ size_flags_vertical = 3
 [node name="victory" type="TextureButton" parent="victory stats"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 texture_normal = ExtResource("13_v34v8")
 
 [node name="days taken" type="RichTextLabel" parent="victory stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
 theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -226,6 +229,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
 theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -241,6 +245,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
 theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -262,6 +267,30 @@ texture_hover = ExtResource("15_qccw3")
 stream = ExtResource("13_15ek6")
 volume_db = 10.0
 max_distance = 1e+06
+
+[node name="tutorial holder" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="tut text" type="RichTextLabel" parent="tutorial holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/table_border = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_colors/table_even_row_bg = Color(0.991804, 0.198375, 0.606583, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 1)
+theme_override_fonts/normal_font = ExtResource("7_o1mkx")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[right]YOU MUST GO OVER THE TOP!                "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="bottom/button container/context button" to="." method="_on_context_button_pressed"]
 [connection signal="pressed" from="bottom/button container/context button2" to="." method="_on_context_button_2_pressed"]

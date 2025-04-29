@@ -2,6 +2,7 @@ class_name Barbed_Wire extends Node2D
 
 @onready var outline : Sprite2D = $BarbedWireOutline
 @onready var shadow : Sprite2D = $BarbedWire
+@onready var cut_sound = $"cut wire sound"
 
 var cut_cursor = load("res://Res/UI Elements/custom cursers2.png")
 
@@ -15,6 +16,7 @@ func cut_wire() -> void:
 	"""
 	Can be called to make barbed wire accessible 
 	"""
+	cut_sound.play()
 	self.frame = 1
 	shadow.frame = 1
 	cut = true
