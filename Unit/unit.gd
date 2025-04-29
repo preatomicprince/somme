@@ -230,6 +230,9 @@ func _handle_attack(delta: float) -> void:
 					map_unit.on_death()
 					end_turn = true
 					return
+					
+		end_turn = true
+		return
 	
 	
 func reset() -> void:

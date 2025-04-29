@@ -101,7 +101,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right click"):
 		var pc_ind: int = characters[character]
 		var pc_unit: Unit = british_units[pc_ind]
-		
+		print(map.local_to_map(get_local_mouse_position()))
 		if pc_unit.get_input == false: # Skip if input already received
 			return
 			
