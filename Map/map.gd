@@ -21,7 +21,8 @@ var wall_vector : Vector2i = Vector2i(1, 1) #this is for the wall of the english
 var gun_post_vector : Vector2i = Vector2i(2, 1) #maybe used to check to destroy something idk
 var trench_vector : Vector2i = Vector2i(1, 0)
 var sand_vector : Vector2i = Vector2i(3, 0)
-
+var out_of_bounds: Vector2i = Vector2i(3, 1)
+@onready var x_mark = $X
 var game: Game
 
 enum GAME_AREAS { ###an enum of the playing areas thall be used to change between areas.
@@ -136,30 +137,50 @@ func tile_to_ui() -> void:
 	"""
 	this is used to outline whatever tile you can go to
 	"""
+	if game.pc_unit.in_motion == false:
+		path_line.clear_points()
+		for i in range(len(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position())))):
+			if i + 1 < len(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position()))) and i <= 12:
+				path_line.add_point(map_to_local(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position()))[i])-self.global_position)
+	#print(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_local_mouse_position())))
+	
 	
 	if curent_area == GAME_AREAS.British_trench:
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == trench_vector: 
 			tile_outline.visible = true
-			tile_outline.position = map_to_local(local_to_map(get_local_mouse_position()))
+			x_mark.visible = false
+			tile_outline.position = map_to_local(local_to_map(path_line.get_point_position(path_line.get_point_count() - 1)))
+ #map_to_local(local_to_map(path_line.get_point_position(path_line.get_point_count() - 1)))#get_local_mouse_position()))
 			return
 		else:
 			tile_outline.visible = false
+			if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == out_of_bounds: 
+				x_mark.position = map_to_local(local_to_map(get_local_mouse_position()))
+				x_mark.visible = true
 			return
 	if curent_area == GAME_AREAS.No_mans_land:
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == no_mans_land_vector: 
 			tile_outline.visible = true
-			tile_outline.position = map_to_local(local_to_map(get_local_mouse_position()))
+			x_mark.visible = false
+			tile_outline.position = map_to_local(local_to_map(path_line.get_point_position(path_line.get_point_count() - 1)))
 			return
 		else:
 			tile_outline.visible = false
+			if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == out_of_bounds: 
+				x_mark.position = map_to_local(local_to_map(get_local_mouse_position()))
+				x_mark.visible = true
 			return
 	if curent_area == GAME_AREAS.German_trench:
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == trench_vector or get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == sand_vector: 
 			tile_outline.visible = true
-			tile_outline.position = map_to_local(local_to_map(get_local_mouse_position()))
+			x_mark.visible = false
+			tile_outline.position = map_to_local(local_to_map(path_line.get_point_position(path_line.get_point_count() - 1)))
 			return
 		else:
 			tile_outline.visible = false
+			if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == out_of_bounds: 
+				x_mark.position = map_to_local(local_to_map(get_local_mouse_position()))
+				x_mark.visible = true
 			return
 
 func get_tile_id(tile_pos: Vector2i) -> int:
