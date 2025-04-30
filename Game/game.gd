@@ -24,6 +24,7 @@ var map: Map
 
 # Arrays containing all units, playable and unplayable
 var british_units: Array = []
+var british_unit_count: int = 0
 var german_units: Array = []
 var units: Array[Array] = [british_units, german_units]
 
@@ -44,13 +45,12 @@ func _ready() -> void:
 		if new_child is Unit:
 			pass
 			
-	var pc_ind: int = characters[character]
+	var pc_ind: int = randi_range(0, len(british_units)-1)
 
 	pc_unit = british_units[pc_ind]
 
 func _process(delta: float) -> void:
-	var pc_ind: int = characters[character]
-	var pc_unit: Unit = british_units[pc_ind]
+
 	pc_unit.rotate_arrow()
 	pc_unit.is_main_char = true ###makes sure that the pc_unit is the main char, which impacts other stuf 
 	
@@ -130,7 +130,7 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action("zoom out"):
 		$Camera2D.zoom -= Vector2(0.1, 0.1)
-		
+
 	if event.is_action_pressed("right click"):		
 		if pc_unit.get_input == false: # Skip if input already received
 			return
@@ -148,7 +148,26 @@ func _input(event: InputEvent) -> void:
 				
 		elif pc_unit.action_mode == Unit.ACTION_MODE.Attack:
 			pc_unit.set_bullet(mouse_pos)
-
+			
+	
 
 func _on_text_timer_timeout() -> void:
 	game_ui.tutorial_text = "[right]    ".format({})
+
+func reset() -> void:
+	print(len(british_units))
+	var new_units = []
+	for i in british_unit_count:
+		var new_brit = preload("res://Unit/unit.tscn").instantiate()
+		map.add_child(new_brit)
+		new_brit.set_start_pos(british_units[i].start_pos)
+		new_units.append(new_brit)
+		
+	for i in british_units:
+		i.on_death()
+
+	british_units = new_units
+	print(len(british_units))
+		
+	var pc_ind: int = randi_range(0, len(british_units)-1)
+	pc_unit = british_units[pc_ind]

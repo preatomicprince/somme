@@ -394,6 +394,8 @@ func on_death():
 	var new_corpe = corpse.instantiate()
 	
 	if is_main_char == true:
+		is_main_char = false
+		map.game.reset()
 		british_spritesheet.use_parent_material = false
 		par_map.game.game_ui.on_death_ui()
 		self.z_index = 10000

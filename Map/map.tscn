@@ -310,6 +310,17 @@ army = 1
 unit_type = 4
 
 [node name="path" type="Line2D" parent="."]
+[node name="Unit9" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(975, 1227)
+army = 1
+
+[node name="Unit10" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(1717, 1720)
+army = 1
+
+[node name="Unit11" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(1006, 1610)
+army = 1
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
 [connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]
