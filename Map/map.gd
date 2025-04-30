@@ -326,3 +326,8 @@ func _on_german_trench_area_mouse_entered() -> void:
 func _on_german_trench_area_mouse_exited() -> void:
 	ger_inside = false
 	Input.set_custom_mouse_cursor(null)
+
+
+func _on_death_timeout() -> void:
+	game.game_ui.on_death_ui()
+	game.reset()

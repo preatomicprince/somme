@@ -259,7 +259,7 @@ func _handle_attack(delta: float) -> void:
 		# Calculate if bullet hits obstacle
 		if obst_atlas_coords.has(atlas_coord): # If bullet's path overlaps with an obstacle
 			var hit_roll: float = randf()
-			var odds: float = bullet_step/MAX_BULLET_STEP - 0.2 # -0.2 means decrease chance of hit by 10%
+			var odds: float = bullet_step/MAX_BULLET_STEP - 0.1 # -0.1 means decrease chance of hit by 10%
 			
 			if hit_roll < odds: # If obstacle hit
 				var hit_pos = bullet_pos - position
@@ -398,11 +398,10 @@ func on_death():
 	
 	if is_main_char == true:
 		is_main_char = false
-		map.game.reset()
+		map.game.pc_unit = null
+		$".."/Death.start()
 		british_spritesheet.use_parent_material = false
-		par_map.game.game_ui.on_death_ui()
-		self.z_index = 10000
-		#return
+
 	
 	if army == 0:
 		#corpse

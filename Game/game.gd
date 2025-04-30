@@ -42,7 +42,7 @@ func _ready() -> void:
 	# Add units to units var
 	var map_child_count: int = map.get_child_count()
 	for i in range(0, map_child_count):
-		var new_child: Node2D = map.get_child(i)
+		var new_child = map.get_child(i)
 		if new_child is Unit:
 			pass
 			
@@ -51,7 +51,8 @@ func _ready() -> void:
 	pc_unit = british_units[pc_ind]
 
 func _process(delta: float) -> void:
-
+	if pc_unit == null:
+		return
 	pc_unit.rotate_arrow()
 	pc_unit.is_main_char = true ###makes sure that the pc_unit is the main char, which impacts other stuf 
 	
@@ -71,10 +72,11 @@ func _process(delta: float) -> void:
 				i.npc_state.update()
 		for b in british_units:
 			if b.end_turn == false:
-				for i in german_units:
-					if i.end_turn == false:
-						game_ui.turn_text.text = "ENEMIES TURN"
-						i.npc_state.update()
+				return
+		for i in german_units:
+			if i.end_turn == false:
+				game_ui.turn_text.text = "ENEMIES TURN"
+				i.npc_state.update()
 	else:
 		game_ui.turn_text.text = "YOUR TURN"
 				
@@ -91,7 +93,9 @@ func _process(delta: float) -> void:
 		g.next_turn()
 
 
-func _input(event: InputEvent) -> void:	
+func _input(event: InputEvent) -> void:
+	if pc_unit == null:
+		return
 
 	if event.is_action_pressed("toggle shoot"):
 		game_ui.toggle_aim_buts() ###toggles the aim buts in the UI, if you put the switching in here itll work
