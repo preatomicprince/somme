@@ -34,7 +34,7 @@ enum STANCES {
 	Prone = 1
 }
 
-const SPEED = 240
+const SPEED = 440
 
 var map: Map
 
@@ -47,7 +47,7 @@ var start_pos: Vector2
 
 var stance : STANCES = 0 #used later in animation to decide which animation to choose
 
-var max_moves: int = 4 # Max moves per turn. Attempting to move further than this is invalid
+var max_moves: int = 12 # Max moves per turn. Attempting to move further than this is invalid
 
 var max_health: int = 100
 var health: int = max_health
@@ -381,8 +381,8 @@ func on_death():
 		return
 		
 	dead = true
-	
-	print(self)
+	par_map.game.game_ui.lives_lost += 1
+	#print(self)
 	shadow.visible = false
 	var new_corpe = corpse.instantiate()
 	

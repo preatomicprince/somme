@@ -276,23 +276,23 @@ position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
 z_index = 0
-position = Vector2(1852, 1261)
+position = Vector2(1214, 1418)
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(1638, 1512)
+position = Vector2(1807, 1245)
 army = 1
 
 [node name="Unit2" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(1863, 1943)
+position = Vector2(-53, 3041)
 
 [node name="Unit4" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(1029, 1163)
+position = Vector2(-1606, 2097)
 
 [node name="Unit5" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(1332, 1531)
+position = Vector2(-501, 2760)
 
 [node name="Unit6" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(2178, 1336)
+position = Vector2(-820, 2577)
 
 [node name="Unit7" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(3148, 238)
