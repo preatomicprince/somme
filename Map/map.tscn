@@ -310,6 +310,9 @@ army = 1
 unit_type = 4
 
 [node name="path" type="Line2D" parent="."]
+width = 20.0
+default_color = Color(0.337255, 0, 0, 1)
+
 [node name="Unit9" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(975, 1227)
 army = 1

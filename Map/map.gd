@@ -45,6 +45,7 @@ func _ready() -> void:
 	self.game = get_parent()
 	
 	
+	
 	# Set up nav_grid
 	self.nav_grid = AStar2D.new()
 	
@@ -127,12 +128,14 @@ func _ready() -> void:
 			b.visible = false
 
 func _process(delta: float) -> void:
+	
 	tile_to_ui()
 
 func tile_to_ui() -> void:
 	"""
 	this is used to outline whatever tile you can go to
 	"""
+	
 	if curent_area == GAME_AREAS.British_trench:
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == trench_vector: 
 			tile_outline.visible = true
