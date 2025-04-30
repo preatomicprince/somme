@@ -9,6 +9,7 @@ var barbed_wire_list : Array = [] #list of barbed wire to toggle visiblitiy with
 @onready var sandbag_list : Array = [$SandbagWall, $SandbagWall2, $SandbagWall3, $SandbagWall4] #list of sandbags to make visible ect
 var tree_list : Array = [] #list of trees to make visible/invisible
 
+@onready var path_line : Line2D = $path
 @onready var english_trench : Sprite2D = $"English trench"
 @onready var german_trench: Sprite2D = $"German trench"
 @onready var no_mans_land : Sprite2D = $"No Mans Land"
@@ -271,7 +272,9 @@ func _input(event: InputEvent) -> void:
 	"""
 	
 	if event.is_action_pressed("right click"):
+
 		###changes to the no mans land if your in the english trench
+		
 		if curent_area == 0 and eng_inside == true:
 			enter_no_mans_land()
 		
