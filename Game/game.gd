@@ -175,6 +175,8 @@ func _on_text_timer_timeout() -> void:
 func reset() -> void:
 	var new_units = []
 	map.reset()
+	
+	
 	for i in british_unit_count:
 		var new_brit = preload("res://Unit/unit.tscn").instantiate()
 		map.add_child(new_brit)
@@ -188,3 +190,4 @@ func reset() -> void:
 		
 	var pc_ind: int = randi_range(0, len(british_units)-1)
 	pc_unit = british_units[pc_ind]
+	$Camera2D.position = pc_unit.position
