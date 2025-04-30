@@ -98,6 +98,7 @@ func _ready() -> void:
 			
 			# Add to correct troop list
 			if next_child.army == Game.ARMIES.British:
+				game.british_unit_count += 1
 				self.game.british_units.append(next_child)
 			elif next_child.army == Game.ARMIES.German:
 				self.game.german_units.append(next_child)

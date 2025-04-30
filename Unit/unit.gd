@@ -63,7 +63,7 @@ var visible_units: Array = []
 
 var move_queue: Array = []
 
-var action_mode: ACTION_MODE = ACTION_MODE.Attack # Are they walking or setting up to walk? or to shoot?
+var action_mode: ACTION_MODE = ACTION_MODE.Move # Are they walking or setting up to walk? or to shoot?
 
 var get_input: bool = true # Set to false while already moving or shooting, reset at end of turn
 
@@ -118,8 +118,6 @@ func next_turn() -> void:
 func set_move_queue(path: Array) -> void:
 	move_queue = path
 	get_input = false
-	if is_main_char: 
-		print(len(move_queue))
 	
 func _handle_movement(delta) -> void:
 	"""
@@ -390,6 +388,8 @@ func on_death():
 	var new_corpe = corpse.instantiate()
 	
 	if is_main_char == true:
+		is_main_char = false
+		map.game.reset()
 		british_spritesheet.use_parent_material = false
 		par_map.game.game_ui.on_death_ui()
 		self.z_index = 10000
