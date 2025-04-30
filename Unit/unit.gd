@@ -8,7 +8,7 @@ class_name Unit extends Node2D
 @onready var german_spritesheet : Sprite2D = $GermanSheet
 @onready var anim_play_eng : AnimationPlayer = $AnimationPlayerEnglish
 @onready var anim_play_ger : AnimationPlayer = $AnimationPlayerGerman
-
+var in_motion = false
 var text_feedback_list : Array = ["[center]MISS".format({}), "[center]HIT".format({})]#a list of all the text to show the player when they hit or miss something
 
 var dead: bool = false
@@ -121,8 +121,9 @@ func set_move_queue(path: Array) -> void:
 	move_queue = path
 	get_input = false
 	if is_main_char: 
-		for i in move_queue:
-			par_map.path_line.add_point(par_map.map_to_local(i)-par_map.global_position)
+		
+		in_motion = true
+			#par_map.path_line.add_point(par_map.map_to_local(i)-par_map.global_position)
 			
 		
 	
@@ -134,6 +135,8 @@ func _handle_movement(delta) -> void:
 	"""
 	# Skip in no movement
 	if len(move_queue) == 0:
+		if is_main_char: 
+			in_motion = false
 		end_turn = true
 		par_map.path_line.clear_points()
 		return

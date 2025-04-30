@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b45gd53xht61k"]
+[gd_scene load_steps=12 format=4 uid="uid://b45gd53xht61k"]
 
 [ext_resource type="TileSet" uid="uid://doag0i6nwosrp" path="res://Map/western front.tres" id="1_6yc6o"]
 [ext_resource type="Script" uid="uid://bvmghxduvvg4c" path="res://Map/map.gd" id="2_6yc6o"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cn07wuv2ep3kf" path="res://Terrain Objects/machine_gun_post.tscn" id="7_d1580"]
 [ext_resource type="Texture2D" uid="uid://do65ovgegckjf" path="res://Res/Enviroment/sandbag wall.png" id="8_5ej7w"]
 [ext_resource type="PackedScene" uid="uid://db63lxv26csl1" path="res://Terrain Objects/barbed_wire.tscn" id="9_lymsy"]
+[ext_resource type="Texture2D" uid="uid://dyco8x0yjgvyd" path="res://Res/UI Elements/x.png" id="11_ptuj4"]
 
 [node name="Map" type="TileMapLayer"]
 z_index = 1000
@@ -328,7 +329,12 @@ position = Vector2(-501, 2760)
 position = Vector2(-820, 2577)
 
 [node name="Unit7" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(2094, -114)
+position = Vector2(2444, 614)
+army = 1
+unit_type = 4
+
+[node name="Unit8" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(2810, 898)
 army = 1
 unit_type = 4
 
@@ -356,21 +362,25 @@ army = 1
 position = Vector2(3988, 1135)
 army = 1
 
-[node name="Unit8" parent="." instance=ExtResource("2_njngi")]
+[node name="Unit12" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(-2081, 1736)
 
-[node name="Unit12" parent="." instance=ExtResource("2_njngi")]
+[node name="Unit13" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(-2404, 1440)
 
-[node name="Unit13" parent="." instance=ExtResource("2_njngi")]
+[node name="Unit14" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(-1884, 1852)
 
-[node name="Unit14" parent="." instance=ExtResource("2_njngi")]
+[node name="Unit17" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(283, 3169)
 
 [node name="Death" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="X" type="Sprite2D" parent="."]
+position = Vector2(-768, 1251)
+texture = ExtResource("11_ptuj4")
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]
 [connection signal="mouse_exited" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_exited"]
