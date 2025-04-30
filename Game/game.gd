@@ -154,6 +154,8 @@ func _input(event: InputEvent) -> void:
 				
 			new_path.pop_front() # Removes first tile that pc is already stood on
 			if len(new_path) <= pc_unit.max_moves: # Ensures can only move set distance
+				if map.curent_area == 1 and map.ger_inside == true:
+					map.enter_german_trench()
 				pc_unit.set_move_queue(new_path)
 				
 		elif pc_unit.action_mode == Unit.ACTION_MODE.Attack:

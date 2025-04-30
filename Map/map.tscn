@@ -300,7 +300,7 @@ position = Vector2(-501, 2760)
 position = Vector2(-820, 2577)
 
 [node name="Unit7" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(2602, 528)
+position = Vector2(2810, 898)
 army = 1
 unit_type = 4
 
