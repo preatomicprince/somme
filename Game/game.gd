@@ -132,17 +132,26 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("zoom out"):
 		$Camera2D.zoom -= Vector2(0.1, 0.1)
 
-	if event.is_action_pressed("right click"):		
+	if event.is_action_pressed("right click"):
+		print(map.local_to_map(get_local_mouse_position()))
 		if pc_unit.get_input == false: # Skip if input already received
 			return
 			
 		var pc_tile: Vector2 = map.local_to_map(pc_unit.global_position)
-		var mouse_pos: Vector2 = get_local_mouse_position()
+		var mouse_pos: Vector2 = get_local_mouse_position() 
+		var surrounding_cells = map.get_surrounding_cells(pc_tile)
 		
 		
 		if pc_unit.action_mode == Unit.ACTION_MODE.Move:
 			var mouse_tile: Vector2 = map.local_to_map(mouse_pos)
 			var new_path: Array = self.map.generate_path(pc_tile, mouse_tile)
+			if map.curent_area == 0 and map.eng_inside == true:
+				map.enter_no_mans_land()
+				var next_tile = pc_tile + Vector2(4, -4)
+				new_path = self.map.generate_path(pc_tile, next_tile)
+			if map.curent_area == 0 and map.eng_inside == false:
+				return
+				
 			new_path.pop_front() # Removes first tile that pc is already stood on
 			if len(new_path) <= pc_unit.max_moves: # Ensures can only move set distance
 				pc_unit.set_move_queue(new_path)
@@ -156,8 +165,8 @@ func _on_text_timer_timeout() -> void:
 	game_ui.tutorial_text = "[right]    ".format({})
 
 func reset() -> void:
-	print(len(british_units))
 	var new_units = []
+	map.reset()
 	for i in british_unit_count:
 		var new_brit = preload("res://Unit/unit.tscn").instantiate()
 		map.add_child(new_brit)
@@ -168,7 +177,6 @@ func reset() -> void:
 		i.on_death()
 
 	british_units = new_units
-	print(len(british_units))
 		
 	var pc_ind: int = randi_range(0, len(british_units)-1)
 	pc_unit = british_units[pc_ind]
