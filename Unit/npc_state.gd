@@ -26,8 +26,7 @@ func update() -> void:
 		return
 	
 	enemy_target = _get_target()
-	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
-		print("et", enemy_target)
+	
 		
 	if unit.army == Game.ARMIES.British:
 		if enemy_target == null:
@@ -84,6 +83,7 @@ func _get_target() -> Unit:
 	"""
 	Checks if any targets are in range and returns one at random.
 	"""
+
 	var unit_tile: Vector2i = unit.current_tile
 	var range: int = 7
 	var targets: Array = []
@@ -97,9 +97,17 @@ func _get_target() -> Unit:
 			if unit.map.units[tile_id] != null:
 				if unit.map.units[tile_id].army != unit.army:
 					targets.append(unit.map.units[tile_id])
+
 	if len(targets) == 0:
 		return null
-	
+	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
+		print("et", targets)
+		
 	var target = targets[rng.randi_range(0, len(targets)-1)]
+	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
+		if target.position.x > unit.position.x:
+			return null
+	if target.unit_type == Unit.UNIT_TYPE.Machinegun:
+		return null
 
 	return target
