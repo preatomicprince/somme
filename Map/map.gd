@@ -139,6 +139,10 @@ func tile_to_ui() -> void:
 	"""
 	if game.pc_unit == null:
 		return
+		
+	if curent_area == 0:
+		path_line.clear_points()
+		return
 	if game.pc_unit.in_motion == false:
 		path_line.clear_points()
 		var mouse_pos = local_to_map(get_global_mouse_position())
