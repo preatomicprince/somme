@@ -9,6 +9,7 @@ var barbed_wire_list : Array = [] #list of barbed wire to toggle visiblitiy with
 @onready var sandbag_list : Array = [$SandbagWall, $SandbagWall2, $SandbagWall3, $SandbagWall4] #list of sandbags to make visible ect
 var tree_list : Array = [] #list of trees to make visible/invisible
 
+@onready var path_line : Line2D = $path
 @onready var english_trench : Sprite2D = $"English trench"
 @onready var german_trench: Sprite2D = $"German trench"
 @onready var no_mans_land : Sprite2D = $"No Mans Land"
@@ -42,6 +43,7 @@ var debug_mode : bool = false ###this is to get the game set up how we like, whi
 
 func _ready() -> void:
 	self.game = get_parent()
+	
 	
 	
 	# Set up nav_grid
@@ -126,12 +128,14 @@ func _ready() -> void:
 			b.visible = false
 
 func _process(delta: float) -> void:
+	
 	tile_to_ui()
 
 func tile_to_ui() -> void:
 	"""
 	this is used to outline whatever tile you can go to
 	"""
+	
 	if curent_area == GAME_AREAS.British_trench:
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == trench_vector: 
 			tile_outline.visible = true
@@ -272,7 +276,9 @@ func _input(event: InputEvent) -> void:
 	"""
 	
 	if event.is_action_pressed("right click"):
+
 		###changes to the no mans land if your in the english trench
+		
 		if curent_area == 0 and eng_inside == true:
 			enter_no_mans_land()
 		

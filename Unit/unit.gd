@@ -120,6 +120,11 @@ func next_turn() -> void:
 func set_move_queue(path: Array) -> void:
 	move_queue = path
 	get_input = false
+	if is_main_char: 
+		for i in move_queue:
+			par_map.path_line.add_point(par_map.map_to_local(i)-par_map.global_position)
+			
+		
 	
 func _handle_movement(delta) -> void:
 	"""
@@ -130,6 +135,7 @@ func _handle_movement(delta) -> void:
 	# Skip in no movement
 	if len(move_queue) == 0:
 		end_turn = true
+		par_map.path_line.clear_points()
 		return
 		
 	var next_move_pos = map.map_to_local(move_queue[0])

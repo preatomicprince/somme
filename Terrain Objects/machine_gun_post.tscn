@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bx0gwamwkf5p" path="res://Res/Enviroment/machine gun post.png" id="1_xwayj"]
 [ext_resource type="Script" uid="uid://bnys1xcnwajc1" path="res://Terrain Objects/machine_gun_post.gd" id="2_x27gf"]
-[ext_resource type="PackedScene" path="res://Res/Particles and Shaders/smoke.tscn" id="3_yl4iy"]
+[ext_resource type="PackedScene" uid="uid://ck5yfaiutlhr4" path="res://Res/Particles and Shaders/smoke.tscn" id="3_yl4iy"]
 [ext_resource type="PackedScene" uid="uid://lli48dluw05s" path="res://Res/Particles and Shaders/machine_gun_fire.tscn" id="4_mdhvr"]
 [ext_resource type="AudioStream" uid="uid://d3wkjj52hfftb" path="res://Res/Music and Sound/response/clean-machine-gun-burst-98224.mp3" id="5_c5p1k"]
 [ext_resource type="AudioStream" uid="uid://g2egsbsguqih" path="res://Res/Music and Sound/response/huge-explosion-in-distance-100604.mp3" id="6_oq1g4"]
