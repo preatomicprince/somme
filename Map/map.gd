@@ -137,6 +137,8 @@ func tile_to_ui() -> void:
 	"""
 	this is used to outline whatever tile you can go to
 	"""
+	if game.pc_unit == null:
+		return
 	if game.pc_unit.in_motion == false:
 		path_line.clear_points()
 		for i in range(len(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position())))):
@@ -346,6 +348,14 @@ func _on_german_trench_area_mouse_entered() -> void:
 		Input.set_custom_mouse_cursor(custom_cursor_down)
 
 func _on_german_trench_area_mouse_exited() -> void:
+
+	ger_inside = false
+	Input.set_custom_mouse_cursor(null)
+
+
+func _on_death_timeout() -> void:
+	game.game_ui.on_death_ui()
+	game.reset()
 	if curent_area == 1:
 		ger_inside = false
 		Input.set_custom_mouse_cursor(null)
