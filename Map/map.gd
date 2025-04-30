@@ -140,7 +140,7 @@ func tile_to_ui() -> void:
 	if game.pc_unit == null:
 		return
 		
-	if curent_area == 0:
+	if curent_area == 0 or game.pc_unit.action_mode == Unit.ACTION_MODE.Attack:
 		path_line.clear_points()
 		return
 	if game.pc_unit.in_motion == false:
@@ -349,12 +349,16 @@ func _on_english_trench_area_mouse_exited() -> void:
 		Input.set_custom_mouse_cursor(null)
 
 func _on_german_trench_area_mouse_entered() -> void:
+	if game.pc_unit == null:
+		return
 	if curent_area == 1:
 		ger_inside = true
-		Input.set_custom_mouse_cursor(custom_cursor_down)
+		if game.pc_unit.action_mode == Unit.ACTION_MODE.Move:
+			Input.set_custom_mouse_cursor(custom_cursor_down)
 
 func _on_german_trench_area_mouse_exited() -> void:
-
+	
+	
 	ger_inside = false
 	Input.set_custom_mouse_cursor(null)
 
