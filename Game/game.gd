@@ -131,10 +131,12 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit() ###to exit the game
 	
 	if event.is_action("zoom in"):
-		$Camera2D.zoom += Vector2(0.1, 0.1)
+		if $Camera2D.zoom < Vector2(0.5, 0.5):
+			$Camera2D.zoom += Vector2(0.1, 0.1)
 		
 	if event.is_action("zoom out"):
-		$Camera2D.zoom -= Vector2(0.1, 0.1)
+		if $Camera2D.zoom > Vector2(0.2, 0.2):
+			$Camera2D.zoom -= Vector2(0.1, 0.1)
 
 	if event.is_action_pressed("right click"):
 		print(map.local_to_map(get_local_mouse_position()))

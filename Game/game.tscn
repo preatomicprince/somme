@@ -20,7 +20,11 @@ position = Vector2(4446, 858)
 position = Vector2(1576, 1854)
 skew = 0.647517
 anchor_mode = 0
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.2, 0.2)
+limit_left = 0
+limit_top = -300
+limit_right = 11000
+limit_bottom = 10000
 
 [node name="game ui" parent="." instance=ExtResource("4_jcm6v")]
 
