@@ -117,6 +117,9 @@ func next_turn() -> void:
 
 func set_move_queue(path: Array) -> void:
 	move_queue = path
+	get_input = false
+	if is_main_char: 
+		print(len(move_queue))
 	
 func _handle_movement(delta) -> void:
 	"""
@@ -155,7 +158,6 @@ func _handle_movement(delta) -> void:
 	if global_position == next_move_pos:
 		map.units[map.get_tile_id(current_tile)] = null
 		current_tile = map.local_to_map(position)
-		print(current_tile)
 		map.units[map.get_tile_id(current_tile)] = self
 		move_queue.pop_front()
 		

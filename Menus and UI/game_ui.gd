@@ -155,15 +155,18 @@ func toggle_aim_buts() -> void:
 	so after you fire you can call this function and it will switch em
 	as well as in the button presses
 	"""
+	print("Toggle")
 	mouse_click.play()
 	if aim_but_disabled.visible == true:
-		game_main.pc_unit.action_mode = game_main.pc_unit.ACTION_MODE.Attack
+		game_main.pc_unit.action_mode = Unit.ACTION_MODE.Attack
+		print("to attack")
 		Input.set_custom_mouse_cursor(custom_cursor_target)
 		aim_but_disabled.visible = false
 		aim_but_abled.visible = true
 		return
 	else:
-		game_main.pc_unit.action_mode = game_main.pc_unit.ACTION_MODE.Move
+		game_main.pc_unit.action_mode = Unit.ACTION_MODE.Move
+		print("to move")
 		Input.set_custom_mouse_cursor(null)
 		aim_but_disabled.visible = true
 		aim_but_abled.visible = false
