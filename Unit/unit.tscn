@@ -1147,6 +1147,14 @@ visible = false
 position = Vector2(0, 66)
 texture = ExtResource("7_hvv66")
 
+[node name="player_pointer" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(100, 100, 100, 1)
+position = Vector2(-1, -384)
+rotation = 3.14159
+scale = Vector2(2, 2)
+texture = ExtResource("7_hvv66")
+
 [node name="CharacterShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.313726)
 position = Vector2(23, -13)

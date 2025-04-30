@@ -76,6 +76,8 @@ const MAX_BULLET_STEP: float = 40 # Max number of steps before bullet times out,
 var end_turn = false # Has finished moving or shooting
 
 func set_start_pos(new_start_pos) -> void:
+	if army == 1:
+		action_mode == ACTION_MODE.Attack
 	start_pos = new_start_pos
 	global_position = new_start_pos
 	
@@ -166,6 +168,7 @@ func _handle_movement(delta) -> void:
 		move_queue.pop_front()
 		
 func rotate_arrow() -> void:
+	$player_pointer.visible = true
 	if action_mode == ACTION_MODE.Move:
 		$Arrow.visible = false
 		return
@@ -228,7 +231,8 @@ func set_bullet(mouse_pos: Vector2) -> void:
 	
 	
 func _handle_attack(delta: float) -> void:
-	
+	if army == 1:
+		print("sssjdjdjdjjdjdjjd")
 	if bullet_step > MAX_BULLET_STEP:
 		end_turn = true
 		feed_back_show("miss")
@@ -309,10 +313,13 @@ func look_for_units() -> Array:
 func _process(delta: float) -> void:
 	if get_input == true: # Skip if there hasn't been an input yet
 		return
-		
+	if army == 1:
+		action_mode = 2
 	if action_mode == ACTION_MODE.Move:
 		_handle_movement(delta)
 	elif action_mode == ACTION_MODE.Attack:
+		if army == 1:
+			print("ccccccc")
 		_handle_attack(delta)
 	
 func play_animation_walk(direction: String):
@@ -383,7 +390,7 @@ func on_death():
 	"""
 	This shows the dead body upon death
 	"""
-	
+	visible = false
 	if dead:
 		return
 		
@@ -399,7 +406,7 @@ func on_death():
 		british_spritesheet.use_parent_material = false
 		par_map.game.game_ui.on_death_ui()
 		self.z_index = 10000
-		return
+		#return
 	
 	if army == 0:
 		#corpse
