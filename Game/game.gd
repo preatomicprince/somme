@@ -25,6 +25,7 @@ var map: Map
 # Arrays containing all units, playable and unplayable
 var british_units: Array = []
 var british_unit_count: int = 0
+var british_unit_starts: Array = []
 var german_units: Array = []
 var units: Array[Array] = [british_units, german_units]
 
@@ -160,7 +161,7 @@ func reset() -> void:
 	for i in british_unit_count:
 		var new_brit = preload("res://Unit/unit.tscn").instantiate()
 		map.add_child(new_brit)
-		new_brit.set_start_pos(british_units[i].start_pos)
+		new_brit.set_start_pos(british_unit_starts[i])
 		new_units.append(new_brit)
 		
 	for i in british_units:

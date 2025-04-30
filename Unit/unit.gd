@@ -168,6 +168,7 @@ func _handle_movement(delta) -> void:
 		move_queue.pop_front()
 		
 func rotate_arrow() -> void:
+	$player_pointer.visible = true
 	if action_mode == ACTION_MODE.Move:
 		$Arrow.visible = false
 		return
@@ -389,7 +390,7 @@ func on_death():
 	"""
 	This shows the dead body upon death
 	"""
-	
+	visible = false
 	if dead:
 		return
 		

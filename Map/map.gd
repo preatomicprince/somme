@@ -102,6 +102,7 @@ func _ready() -> void:
 			if next_child.army == Game.ARMIES.British:
 				game.british_unit_count += 1
 				self.game.british_units.append(next_child)
+				game.british_unit_starts.append(start_pos)
 			elif next_child.army == Game.ARMIES.German:
 				self.game.german_units.append(next_child)
 				$".."/"game ui"/topback/"control bar".over_all_num_germans += 1
