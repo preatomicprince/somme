@@ -13,11 +13,13 @@ var tree_list : Array = [] #list of trees to make visible/invisible
 @onready var german_trench: Sprite2D = $"German trench"
 @onready var no_mans_land : Sprite2D = $"No Mans Land"
 @onready var bunker : Sprite2D = $MachineGunPost
-
+@onready var tile_outline = $Tileoutline
 var no_mans_land_vector : Vector2i = Vector2i(0, 0) #this is nmls vector cords
 var barbed_wire_vector : Vector2i = Vector2i(0, 1) #this is to check if the tile is a barbed wire
 var wall_vector : Vector2i = Vector2i(1, 1) #this is for the wall of the english trench, maybe clicking on it gets you to no mans land
 var gun_post_vector : Vector2i = Vector2i(2, 1) #maybe used to check to destroy something idk
+var trench_vector : Vector2i = Vector2i(1, 0)
+var sand_vector : Vector2i = Vector2i(3, 0)
 
 var game: Game
 
@@ -121,7 +123,39 @@ func _ready() -> void:
 			t.visible = false
 		for b in barbed_wire_list:
 			b.visible = false
-		
+
+func _process(delta: float) -> void:
+	tile_to_ui()
+
+func tile_to_ui() -> void:
+	"""
+	this is used to outline whatever tile you can go to
+	"""
+	if curent_area == GAME_AREAS.British_trench:
+		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == trench_vector: 
+			tile_outline.visible = true
+			tile_outline.position = map_to_local(local_to_map(get_local_mouse_position()))
+			return
+		else:
+			tile_outline.visible = false
+			return
+	if curent_area == GAME_AREAS.No_mans_land:
+		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == no_mans_land_vector: 
+			tile_outline.visible = true
+			tile_outline.position = map_to_local(local_to_map(get_local_mouse_position()))
+			return
+		else:
+			tile_outline.visible = false
+			return
+	if curent_area == GAME_AREAS.German_trench:
+		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == trench_vector or get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == sand_vector: 
+			tile_outline.visible = true
+			tile_outline.position = map_to_local(local_to_map(get_local_mouse_position()))
+			return
+		else:
+			tile_outline.visible = false
+			return
+
 func get_tile_id(tile_pos: Vector2i) -> int:
 	"""
 	Where needed, tiles have an unique integer id based on their position in the grid.
