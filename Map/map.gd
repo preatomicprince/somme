@@ -6,7 +6,7 @@ var custom_cursor_up = load("res://Res/UI Elements/custom cursers1.png")
 var custom_cursor_down = load("res://Res/UI Elements/custom cursers5.png")
 
 var barbed_wire_list : Array = [] #list of barbed wire to toggle visiblitiy with 
-@onready var sandbag_list : Array = [$SandbagWall, $SandbagWall2, $SandbagWall3, $SandbagWall4] #list of sandbags to make visible ect
+@onready var sandbag_list : Array = [$SandbagWall, $SandbagWall2, $SandbagWall3, $SandbagWall4,$SandbagWall5,$SandbagWall6] #list of sandbags to make visible ect
 var tree_list : Array = [] #list of trees to make visible/invisible
 
 @onready var path_line : Line2D = $path
