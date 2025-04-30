@@ -26,7 +26,6 @@ func update() -> void:
 		return
 	
 	enemy_target = _get_target()
-	
 		
 	if unit.army == Game.ARMIES.British:
 		if enemy_target == null:
@@ -42,6 +41,7 @@ func update() -> void:
 				_update_move()
 				
 	else:
+		unit.action_mode == Unit.ACTION_MODE.Attack
 		if enemy_target != null:
 			_update_attack()
 		else:
@@ -100,13 +100,9 @@ func _get_target() -> Unit:
 
 	if len(targets) == 0:
 		return null
-	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
-		print("et", targets)
 		
 	var target = targets[rng.randi_range(0, len(targets)-1)]
-	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
-		if target.position.x > unit.position.x:
-			return null
+
 	if target.unit_type == Unit.UNIT_TYPE.Machinegun:
 		return null
 
