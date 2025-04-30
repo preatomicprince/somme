@@ -19,7 +19,7 @@ func _ready() -> void:
 	screen_size_x = get_viewport_rect().size.x
 	
 	amount_for_bunker = screen_size_x/2
-	amount_for_german = screen_size_x/2/over_all_num_germans 
+	amount_for_german = screen_size_x/over_all_num_germans 
 
 func _process(delta: float) -> void:
 	if cur_amount <= target_amount:
