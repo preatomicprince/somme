@@ -306,6 +306,7 @@ unit_type = 4
 
 [node name="Unit8" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(2788, 846)
+position = Vector2(2810, 898)
 army = 1
 unit_type = 4
 

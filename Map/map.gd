@@ -209,6 +209,7 @@ func enter_no_mans_land() -> void:
 	eng_inside = false
 	$"No Mans Land2".visible = true
 	bunker.visible = true
+	$MachineGunPost/Area2D.visible = false
 	
 	Input.set_custom_mouse_cursor(null)
 	
@@ -240,6 +241,8 @@ func enter_german_trench() -> void:
 	no_mans_land.visible = false
 	english_trench.visible = false
 	
+	$MachineGunPost/Area2D.visible = true
+	
 	ger_inside = false
 	Input.set_custom_mouse_cursor(null)
 	
@@ -257,16 +260,27 @@ func reset() -> void:
 	curent_area = 0
 	
 	english_trench.visible = true
-	no_mans_land.visible = true
+	no_mans_land.visible = false
+
+	english_trench.modulate = Color(1.0, 1.0, 1.0, 1.00)
+	german_trench.visible = false
+	eng_inside = false
+	$"No Mans Land2".visible = false
+	bunker.visible = false
 	
-	for barbed_wire in barbed_wire_list:
-		barbed_wire.reset()
+	Input.set_custom_mouse_cursor(null)
+	
+	for b in barbed_wire_list:
+		b.visible = false
+		b.modulate = Color(1.00, 1.00, 1.00, 1.00)
 		
-	for unit in self.game.british_units:
-		unit.reset()
+	for t in tree_list:
+		t.visible = false
+		t.modulate = Color(1.00, 1.00, 1.00, 1.00)
 		
-	for unit in self.game.german_units:
-		unit.reset()
+	for s in sandbag_list:
+		s.visible = false
+		s.modulate = Color(1.00, 1.00, 1.00, 1.00)
 
 func _input(event: InputEvent) -> void:
 	"""
@@ -279,12 +293,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right click"):
 
 		###changes to the no mans land if your in the english trench
-		
-		if curent_area == 0 and eng_inside == true:
-			enter_no_mans_land()
-		
-		if curent_area == 1 and ger_inside == true:
-			enter_german_trench()
 		
 		#checks if its barbed wire
 		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == barbed_wire_vector:

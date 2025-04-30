@@ -105,5 +105,7 @@ func _get_target() -> Unit:
 
 	if target.unit_type == Unit.UNIT_TYPE.Machinegun:
 		return null
-
+	if unit.unit_type == Unit.UNIT_TYPE.Machinegun:
+		if target.position.x > unit.position.x and target.position.y < unit.position.y:
+			return null
 	return target

@@ -231,8 +231,6 @@ func set_bullet(mouse_pos: Vector2) -> void:
 	
 	
 func _handle_attack(delta: float) -> void:
-	if army == 1:
-		print("sssjdjdjdjjdjdjjd")
 	if bullet_step > MAX_BULLET_STEP:
 		end_turn = true
 		feed_back_show("miss")
@@ -318,8 +316,6 @@ func _process(delta: float) -> void:
 	if action_mode == ACTION_MODE.Move:
 		_handle_movement(delta)
 	elif action_mode == ACTION_MODE.Attack:
-		if army == 1:
-			print("ccccccc")
 		_handle_attack(delta)
 	
 func play_animation_walk(direction: String):
