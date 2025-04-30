@@ -336,8 +336,9 @@ func _on_english_trench_area_mouse_entered() -> void:
 		Input.set_custom_mouse_cursor(custom_cursor_up)
 
 func _on_english_trench_area_mouse_exited() -> void:
-	eng_inside = false
-	Input.set_custom_mouse_cursor(null)
+	if curent_area == 0:
+		eng_inside = false
+		Input.set_custom_mouse_cursor(null)
 
 func _on_german_trench_area_mouse_entered() -> void:
 	if curent_area == 1:
@@ -345,5 +346,6 @@ func _on_german_trench_area_mouse_entered() -> void:
 		Input.set_custom_mouse_cursor(custom_cursor_down)
 
 func _on_german_trench_area_mouse_exited() -> void:
-	ger_inside = false
-	Input.set_custom_mouse_cursor(null)
+	if curent_area == 1:
+		ger_inside = false
+		Input.set_custom_mouse_cursor(null)
