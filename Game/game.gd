@@ -32,6 +32,7 @@ var characters: Array[int] = [0, 1]
 
 # Vars for player character (pc), may move to seperate class if it gets clunky
 var pc_path: Array = []
+var pc_unit: Unit
 
 func _ready() -> void:
 	map = $Map
@@ -128,7 +129,10 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("right click"):
 		var pc_ind: int = characters[character]
-		var pc_unit: Unit = british_units[pc_ind]
+
+		pc_unit = british_units[pc_ind]
+		print(map.local_to_map(get_local_mouse_position()))
+		
 		if pc_unit.get_input == false: # Skip if input already received
 			return
 			

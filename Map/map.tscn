@@ -281,7 +281,7 @@ position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
 z_index = 0
-position = Vector2(1214, 1418)
+position = Vector2(-1193, 2419)
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(1807, 1245)

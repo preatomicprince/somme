@@ -37,6 +37,7 @@ var locations : Array = [
 ]
 
 var custom_cursor_target = load("res://Res/UI Elements/custom cursers4.png")
+@onready var game_main = self.get_parent()
 
 ###for the control bar to check for victory
 @onready var cont_bar : Control = $"topback/control bar"
@@ -156,11 +157,13 @@ func toggle_aim_buts() -> void:
 	"""
 	mouse_click.play()
 	if aim_but_disabled.visible == true:
+		game_main.pc_unit.action_mode = game_main.pc_unit.ACTION_MODE.Attack
 		Input.set_custom_mouse_cursor(custom_cursor_target)
 		aim_but_disabled.visible = false
 		aim_but_abled.visible = true
 		return
 	else:
+		game_main.pc_unit.action_mode = game_main.pc_unit.ACTION_MODE.Move
 		Input.set_custom_mouse_cursor(null)
 		aim_but_disabled.visible = true
 		aim_but_abled.visible = false
