@@ -141,9 +141,11 @@ func tile_to_ui() -> void:
 		return
 	if game.pc_unit.in_motion == false:
 		path_line.clear_points()
-		for i in range(len(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position())))):
-			if i + 1 < len(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position()))) and i <= 12:
-				path_line.add_point(map_to_local(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_global_mouse_position()))[i])-self.global_position)
+		var mouse_pos = local_to_map(get_global_mouse_position())
+		var path = generate_path(local_to_map(game.pc_unit.global_position), mouse_pos)
+		for i in range(len(path)):
+			if i + 1 <= len(path) and i <= 13:
+				path_line.add_point(map_to_local(path[i])-self.global_position)
 	#print(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_local_mouse_position())))
 	
 	
