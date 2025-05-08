@@ -7,12 +7,12 @@ extends Sprite2D
 @onready var machine_gun_sound = $"machine gun sound"
 @onready var blow_up_sound = $"blow up"
 @onready var rubble = $Rubble
+@onready var map = self.get_parent()
 var bomb_cursor = load("res://Res/UI Elements/custom cursers3.png")
 
 var destroyed : bool = false #used to tell if the machine gun post can be destroyed or is still firing  
 var inside : bool = false #used to work out if the mouse is inside the doorway of the trench
 
-@onready var map = get_parent()
 
 
 func blow_up() -> void:
@@ -49,13 +49,18 @@ func fire_machine_guns() -> void:
 	timer.start()
 
 func _on_area_2d_mouse_shape_entered(shape_idx: int) -> void:
-	if destroyed == false:
+	if map.game.pc_unit == null :
+		return
+	if destroyed == false and map.game.pc_unit.action_mode != 2:
 		inside = true
 		Input.set_custom_mouse_cursor(bomb_cursor)
 
 func _on_area_2d_mouse_shape_exited(shape_idx: int) -> void:
-	inside = false
-	Input.set_custom_mouse_cursor(null)
+	if map.game.pc_unit == null :
+		return
+	if destroyed == false and map.game.pc_unit.action_mode != 2:
+		inside = false
+		Input.set_custom_mouse_cursor(null)
 
 func _on_fire_timer_timeout() -> void:
 	for m in machine_gun_fire:

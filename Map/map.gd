@@ -339,33 +339,42 @@ func _input(event: InputEvent) -> void:
 
 ###all of this is to deterim if the mouse is inside the right areas
 func _on_english_trench_area_mouse_entered() -> void:
-	if curent_area == 0:
+	if game.pc_unit == null :
+		return
+	
+	if curent_area == 0 and game.pc_unit.action_mode != 2:
 		eng_inside = true
 		Input.set_custom_mouse_cursor(custom_cursor_up)
 
 func _on_english_trench_area_mouse_exited() -> void:
-	if curent_area == 0:
+	if game.pc_unit == null :
+		return
+		
+	if curent_area == 0 and game.pc_unit.action_mode != 2:
 		eng_inside = false
 		Input.set_custom_mouse_cursor(null)
 
 func _on_german_trench_area_mouse_entered() -> void:
-	if game.pc_unit == null:
+	if game.pc_unit == null :
 		return
-	if curent_area == 1:
+	if curent_area == 1 and game.pc_unit.action_mode != 2:
 		ger_inside = true
-		if game.pc_unit.action_mode == Unit.ACTION_MODE.Move:
+		if game.pc_unit.action_mode == 1:
 			Input.set_custom_mouse_cursor(custom_cursor_down)
 
 func _on_german_trench_area_mouse_exited() -> void:
+	if game.pc_unit == null :
+		return
 	
-	
-	ger_inside = false
-	Input.set_custom_mouse_cursor(null)
+	if curent_area == 1 and game.pc_unit.action_mode != 2:
+		ger_inside = false
+		Input.set_custom_mouse_cursor(null)
 
 
 func _on_death_timeout() -> void:
 	game.game_ui.on_death_ui()
 	game.reset()
-	if curent_area == 1:
-		ger_inside = false
-		Input.set_custom_mouse_cursor(null)
+	#if game.pc_unit != null:
+		#if curent_area == 1:
+	ger_inside = false
+	Input.set_custom_mouse_cursor(null)

@@ -3,6 +3,7 @@ class_name Barbed_Wire extends Node2D
 @onready var outline : Sprite2D = $BarbedWireOutline
 @onready var shadow : Sprite2D = $BarbedWire
 @onready var cut_sound = $"cut wire sound"
+@onready var map = self.get_parent()
 
 var cut_cursor = load("res://Res/UI Elements/custom cursers2.png")
 
@@ -47,13 +48,19 @@ func _on_area_2d_mouse_shape_entered(shape_idx: int) -> void:
 	"""
 	when the mouse has entered itll show the highlight if it hasnt been cut
 	"""
-
-	if cut == false:
-		Input.set_custom_mouse_cursor(cut_cursor)
-		outline.visible = true
-		inside = true
+	if map.game.pc_unit == null :
+		return
+	if map.game.pc_unit.action_mode != 2:
+		if cut == false:
+			Input.set_custom_mouse_cursor(cut_cursor)
+			outline.visible = true
+			inside = true
 
 func _on_area_2d_mouse_shape_exited(shape_idx: int) -> void:
-	outline.visible = false
-	inside = false
-	Input.set_custom_mouse_cursor(null)
+	if map.game.pc_unit == null :
+		return
+		
+	if map.game.pc_unit.action_mode != 2:
+		outline.visible = false
+		inside = false
+		Input.set_custom_mouse_cursor(null)

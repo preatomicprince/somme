@@ -139,7 +139,7 @@ func _input(event: InputEvent) -> void:
 			$Camera2D.zoom -= Vector2(0.1, 0.1)
 
 	if event.is_action_pressed("right click"):
-		print(map.local_to_map(get_local_mouse_position()))
+
 		if pc_unit.get_input == false: # Skip if input already received
 			return
 			
@@ -176,16 +176,26 @@ func reset() -> void:
 	var new_units = []
 	map.reset()
 	
+
+	Input.set_custom_mouse_cursor(null)
+	game_ui.aim_but_disabled.visible = true
+	game_ui.aim_but_abled.visible = false
+	
 	
 	for i in british_unit_count:
 		var new_brit = preload("res://Unit/unit.tscn").instantiate()
 		map.add_child(new_brit)
 		new_brit.set_start_pos(british_unit_starts[i])
 		new_units.append(new_brit)
-		
-	for i in british_units:
-		i.on_death()
-
+	
+	print(british_units)
+	print(len(british_units))
+	#for i in british_units:
+		#print(british_units)
+		#i.on_death()
+	for i in range(british_units.size()- 1, -1, -1):
+		british_units[i].on_death()
+	
 	british_units = new_units
 		
 	var pc_ind: int = randi_range(0, len(british_units)-1)

@@ -408,6 +408,7 @@ func on_death():
 	
 	if army == 0:
 		#corpse
+		print(self.name)
 		new_corpe.army = 0
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position

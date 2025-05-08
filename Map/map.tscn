@@ -323,7 +323,7 @@ position = Vector2(-53, 3041)
 position = Vector2(-1606, 2097)
 
 [node name="Unit5" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(-501, 2760)
+position = Vector2(-434, 2718)
 
 [node name="Unit6" parent="." instance=ExtResource("2_njngi")]
 position = Vector2(-820, 2577)
@@ -363,16 +363,16 @@ position = Vector2(3988, 1135)
 army = 1
 
 [node name="Unit12" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(-2081, 1736)
-
-[node name="Unit13" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(-2404, 1440)
+position = Vector2(-2206, 1715)
 
 [node name="Unit14" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(-1884, 1852)
+position = Vector2(-1934, 1915)
 
 [node name="Unit17" parent="." instance=ExtResource("2_njngi")]
-position = Vector2(283, 3169)
+position = Vector2(346, 3319)
+
+[node name="Unit18" parent="." instance=ExtResource("2_njngi")]
+position = Vector2(-2522, 1444)
 
 [node name="Death" type="Timer" parent="."]
 wait_time = 2.0
