@@ -140,16 +140,30 @@ func tile_to_ui() -> void:
 	if game.pc_unit == null:
 		return
 		
-	if curent_area == 0 or game.pc_unit.action_mode == Unit.ACTION_MODE.Attack:
+	if curent_area == 0:# or game.pc_unit.action_mode == Unit.ACTION_MODE.Attack:
 		path_line.clear_points()
 		return
 	if game.pc_unit.in_motion == false:
-		path_line.clear_points()
-		var mouse_pos = local_to_map(get_global_mouse_position())
-		var path = generate_path(local_to_map(game.pc_unit.global_position), mouse_pos)
-		for i in range(len(path)):
-			if i + 1 <= len(path) and i <= 13:
-				path_line.add_point(map_to_local(path[i])-self.global_position)
+		if game.pc_unit.action_mode != 2:
+			path_line.clear_points()
+			var mouse_pos = local_to_map(get_global_mouse_position())
+			var path = generate_path(local_to_map(game.pc_unit.global_position), mouse_pos)
+			for i in range(len(path)):
+				if i + 1 <= len(path) and i <= 13:
+					path_line.add_point(map_to_local(path[i])-self.global_position)
+					
+					
+		if game.pc_unit.action_mode == 2:
+			"""
+			this creates a line of sight for the units
+			"""
+			path_line.clear_points()
+			var mouse_pos = local_to_map(get_global_mouse_position())
+			var path = local_to_map(game.pc_unit.global_position)
+			var points = [path, mouse_pos]
+			for i in points:
+				path_line.add_point(map_to_local(i)-self.global_position)
+			print(points, local_to_map(get_global_mouse_position()))
 	#print(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_local_mouse_position())))
 	
 	

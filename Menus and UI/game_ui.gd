@@ -155,6 +155,11 @@ func toggle_aim_buts() -> void:
 	so after you fire you can call this function and it will switch em
 	as well as in the button presses
 	"""
+	stance_but_disabled.visible = true
+	stance_but_abled.visible = false
+	if game_main.pc_unit != null:
+		game_main.pc_unit.stance = 0
+		
 	mouse_click.play()
 	if aim_but_disabled.visible == true:
 		game_main.pc_unit.action_mode = Unit.ACTION_MODE.Attack
@@ -178,10 +183,14 @@ func toggle_stance_buts() -> void:
 	if stance_but_disabled.visible == true:
 		stance_but_disabled.visible = false
 		stance_but_abled.visible = true
+		if game_main.pc_unit != null:
+			game_main.pc_unit.stance = 1
 		return
 	else:
 		stance_but_disabled.visible = true
 		stance_but_abled.visible = false
+		if game_main.pc_unit != null:
+			game_main.pc_unit.stance = 0
 		return
 
 

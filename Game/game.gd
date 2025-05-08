@@ -180,6 +180,8 @@ func reset() -> void:
 	Input.set_custom_mouse_cursor(null)
 	game_ui.aim_but_disabled.visible = true
 	game_ui.aim_but_abled.visible = false
+	game_ui.stance_but_disabled.visible = true
+	game_ui.stance_but_abled.visible = false
 	
 	
 	for i in british_unit_count:
