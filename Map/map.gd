@@ -149,7 +149,7 @@ func tile_to_ui() -> void:
 			var mouse_pos = local_to_map(get_global_mouse_position())
 			var path = generate_path(local_to_map(game.pc_unit.global_position), mouse_pos)
 			for i in range(len(path)):
-				if i + 1 <= len(path) and i <= 13:
+				if i + 1 <= len(path) and i <= game.pc_unit.max_moves:
 					path_line.add_point(map_to_local(path[i])-self.global_position)
 					
 					
@@ -353,7 +353,7 @@ func _input(event: InputEvent) -> void:
 
 ###all of this is to deterim if the mouse is inside the right areas
 func _on_english_trench_area_mouse_entered() -> void:
-	if game.pc_unit == null :
+	if game.pc_unit == null or game.game_ui.show_colour == true:
 		return
 	
 	if curent_area == 0 and game.pc_unit.action_mode != 2:

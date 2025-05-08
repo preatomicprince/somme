@@ -56,10 +56,11 @@ one_shot = true
 [node name="machine gun sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_c5p1k")
 volume_db = -10.0
+max_distance = 1e+06
 
 [node name="blow up" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_oq1g4")
-max_distance = 3000.0
+max_distance = 1e+06
 
 [node name="Rubble" type="Sprite2D" parent="."]
 visible = false

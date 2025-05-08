@@ -14,7 +14,7 @@ var right : bool = false
 var up : bool = false
 var down : bool = false
 var cam_speed = 50
-var zoom_speed = Vector2(0.02, 0.02)
+var zoom_speed = Vector2(0.015, 0.015)
 
 enum ARMIES{
 	British = 0,
@@ -194,11 +194,7 @@ func reset() -> void:
 		new_brit.set_start_pos(british_unit_starts[i])
 		new_units.append(new_brit)
 	
-	print(british_units)
-	print(len(british_units))
-	#for i in british_units:
-		#print(british_units)
-		#i.on_death()
+	
 	for i in range(british_units.size()- 1, -1, -1):
 		british_units[i].on_death()
 	

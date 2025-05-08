@@ -81,9 +81,11 @@ func _process(delta: float) -> void:
 		$"tutorial holder/tut text".text = tutorial_text
 	
 	if show_colour == true:
+		
 		if background.modulate.a < 1:
 			background.modulate.a += 0.1
 	else:
+		
 		if background.modulate.a > 0:
 			background.modulate.a -= 0.1
 			
