@@ -280,7 +280,13 @@ func _handle_attack(delta: float) -> void:
 			if map_unit.army != self.army: # No friendly fire :( 
 				var hit_roll: float = randf()
 				
-				var odds: float = bullet_step/MAX_BULLET_STEP + 0.1 # +0.1 means increase chance of hit by 10%
+				var odds : float
+				
+				if map_unit == map.game.pc_unit and map.game.pc_unit.stance == 1:
+					#this reduces the chance of the player getting hit, I think
+					odds= bullet_step/MAX_BULLET_STEP + 0.4
+				else:
+					odds= bullet_step/MAX_BULLET_STEP + 0.1 # +0.1 means increase chance of hit by 10%
 				
 				if hit_roll > odds:
 					var hit_pos = bullet_pos - position
@@ -464,3 +470,10 @@ func feed_back_show(happened)->void:
 
 func _on_feedback_timer_timeout() -> void:
 	$"tut text".visible = false
+
+func switch_between_stances():
+	if self.stance == 0: ###this is for standing
+		anim_play_eng.play("RESET")
+	if self.stance == 1: ###this is for prone
+		anim_play_eng.play("Reset prone")
+		

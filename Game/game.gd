@@ -14,6 +14,7 @@ var right : bool = false
 var up : bool = false
 var down : bool = false
 var cam_speed = 50
+var zoom_speed = Vector2(0.02, 0.02)
 
 enum ARMIES{
 	British = 0,
@@ -53,9 +54,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if pc_unit == null:
 		return
+	
 	pc_unit.rotate_arrow()
 	pc_unit.is_main_char = true ###makes sure that the pc_unit is the main char, which impacts other stuf 
 	
+	##center the camera on the unit
+	$Camera2D.position =  pc_unit.global_position
 	if left == true:
 		$Camera2D.position.x -= cam_speed
 	if right == true:
@@ -132,11 +136,11 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action("zoom in"):
 		if $Camera2D.zoom < Vector2(0.5, 0.5):
-			$Camera2D.zoom += Vector2(0.1, 0.1)
+			$Camera2D.zoom += zoom_speed
 		
 	if event.is_action("zoom out"):
 		if $Camera2D.zoom > Vector2(0.2, 0.2):
-			$Camera2D.zoom -= Vector2(0.1, 0.1)
+			$Camera2D.zoom -= zoom_speed
 
 	if event.is_action_pressed("right click"):
 

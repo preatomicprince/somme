@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://nsc5pq2amx6o"]
+[gd_scene load_steps=42 format=3 uid="uid://nsc5pq2amx6o"]
 
 [ext_resource type="Script" uid="uid://bvkj074734sl" path="res://Unit/unit.gd" id="1_tuymw"]
 [ext_resource type="Texture2D" uid="uid://duvqxxiisvimd" path="res://Res/Character/crouch forward.png" id="2_c0ino"]
@@ -80,6 +80,21 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ydd7x"]
+resource_name = "Reset prone"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrouchForward:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [358]
 }
 
 [sub_resource type="Animation" id="Animation_fiwau"]
@@ -661,6 +676,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h1a0a"]
 _data = {
 &"RESET": SubResource("Animation_ytiie"),
+&"Reset prone": SubResource("Animation_ydd7x"),
 &"prone down": SubResource("Animation_fiwau"),
 &"prone down left": SubResource("Animation_tar1w"),
 &"prone down right": SubResource("Animation_vnjc4"),

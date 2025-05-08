@@ -159,6 +159,7 @@ func toggle_aim_buts() -> void:
 	stance_but_abled.visible = false
 	if game_main.pc_unit != null:
 		game_main.pc_unit.stance = 0
+		game_main.pc_unit.switch_between_stances()
 		
 	mouse_click.play()
 	if aim_but_disabled.visible == true:
@@ -166,6 +167,7 @@ func toggle_aim_buts() -> void:
 		Input.set_custom_mouse_cursor(custom_cursor_target)
 		aim_but_disabled.visible = false
 		aim_but_abled.visible = true
+		
 		return
 	else:
 		game_main.pc_unit.action_mode = Unit.ACTION_MODE.Move
@@ -185,12 +187,19 @@ func toggle_stance_buts() -> void:
 		stance_but_abled.visible = true
 		if game_main.pc_unit != null:
 			game_main.pc_unit.stance = 1
+			game_main.pc_unit.switch_between_stances()
+			if game_main.pc_unit.action_mode == 2:
+				toggle_aim_buts()
 		return
 	else:
 		stance_but_disabled.visible = true
 		stance_but_abled.visible = false
 		if game_main.pc_unit != null:
 			game_main.pc_unit.stance = 0
+			
+			game_main.pc_unit.switch_between_stances()
+			if game_main.pc_unit.action_mode == 2:
+				toggle_aim_buts()
 		return
 
 
