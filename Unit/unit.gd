@@ -473,7 +473,9 @@ func _on_feedback_timer_timeout() -> void:
 
 func switch_between_stances():
 	if self.stance == 0: ###this is for standing
+		self.max_moves = 12
 		anim_play_eng.play("RESET")
 	if self.stance == 1: ###this is for prone
 		anim_play_eng.play("Reset prone")
+		self.max_moves = 6
 		

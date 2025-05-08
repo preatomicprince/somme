@@ -163,8 +163,7 @@ func tile_to_ui() -> void:
 			var points = [path, mouse_pos]
 			for i in points:
 				path_line.add_point(map_to_local(i)-self.global_position)
-			print(points, local_to_map(get_global_mouse_position()))
-	#print(generate_path(local_to_map(game.pc_unit.global_position), local_to_map(get_local_mouse_position())))
+
 	
 	
 	if curent_area == GAME_AREAS.British_trench:
@@ -181,7 +180,7 @@ func tile_to_ui() -> void:
 				x_mark.visible = true
 			return
 	if curent_area == GAME_AREAS.No_mans_land:
-		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == no_mans_land_vector: 
+		if get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == no_mans_land_vector or get_cell_atlas_coords(local_to_map(get_local_mouse_position())) == sand_vector: 
 			tile_outline.visible = true
 			x_mark.visible = false
 			tile_outline.position = map_to_local(local_to_map(path_line.get_point_position(path_line.get_point_count() - 1)))
