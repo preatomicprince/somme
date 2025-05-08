@@ -238,10 +238,8 @@ func enter_no_mans_land() -> void:
 	The point of this function is to reduce the alpha of non vital items whilst
 	in no mans land
 	"""
-	self.get_parent().game_ui.tutorial_text = "[right]CUT THE BARBED   
-	WIRE AND   
-	GET INTO THE   
-	GERMAN TRENCHES   ".format({})
+	self.get_parent().game_ui.tutorial_text = "[center]CUT THE BARBED WIRE AND GET INTO THE GERMAN TRENCHES".format({})
+	self.game.game_ui.tutorial_container.visible = true
 	get_parent().timer.start()
 	curent_area = 1
 	english_trench.modulate = Color(0.45, 0.45, 0.45, 1.00)
@@ -274,9 +272,8 @@ func enter_german_trench() -> void:
 	This function makes no mans land and all its related detritus disapear.
 	And increase the visibility of the german trench
 	"""
-	self.get_parent().game_ui.tutorial_text = "[left]    DEFEAT THE GERMAN   
-	INFANTRY AND DESTROY   
-	THE MACHINE GUN POST   ".format({})
+	self.get_parent().game_ui.tutorial_text = "[center]DEFEAT THE GERMAN INFANTRY AND DESTROY THE MACHINE GUN POST".format({})
+	self.game.game_ui.tutorial_container.visible = true
 	get_parent().timer.start()
 	curent_area = 2
 	german_trench.modulate = Color(1.00, 1.00, 1.00, 1.00) 

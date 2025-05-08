@@ -312,11 +312,12 @@ volume_db = 1.0
 max_distance = 1e+06
 
 [node name="tutorial holder" type="GridContainer" parent="."]
-anchors_preset = 15
+z_index = 1
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 87.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="tut text" type="RichTextLabel" parent="tutorial holder"]
@@ -331,9 +332,21 @@ theme_override_colors/font_selected_color = Color(0.172549, 0.14902, 0.0745098, 
 theme_override_fonts/normal_font = ExtResource("7_o1mkx")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[right]YOU MUST GO OVER THE TOP!                "
+text = "[center]YOU MUST GO OVER THE TOP!"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="background colour" type="ColorRect" parent="tutorial holder/tut text"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
 [connection signal="mouse_entered" from="bottom/button container/context button" to="." method="_on_context_button_mouse_entered"]
 [connection signal="mouse_exited" from="bottom/button container/context button" to="." method="_on_context_button_mouse_exited"]

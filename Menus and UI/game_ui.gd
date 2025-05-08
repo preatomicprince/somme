@@ -46,7 +46,8 @@ var custom_cursor_target = load("res://Res/UI Elements/custom cursers4.png")
 var first_time : bool = true ###if false it wont show any text, i just realised this wont work wioth the restart the way it is
 
 ###for the tutorial text
-var tutorial_text = "[right]YOU MUST GO OVER THE TOP   ".format({})
+var tutorial_text = "[center]YOU MUST GO OVER THE TOP".format({})
+@onready var tutorial_container = $"tutorial holder/tut text/background colour"
 ###for the names
 var cur_name : String = ""
 @onready var name_text_display = $top/names

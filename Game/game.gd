@@ -174,8 +174,9 @@ func _input(event: InputEvent) -> void:
 	
 
 func _on_text_timer_timeout() -> void:
-	game_ui.tutorial_text = "[right]    ".format({})
-
+	game_ui.tutorial_text = "".format({})
+	game_ui.tutorial_container.visible = false
+	
 func reset() -> void:
 	var new_units = []
 	map.reset()
