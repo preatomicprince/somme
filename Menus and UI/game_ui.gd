@@ -158,6 +158,9 @@ func toggle_aim_buts() -> void:
 	so after you fire you can call this function and it will switch em
 	as well as in the button presses
 	"""
+	if game_main.pc_unit == null:
+		return
+		
 	stance_but_disabled.visible = true
 	stance_but_abled.visible = false
 	if game_main.pc_unit != null:
@@ -184,6 +187,9 @@ func toggle_stance_buts() -> void:
 	doesnt really need to be a function, its just for the symetry really
 	maybe itll be useful
 	"""
+	if game_main.pc_unit == null:
+		return
+	
 	mouse_click.play()
 	if stance_but_disabled.visible == true:
 		stance_but_disabled.visible = false

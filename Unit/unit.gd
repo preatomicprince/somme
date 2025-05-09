@@ -15,6 +15,8 @@ var dead: bool = false
 
 var is_main_char : bool = false #determins if this is the character that is being controlled
 
+var times_missed : int = 0 ###going to try and use this to avoid the annoying situation where you miss repeatedly
+
 enum UNIT_TYPE {
 	Soldier = 0,
 	Officer = 1,
@@ -71,7 +73,7 @@ var bullet_pos: Vector2 = Vector2(-1, -1) # Starts at player, moves angle*speed 
 var bullet_angle: Vector2 = Vector2(-1, -1) # Set by get_angle
 const BULLET_SPEED: int = 50 # Defines how far the bullet travels each step before doing a collision check
 var bullet_step: float = 0
-const MAX_BULLET_STEP: float = 40 # Max number of steps before bullet times out, turn ends
+const MAX_BULLET_STEP: float = 80 # Max number of steps before bullet times out, turn ends
 
 var end_turn = false # Has finished moving or shooting
 
@@ -278,16 +280,24 @@ func _handle_attack(delta: float) -> void:
 		if  map_unit != null and map_unit != self:
 			
 			if map_unit.army != self.army: # No friendly fire :( 
+				
+				if unit_type == UNIT_TYPE.Machinegun: ###stops the machine gun fireing at player if in german trench
+					if map_unit == map.game.pc_unit and map.curent_area == 2:
+						return
+				
+				if map_unit != map.game.pc_unit: ###i dont want to increase the chances of hitting the player
+					times_missed += 1
+				
 				var hit_roll: float = randf()
 				
 				var odds : float
 				
 				if map_unit == map.game.pc_unit and map.game.pc_unit.stance == 1:
 					#this reduces the chance of the player getting hit, I think
-					odds= bullet_step/MAX_BULLET_STEP + 0.4
+					odds= bullet_step/MAX_BULLET_STEP + 0.6
 				else:
-					odds= bullet_step/MAX_BULLET_STEP + 0.1 # +0.1 means increase chance of hit by 10%
-				
+					odds= bullet_step/MAX_BULLET_STEP + 0.1/times_missed # +0.1 means increase chance of hit by 10%
+				###added the times missed to increase the chances of enemy being hitbeing hit
 				if hit_roll > odds:
 					var hit_pos = bullet_pos - position
 					$impact.position = hit_pos

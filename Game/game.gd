@@ -68,8 +68,11 @@ func _process(delta: float) -> void:
 		$Camera2D.position.y -= cam_speed
 	if down == true:
 		$Camera2D.position.y += cam_speed
-		
+	
 	if pc_unit.end_turn == true:
+		if game_ui.cont_bar.victory == true:
+			return
+		
 		for i in british_units:
 			if i.end_turn == false:
 				game_ui.turn_text.text = "ALLIES TURN"
@@ -91,6 +94,9 @@ func _process(delta: float) -> void:
 		if g.end_turn == false:
 			return
 	pc_unit.next_turn()
+	
+	
+	
 	for b in british_units:
 		b.next_turn()
 	for g in german_units:
@@ -107,29 +113,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle stance"):
 		game_ui.toggle_stance_buts()###again but for toggling stances
 	
-	if event.is_action_pressed("left"):
-		left = true
-		
-	if event.is_action_pressed("right"):
-		right = true
-		
-	if event.is_action_pressed("up"):
-		up = true
-		
-	if event.is_action_pressed("down"):
-		down = true
 	
-	if event.is_action_released("left"):
-		left = false
-		
-	if event.is_action_released("right"):
-		right = false
-		
-	if event.is_action_released("up"):
-		up = false
-		
-	if event.is_action_released("down"):
-		down = false
 	
 	if event.is_action_pressed("esc"):
 		get_tree().quit() ###to exit the game
