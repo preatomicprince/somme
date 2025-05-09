@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bocpmv0o4yh6k" path="res://Terrain Objects/trees.gd" id="2_c4hds"]
 
 [node name="Trees" type="Node2D"]
-z_index = 10
 script = ExtResource("2_c4hds")
 
 [node name="tree_sprite" type="Sprite2D" parent="."]

@@ -20,7 +20,7 @@ tile_set = ExtResource("1_6yc6o")
 script = ExtResource("2_6yc6o")
 
 [node name="Tileoutline" type="Sprite2D" parent="."]
-position = Vector2(896, 1984)
+position = Vector2(-5177, 2562)
 texture = ExtResource("3_5cbny")
 
 [node name="English trench" type="Sprite2D" parent="."]
@@ -76,50 +76,39 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_3g1qk")
 
 [node name="Trees" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(-70, 639)
 
 [node name="Trees2" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(1653, 950)
 
 [node name="Trees3" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(1470, 1911)
 
 [node name="Trees4" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(-1231, 505)
 tree_ind = 1
 
 [node name="Trees5" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(311, 1395)
 tree_ind = 1
 
 [node name="Trees6" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(2821, 1603)
 tree_ind = 1
 
 [node name="Trees7" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(695, 261)
 
 [node name="Trees8" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(308, -1)
 
 [node name="Trees10" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(1687, 35)
 
 [node name="Trees9" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(2040, 2990)
 
 [node name="Trees11" parent="." instance=ExtResource("6_3g1qk")]
-z_index = 1
 position = Vector2(3401, 1369)
 
 [node name="MachineGunPost" parent="." instance=ExtResource("7_d1580")]
@@ -128,7 +117,6 @@ position = Vector2(3728.58, -2.0429)
 scale = Vector2(4, 4)
 
 [node name="SandbagWall" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(2055, 18)
 rotation = 0.261799
 scale = Vector2(3, 3)
@@ -137,7 +125,6 @@ texture = ExtResource("8_5ej7w")
 vframes = 2
 
 [node name="SandbagWall6" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(1374, 1218)
 rotation = 0.261799
 scale = Vector2(3, 3)
@@ -146,7 +133,6 @@ texture = ExtResource("8_5ej7w")
 vframes = 2
 
 [node name="SandbagWall2" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(3838, 1261)
 rotation = 0.261799
 scale = Vector2(3, 3)
@@ -155,7 +141,6 @@ texture = ExtResource("8_5ej7w")
 vframes = 2
 
 [node name="SandbagWall3" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(2962, 733)
 rotation = 0.261799
 scale = Vector2(3, 3)
@@ -165,7 +150,6 @@ vframes = 2
 frame = 1
 
 [node name="SandbagWall5" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(2881, 1799)
 rotation = 0.261799
 scale = Vector2(3, 3)
@@ -175,7 +159,6 @@ vframes = 2
 frame = 1
 
 [node name="SandbagWall4" type="Sprite2D" parent="."]
-z_index = 1
 position = Vector2(4278, 1969)
 rotation = 0.668117
 scale = Vector2(3, 3)
@@ -309,7 +292,6 @@ z_index = 1
 position = Vector2(1113.27, -407.889)
 
 [node name="Unit3" parent="." instance=ExtResource("2_njngi")]
-z_index = 0
 position = Vector2(-1193, 2419)
 
 [node name="Unit" parent="." instance=ExtResource("2_njngi")]
@@ -379,7 +361,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="X" type="Sprite2D" parent="."]
-position = Vector2(-768, 1251)
+position = Vector2(-7321, 1780)
 texture = ExtResource("11_ptuj4")
 
 [connection signal="mouse_entered" from="English trench/english trench area" to="." method="_on_english_trench_area_mouse_entered"]

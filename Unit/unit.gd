@@ -276,6 +276,7 @@ func _handle_attack(delta: float) -> void:
 				return
 		
 		# Calculate if bullet hits enemy
+		###here is giving a bug, trying to assign invalid previously freed instance
 		var map_unit: Unit = map.units[bullet_tile_id]
 		if  map_unit != null and map_unit != self:
 			

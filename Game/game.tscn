@@ -19,7 +19,7 @@ position = Vector2(4446, 858)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1576, 1854)
 skew = 0.647517
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.3, 0.3)
 limit_left = 0
 limit_top = -300
 limit_right = 11000
