@@ -8,6 +8,7 @@ class_name Unit extends Node2D
 @onready var german_spritesheet : Sprite2D = $GermanSheet
 @onready var anim_play_eng : AnimationPlayer = $AnimationPlayerEnglish
 @onready var anim_play_ger : AnimationPlayer = $AnimationPlayerGerman
+@onready var tut_text = $"tut text"
 var in_motion = false
 var text_feedback_list : Array = ["[center]MISS".format({}), "[center]HIT".format({})]#a list of all the text to show the player when they hit or miss something
 
@@ -16,6 +17,8 @@ var dead: bool = false
 var is_main_char : bool = false #determins if this is the character that is being controlled
 
 var times_missed : int = 0 ###going to try and use this to avoid the annoying situation where you miss repeatedly
+
+var bul_set = false
 
 enum UNIT_TYPE {
 	Soldier = 0,
@@ -74,6 +77,10 @@ var bullet_angle: Vector2 = Vector2(-1, -1) # Set by get_angle
 const BULLET_SPEED: int = 50 # Defines how far the bullet travels each step before doing a collision check
 var bullet_step: float = 0
 const MAX_BULLET_STEP: float = 80 # Max number of steps before bullet times out, turn ends
+
+var fake_bull_pos : Vector2 = Vector2(-1, -1)
+var fake_bullet_angle: Vector2 = Vector2(-1, -1)
+var fake_bullet_step : float = 0
 
 var end_turn = false # Has finished moving or shooting
 
@@ -198,7 +205,61 @@ func get_angle(pos: Vector2) -> Vector2:
 	var vec_norm: float  = sqrt((x_dist*x_dist) + (y_dist*y_dist))
 	
 	return Vector2(x_dist/vec_norm, y_dist/vec_norm)
+
 	
+func workout_percentage(player_loc: Vector2, target_loc: Vector2) -> void:
+	"""
+	so how this will work, itll get the players position, workout if the tile hovered over has 
+	an enemy unit on it
+	depending on the distance itll show a hit percentage;
+	once i have that ill make it factor in any object on the way
+	"""
+	
+	if self.army == 1 and self.german_spritesheet.use_parent_material == false:
+		self.german_spritesheet.use_parent_material = true
+	
+	var player_tile: Vector2i = map.local_to_map(player_loc)
+	var player_tile_id = map.get_tile_id(player_tile)
+	
+	var target_tile =  map.local_to_map(target_loc)
+	var target_tile_id = map.get_tile_id(target_tile)
+	
+	var map_unit = null
+	if is_instance_valid(map.units[target_tile_id]):
+		map_unit = map.units[target_tile_id]
+	
+	if  map_unit != null and map_unit != self:
+			
+		if map_unit.army != self.army:
+			var difference = abs(player_loc-map_unit.global_position)
+			var workout_dif = difference[0]+difference[1]
+			
+			map_unit.get_node("GermanSheet").use_parent_material = false
+			map_unit.get_node("tut text").visible = true
+			
+			if workout_dif <= 2000:
+				map_unit.get_node("tut text").text = "% 80"
+				return
+			
+			if workout_dif <= 2500:
+				map_unit.get_node("tut text").text = "% 33"
+				return
+				
+			if workout_dif <= 3000:
+				map_unit.get_node("tut text").text = "% 10"
+				return
+				
+			else:
+				map_unit.get_node("tut text").text = "% 1"
+				return
+			
+			map_unit.get_node("tut text").text = str(difference[0]+difference[1])
+func reset_meterial(german_army: Array)-> void:
+	for i in german_army:
+		if is_instance_valid(i) and i.army == 1 and i.german_spritesheet.use_parent_material == false:
+			i.german_spritesheet.use_parent_material = true
+			i.get_node("tut text").visible = false
+			
 func set_bullet(mouse_pos: Vector2) -> void:
 	"""
 	Sets up bullet angle and pos.
@@ -234,7 +295,7 @@ func set_bullet(mouse_pos: Vector2) -> void:
 			play_animation_shoot("left down") ###left south
 			return
 	
-	
+
 func _handle_attack(delta: float) -> void:
 	if bullet_step > MAX_BULLET_STEP:
 		end_turn = true
@@ -244,12 +305,15 @@ func _handle_attack(delta: float) -> void:
 	if end_turn == true:
 		return
 	
+	
+	
 	const obst_atlas_coords: Array = [Vector2i(2,0), Vector2i(3,0), Vector2i(3,1)]
 	
 	if unit_type == UNIT_TYPE.Machinegun:
 		map.bunker.fire_machine_guns()
-		
+	var cum_odds = []
 	while(bullet_step < MAX_BULLET_STEP):
+		
 		bullet_step += 1
 		bullet_pos.x = bullet_pos.x + bullet_angle.x*BULLET_SPEED
 		bullet_pos.y = bullet_pos.y + bullet_angle.y*BULLET_SPEED
@@ -266,6 +330,8 @@ func _handle_attack(delta: float) -> void:
 			var hit_roll: float = randf()
 			var odds: float = bullet_step/MAX_BULLET_STEP - 0.1 # -0.1 means decrease chance of hit by 10%
 			
+			cum_odds.append(1-snapped(odds, 0.001))
+			
 			if hit_roll < odds: # If obstacle hit
 				var hit_pos = bullet_pos - position
 				$impact.position = hit_pos
@@ -277,7 +343,12 @@ func _handle_attack(delta: float) -> void:
 		
 		# Calculate if bullet hits enemy
 		###here is giving a bug, trying to assign invalid previously freed instance
-		var map_unit: Unit = map.units[bullet_tile_id]
+		var map_unit = null
+		if is_instance_valid(map.units[bullet_tile_id]):
+			#var map_unit: Unit = map.units[player_tile_id]	
+			map_unit = map.units[bullet_tile_id]
+			
+		
 		if  map_unit != null and map_unit != self:
 			
 			if map_unit.army != self.army: # No friendly fire :( 
@@ -298,6 +369,8 @@ func _handle_attack(delta: float) -> void:
 					odds= bullet_step/MAX_BULLET_STEP + 0.6
 				else:
 					odds= bullet_step/MAX_BULLET_STEP + 0.1/times_missed # +0.1 means increase chance of hit by 10%
+				
+				cum_odds.append(1-snapped(odds, 0.001))
 				###added the times missed to increase the chances of enemy being hitbeing hit
 				if hit_roll > odds:
 					var hit_pos = bullet_pos - position
@@ -310,7 +383,12 @@ func _handle_attack(delta: float) -> void:
 					map_unit.on_death()
 					feed_back_show("hit")
 					return
-					
+		#if self == map.game.pc_unit:
+			#if len(cum_odds) > 0:
+				#var new_odds = cum_odds[-1]/len(cum_odds)*100
+				#for i in cum_odds:
+				#print(cum_odds)
+				#print( "%",new_odds)
 	end_turn = true
 	return
 	
@@ -329,6 +407,8 @@ func look_for_units() -> Array:
 	return []
 	
 func _process(delta: float) -> void:
+	
+
 	if get_input == true: # Skip if there hasn't been an input yet
 		return
 	if army == 1:
@@ -425,7 +505,6 @@ func on_death():
 	
 	if army == 0:
 		#corpse
-		print(self.name)
 		new_corpe.army = 0
 		par_map.add_child(new_corpe)
 		new_corpe.position = self.position

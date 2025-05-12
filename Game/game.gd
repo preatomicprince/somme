@@ -106,7 +106,12 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if pc_unit == null:
 		return
-
+	else:
+		pc_unit.reset_meterial(german_units)
+		if pc_unit.action_mode == pc_unit.ACTION_MODE.Attack:
+			pc_unit.workout_percentage(pc_unit.global_position, get_local_mouse_position())
+	
+	
 	if event.is_action_pressed("toggle shoot"):
 		game_ui.toggle_aim_buts() ###toggles the aim buts in the UI, if you put the switching in here itll work
 	

@@ -57,7 +57,7 @@ scale = Vector2(0.25, 0.25)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="German trench/german trench area"]
 position = Vector2(-2914.02, 961.537)
-polygon = PackedVector2Array(222, 184, 1540, 1127, 1521, 1204, 1824, 1317, 2057, 1277, 3903, 2647, 3408, 2802, 1784, 1604, 1026, 1305, -182, 318)
+polygon = PackedVector2Array(222, 184, 1540, 1127, 1521, 1204, 1824, 1317, 2057, 1277, 3903, 2647, 3410, 2773, 1797, 1516, 1154, 1161, -6.99854, 267)
 
 [node name="No Mans Land" type="Sprite2D" parent="."]
 modulate = Color(0.489622, 0.489622, 0.489622, 1)

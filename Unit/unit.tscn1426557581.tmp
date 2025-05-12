@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://nsc5pq2amx6o"]
+[gd_scene load_steps=42 format=3 uid="uid://nsc5pq2amx6o"]
 
 [ext_resource type="Script" uid="uid://bvkj074734sl" path="res://Unit/unit.gd" id="1_tuymw"]
 [ext_resource type="Texture2D" uid="uid://duvqxxiisvimd" path="res://Res/Character/crouch forward.png" id="2_c0ino"]
@@ -12,9 +12,12 @@
 [ext_resource type="AudioStream" uid="uid://gsnokcifhfgo" path="res://Res/Music and Sound/response/rifle.mp3" id="9_sju1b"]
 [ext_resource type="FontFile" uid="uid://de7vhhovyv87y" path="res://Res/Fonts/Futura Bold font.ttf" id="10_gnj3n"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnj3n"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvv66"]
+shader = ExtResource("4_e0uwq")
+shader_parameter/color = Vector4(0, 0, 0, 0)
+shader_parameter/red = 0.329
+shader_parameter/green = 0.0
+shader_parameter/blue = 0.0
 
 [sub_resource type="Animation" id="Animation_ytiie"]
 length = 0.001
@@ -694,13 +697,6 @@ _data = {
 &"walk up right": SubResource("Animation_08ss2")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqu2p"]
-shader = ExtResource("4_e0uwq")
-shader_parameter/color = Vector4(0, 0, 0, 0)
-shader_parameter/red = 100.0
-shader_parameter/green = null
-shader_parameter/blue = null
-
 [sub_resource type="Animation" id="Animation_4skay"]
 length = 0.001
 tracks/0/type = "value"
@@ -1169,7 +1165,6 @@ texture = ExtResource("7_hvv66")
 
 [node name="player_pointer" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_gnj3n")
 position = Vector2(26, 31)
 texture = ExtResource("3_bqu2p")
 
@@ -1181,6 +1176,7 @@ texture = ExtResource("2_ytiie")
 
 [node name="CrouchForward" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_hvv66")
+use_parent_material = true
 position = Vector2(20, -93)
 scale = Vector2(2, 2)
 texture = ExtResource("2_c0ino")
@@ -1193,8 +1189,6 @@ libraries = {
 }
 
 [node name="GermanSheet" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_bqu2p")
-use_parent_material = true
 position = Vector2(20, -92)
 scale = Vector2(2, 2)
 texture = ExtResource("3_6w0sq")
